@@ -114,3 +114,40 @@ Cons: Depends on DynamicSlicingCore and Soot, and the repo warns that trace size
 [Repo](https://github.com/resess/Slicer4J)
 
 Best Slicer to work it.
+
+## Defects 4j Projects selection :
+
+Why -- Slicing overhead can require more time
+Automation doesnt always help when there can be build failures
+
+So target
+Projects like Lang , Chart, Time , Math
+Full size around 200 bugs
+
+The projects are negotiable
+
+## Evaluation Approach Consideration
+
+Slice Size / Reduction: We count the number of program statements in the generated slice and compare to the original program. For example, the slice size ratio = (size of slice)/(size of program). Equivalently, code reduction (%) = (1 – slice_ratio)×100. A smaller slice (higher reduction) is generally better. We will compute these metrics for each bug and summarise them (mean, median, distributions).
+
+Fault Coverage: Each Defects4J bug comes with a developer patch identifying the actual faulty lines. We check whether the slice contains those patched lines. The fault coverage rate is the percentage of bugs whose slice includes the patched statements. This ensures the slice retains the fault-relevant code. (If multiple lines are changed, we may define a slice as “successful” if it contains all changed lines.)
+
+Slice Precision / F1: To quantify irrelevant code in the slice, we compute precision = (number of fault-relevant statements in the slice)/(total statements in the slice). We can also compute an F1-score combining precision and recall. These measures (precision, recall, F1) are widely used in slicing evaluation.
+
+Overhead (optional): We record the execution time of each slicer . While not the primary goal, this shows the cost of applying slicing especially for dynamic slicing . One can compute instrumentation overhead as the ratio of instrumented execution time to baseline execution time.
+
+## Research Questions
+
+Set A - Multiple
+
+RQ1: Slice Size: How do static slicing vs. dynamic slicing compare in terms of code reduction on Defects4J bugs?
+RQ2: Fault Coverage: Which technique yields the highest rate of slices containing the actual bug-fix lines? Does static or dynamic slicing better preserve faults compared to static slicing?
+RQ3: Performance: How do slicing runtimes compare? For example, Static vs Dynamic
+
+Set B - Single
+
+RQ1: Slicing Criterion: How does choosing different slicing criteria affect slice size and fault coverage?
+RQ2: Fault Coverage: Which technique yields the highest rate of slices containing the actual bug-fix lines?
+RQ3: Call Graph Precision: If using Soot, what if we switch call-graph algorithms? Does a more precise call graph significantly reduce slice size or change fault coverage?
+RQ4: Slice Size: How much of code reduction is possible keeping the context to maximum?
+Note : RQ set yet to be decided
