@@ -1,0 +1,972 @@
+======================================
+Evaluating: node_auto_Cli_15
+======================================
+BugCLI158Test.java:63 -> Parser parser = createDefaultValueParser(new String[]{100, 1000});
+BugCLI158Test.java:38 -> final DefaultOptionBuilder obuilder = new DefaultOptionBuilder();
+DefaultOptionBuilder.java:51 -> this(DefaultOption.DEFAULT_SHORT_PREFIX, DefaultOption.DEFAULT_LONG_PREFIX,
+DefaultOptionBuilder.java:66 -> throws IllegalArgumentException {
+DefaultOptionBuilder.java:75 -> this.shortPrefix = shortPrefix;
+DefaultOptionBuilder.java:76 -> this.longPrefix = longPrefix;
+DefaultOptionBuilder.java:77 -> this.burstEnabled = burstEnabled;
+DefaultOptionBuilder.java:78 -> reset();
+DefaultOptionBuilder.java:105 -> preferredName = null;
+DefaultOptionBuilder.java:106 -> description = null;
+DefaultOptionBuilder.java:107 -> aliases = new HashSet();
+DefaultOptionBuilder.java:108 -> burstAliases = new HashSet();
+DefaultOptionBuilder.java:109 -> required = false;
+DefaultOptionBuilder.java:110 -> argument = null;
+DefaultOptionBuilder.java:111 -> children = null;
+DefaultOptionBuilder.java:112 -> id = 0;
+DefaultOptionBuilder.java:114 -> return this;
+BugCLI158Test.java:39 -> final ArgumentBuilder abuilder = new ArgumentBuilder();
+ArgumentBuilder.java:34 -> private final static ResourceHelper resources = ResourceHelper.getResourceHelper();
+ResourceHelper.java:86 -> if (helper == null || !helper.getBundleName().equals(bundleName)) {
+ResourceHelper.java:87 -> helper = new ResourceHelper();
+ResourceHelper.java:47 -> private ResourceHelper() {
+ResourceHelper.java:48 -> String bundleName = System.getProperty(PROP_LOCALE);
+ResourceHelper.java:50 -> if (bundleName == null) {
+ResourceHelper.java:51 -> bundleName = DEFAULT_BUNDLE;
+ResourceHelper.java:54 -> this.prop = bundleName;
+ResourceHelper.java:56 -> int firstUnderscore = bundleName.indexOf(_);
+ResourceHelper.java:57 -> int secondUnderscore = bundleName.indexOf(_, firstUnderscore + 1);
+ResourceHelper.java:61 -> String language = bundleName.substring(firstUnderscore + 1, secondUnderscore);
+ResourceHelper.java:62 -> String country = bundleName.substring(secondUnderscore + 1);
+ResourceHelper.java:63 -> locale = new Locale(language, country);
+ResourceHelper.java:70 -> bundle = ResourceBundle.getBundle(bundleName, locale);
+ArgumentBuilder.java:69 -> public ArgumentBuilder() {
+ArgumentBuilder.java:70 -> reset();
+ArgumentBuilder.java:104 -> name = arg;
+ArgumentBuilder.java:105 -> description = null;
+ArgumentBuilder.java:106 -> minimum = 0;
+ArgumentBuilder.java:107 -> maximum = Integer.MAX_VALUE;
+ArgumentBuilder.java:108 -> initialSeparator = ArgumentImpl.DEFAULT_INITIAL_SEPARATOR;
+ArgumentBuilder.java:109 -> subsequentSeparator = ArgumentImpl.DEFAULT_SUBSEQUENT_SEPARATOR;
+ArgumentBuilder.java:110 -> validator = null;
+ArgumentBuilder.java:111 -> consumeRemaining = --;
+ArgumentBuilder.java:112 -> defaultValues = null;
+ArgumentBuilder.java:113 -> id = 0;
+ArgumentBuilder.java:114 -> return this;
+BugCLI158Test.java:40 -> final GroupBuilder gbuilder = new GroupBuilder();
+GroupBuilder.java:40 -> public GroupBuilder() {
+GroupBuilder.java:41 -> reset();
+GroupBuilder.java:61 -> name = null;
+GroupBuilder.java:62 -> description = null;
+GroupBuilder.java:63 -> options = new ArrayList();
+GroupBuilder.java:64 -> minimum = 0;
+GroupBuilder.java:65 -> maximum = Integer.MAX_VALUE;
+GroupBuilder.java:66 -> return this;
+BugCLI158Test.java:42 -> DefaultOption bOption = obuilder.withShortName(b)
+DefaultOptionBuilder.java:125 -> final String name = shortPrefix + shortName;
+DefaultOptionBuilder.java:127 -> if (preferredName == null) {
+DefaultOptionBuilder.java:128 -> preferredName = name;
+DefaultOptionBuilder.java:134 -> burstAliases.add(name);
+DefaultOptionBuilder.java:137 -> return this;
+DefaultOptionBuilder.java:148 -> final String name = longPrefix + longName;
+DefaultOptionBuilder.java:150 -> if (preferredName == null) {
+DefaultOptionBuilder.java:153 -> aliases.add(name);
+DefaultOptionBuilder.java:156 -> return this;
+ArgumentBuilder.java:130 -> if (.equals(newName)) {
+ArgumentBuilder.java:133 -> this.name = newName;
+ArgumentBuilder.java:134 -> return this;
+ArgumentBuilder.java:160 -> this.minimum = newMinimum;
+ArgumentBuilder.java:161 -> return this;
+ArgumentBuilder.java:174 -> this.maximum = newMaximum;
+ArgumentBuilder.java:175 -> return this;
+ArgumentBuilder.java:272 -> this.defaultValues = newDefaultValues;
+ArgumentBuilder.java:273 -> return this;
+ArgumentBuilder.java:81 -> final Argument argument =
+ArgumentImpl.java:107 -> super(id, false);
+OptionImpl.java:43 -> final boolean required) {
+OptionImpl.java:44 -> this.id = id;
+OptionImpl.java:45 -> this.required = required;
+ArgumentImpl.java:69 -> private final ResourceHelper resources = ResourceHelper.getResourceHelper();
+ResourceHelper.java:90 -> return helper;
+ArgumentImpl.java:109 -> this.name = (name == null) ? arg : name;
+ArgumentImpl.java:110 -> this.description = description;
+ArgumentImpl.java:111 -> this.minimum = minimum;
+ArgumentImpl.java:112 -> this.maximum = maximum;
+ArgumentImpl.java:113 -> this.initialSeparator = initialSeparator;
+ArgumentImpl.java:114 -> this.subsequentSeparator = subsequentSeparator;
+ArgumentImpl.java:115 -> this.subsequentSplit = subsequentSeparator != NUL;
+ArgumentImpl.java:116 -> this.validator = validator;
+ArgumentImpl.java:117 -> this.consumeRemaining = consumeRemaining;
+ArgumentImpl.java:118 -> this.defaultValues = valueDefaults;
+ArgumentBuilder.java:96 -> return argument;
+DefaultOptionBuilder.java:198 -> this.argument = newArgument;
+DefaultOptionBuilder.java:200 -> return this;
+DefaultOptionBuilder.java:92 -> final DefaultOption option =
+DefaultOption.java:91 -> super(argument, children, description, id, required);
+ParentImpl.java:50 -> super(id, required);
+ParentImpl.java:51 -> this.children = children;
+ParentImpl.java:52 -> this.argument = argument;
+ParentImpl.java:53 -> this.description = description;
+DefaultOption.java:93 -> this.shortPrefix = shortPrefix;
+DefaultOption.java:94 -> this.burstEnabled = burstEnabled;
+DefaultOption.java:96 -> this.burstLength = shortPrefix.length() + 1;
+DefaultOption.java:98 -> this.preferredName = preferredName;
+DefaultOption.java:99 -> this.aliases =
+DefaultOption.java:103 -> this.burstAliases =
+DefaultOption.java:107 -> final Set newTriggers = new HashSet();
+DefaultOption.java:108 -> newTriggers.add(preferredName);
+DefaultOption.java:109 -> newTriggers.addAll(this.aliases);
+DefaultOption.java:110 -> newTriggers.addAll(this.burstAliases);
+DefaultOption.java:111 -> this.triggers = Collections.unmodifiableSet(newTriggers);
+DefaultOption.java:113 -> final Set newPrefixes = new HashSet(super.getPrefixes());
+ParentImpl.java:112 -> return (children == null) ? Collections.EMPTY_SET : children.getPrefixes();
+DefaultOption.java:114 -> newPrefixes.add(shortPrefix);
+DefaultOption.java:115 -> newPrefixes.add(longPrefix);
+DefaultOption.java:116 -> this.prefixes = Collections.unmodifiableSet(newPrefixes);
+DefaultOption.java:118 -> checkPrefixes(newPrefixes);
+OptionImpl.java:128 -> if (prefixes.isEmpty()) {
+OptionImpl.java:133 -> checkPrefix(prefixes, getPreferredName());
+OptionImpl.java:136 -> this.getTriggers();
+DefaultOption.java:162 -> return triggers;
+OptionImpl.java:138 -> for (final Iterator i = getTriggers().iterator(); i.hasNext();) {
+OptionImpl.java:139 -> checkPrefix(prefixes, (String) i.next());
+DefaultOptionBuilder.java:98 -> return option;
+BugCLI158Test.java:51 -> Group options = gbuilder
+GroupBuilder.java:85 -> this.name = newName;
+GroupBuilder.java:86 -> return this;
+GroupBuilder.java:115 -> this.options.add(option);
+GroupBuilder.java:116 -> return this;
+GroupBuilder.java:49 -> final GroupImpl group =
+GroupImpl.java:69 -> super(0, false);
+GroupImpl.java:71 -> this.name = name;
+GroupImpl.java:72 -> this.description = description;
+GroupImpl.java:73 -> this.minimum = minimum;
+GroupImpl.java:74 -> this.maximum = maximum;
+GroupImpl.java:78 -> this.options = Collections.unmodifiableList(options);
+GroupImpl.java:81 -> final List newAnonymous = new ArrayList();
+GroupImpl.java:84 -> final SortedMap newOptionMap = new TreeMap(ReverseStringComparator.getInstance());
+COULD NOT FIND FILE FOR: org.apache.commons.cli2.option.ReverseStringComparator
+COULD NOT FIND FILE FOR: org.apache.commons.cli2.option.ReverseStringComparator
+COULD NOT FIND FILE FOR: org.apache.commons.cli2.option.ReverseStringComparator
+GroupImpl.java:87 -> final Set newPrefixes = new HashSet();
+GroupImpl.java:90 -> for (final Iterator i = options.iterator(); i.hasNext();) {
+GroupImpl.java:91 -> final Option option = (Option) i.next();
+GroupImpl.java:97 -> final Set triggers = option.getTriggers();
+GroupImpl.java:99 -> for (Iterator j = triggers.iterator(); j.hasNext();) {
+GroupImpl.java:100 -> newOptionMap.put(j.next(), option);
+GroupImpl.java:104 -> newPrefixes.addAll(option.getPrefixes());
+DefaultOption.java:166 -> return prefixes;
+GroupImpl.java:108 -> this.anonymous = Collections.unmodifiableList(newAnonymous);
+GroupImpl.java:109 -> this.optionMap = Collections.unmodifiableSortedMap(newOptionMap);
+GroupImpl.java:110 -> this.prefixes = Collections.unmodifiableSet(newPrefixes);
+GroupBuilder.java:54 -> return group;
+BugCLI158Test.java:56 -> Parser parser = new Parser();
+Parser.java:38 -> public class Parser {
+BugCLI158Test.java:57 -> parser.setHelpTrigger(--help);
+Parser.java:174 -> this.helpTrigger = helpTrigger;
+BugCLI158Test.java:58 -> parser.setGroup(options);
+Parser.java:145 -> this.group = group;
+BugCLI158Test.java:59 -> return parser;
+BugCLI158Test.java:65 -> String[] args = new String[]{-b, enteredValue1};
+BugCLI158Test.java:66 -> CommandLine cl = parser.parse(args);
+Parser.java:58 -> final List argumentList = new LinkedList();
+Parser.java:61 -> for (int i = 0; i < arguments.length; i++) {
+Parser.java:62 -> final String argument = arguments[i];
+Parser.java:66 -> argumentList.add(new String(argument));
+Parser.java:70 -> final WriteableCommandLine commandLine = new WriteableCommandLineImpl(group, argumentList);
+WriteableCommandLineImpl.java:60 -> final List arguments) {
+CommandLineImpl.java:32 -> public abstract class CommandLineImpl implements CommandLine {
+WriteableCommandLineImpl.java:41 -> private final Map optionToProperties = new HashMap();
+WriteableCommandLineImpl.java:43 -> private final List options = new ArrayList();
+WriteableCommandLineImpl.java:44 -> private final Map nameToOption = new HashMap();
+WriteableCommandLineImpl.java:45 -> private final Map values = new HashMap();
+WriteableCommandLineImpl.java:46 -> private final Map switches = new HashMap();
+WriteableCommandLineImpl.java:47 -> private final Map defaultValues = new HashMap();
+WriteableCommandLineImpl.java:48 -> private final Map defaultSwitches = new HashMap();
+WriteableCommandLineImpl.java:61 -> this.prefixes = rootOption.getPrefixes();
+GroupImpl.java:149 -> return prefixes;
+WriteableCommandLineImpl.java:62 -> this.normalised = arguments;
+Parser.java:73 -> group.defaults(commandLine);
+GroupImpl.java:479 -> for (final Iterator i = options.iterator(); i.hasNext();) {
+GroupImpl.java:480 -> final Option option = (Option) i.next();
+GroupImpl.java:481 -> option.defaults(commandLine);
+ParentImpl.java:247 -> super.defaults(commandLine);
+ParentImpl.java:249 -> if (argument != null) {
+ParentImpl.java:250 -> argument.defaultValues(commandLine, this);
+ArgumentImpl.java:373 -> commandLine.setDefaultValues(option, defaultValues);
+WriteableCommandLineImpl.java:246 -> if (defaults == null) {
+WriteableCommandLineImpl.java:249 -> defaultValues.put(option, defaults);
+Parser.java:76 -> final ListIterator iterator = argumentList.listIterator();
+Parser.java:77 -> Object previous = null;
+Parser.java:79 -> while (group.canProcess(commandLine, iterator)) {
+OptionImpl.java:50 -> if (arguments.hasNext()) {
+OptionImpl.java:51 -> final String argument = (String) arguments.next();
+OptionImpl.java:52 -> arguments.previous();
+OptionImpl.java:54 -> return canProcess(commandLine, argument);
+GroupImpl.java:115 -> if (arg == null) {
+GroupImpl.java:120 -> if (optionMap.containsKey(arg)) {
+GroupImpl.java:121 -> return true;
+Parser.java:81 -> final Object next = iterator.next();
+Parser.java:82 -> iterator.previous();
+Parser.java:85 -> if (next == previous) {
+Parser.java:93 -> group.process(commandLine, iterator);
+GroupImpl.java:162 -> while (arguments.hasNext()) {
+GroupImpl.java:164 -> final String arg = (String) arguments.next();
+GroupImpl.java:177 -> final Option opt = (Option) optionMap.get(arg);
+GroupImpl.java:180 -> if (opt != null) {
+GroupImpl.java:181 -> arguments.previous();
+GroupImpl.java:182 -> opt.process(commandLine, arguments);
+ParentImpl.java:65 -> if (argument != null) {
+ParentImpl.java:66 -> handleInitialSeparator(arguments, argument.getInitialSeparator());
+ArgumentImpl.java:207 -> return this.initialSeparator;
+ParentImpl.java:212 -> final String newArgument = (String) arguments.next();
+ParentImpl.java:215 -> final int initialIndex = newArgument.indexOf(separator);
+ParentImpl.java:217 -> if (initialIndex > 0) {
+ParentImpl.java:230 -> arguments.previous();
+ParentImpl.java:69 -> processParent(commandLine, arguments);
+DefaultOption.java:132 -> final String argument = (String) arguments.next();
+DefaultOption.java:134 -> if (triggers.contains(argument)) {
+DefaultOption.java:135 -> commandLine.addOption(this);
+WriteableCommandLineImpl.java:66 -> options.add(option);
+WriteableCommandLineImpl.java:67 -> nameToOption.put(option.getPreferredName(), option);
+DefaultOption.java:219 -> return preferredName;
+WriteableCommandLineImpl.java:69 -> for (Iterator i = option.getTriggers().iterator(); i.hasNext();) {
+WriteableCommandLineImpl.java:70 -> nameToOption.put(i.next(), option);
+BugCLI158Test.java:69 -> List b = cmd.getValues(-b);
+CommandLineImpl.java:38 -> return getValues(getOption(trigger), Collections.EMPTY_LIST);
+WriteableCommandLineImpl.java:108 -> return (Option) nameToOption.get(trigger);
+WriteableCommandLineImpl.java:114 -> List valueList = (List) values.get(option);
+WriteableCommandLineImpl.java:129 -> return valueList == null ? Collections.EMPTY_LIST : valueList;
+BugCLI158Test.java:70 -> assertEquals([ + enteredValue1 + , 1000], b + );
+======================================
+Evaluating: node_auto_Math_24
+======================================
+BrentOptimizer.java:42 -> private static final double GOLDEN_SECTION = 0.5 * (3 - FastMath.sqrt(5));
+FastMath.java:139 -> private static final double SINE_TABLE_A[] =
+FastMath.java:158 -> private static final double SINE_TABLE_B[] =
+FastMath.java:177 -> private static final double COSINE_TABLE_A[] =
+FastMath.java:196 -> private static final double COSINE_TABLE_B[] =
+FastMath.java:283 -> private static final double EIGHTHS[] = {0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1.0, 1.125, 1.25, 1.375, 1.5, 1.625};
+FastMath.java:375 -> return Math.sqrt(a);
+BrentOptimizerTest.java:197 -> final UnivariateFunction f1 = new Sin();
+Sin.java:33 -> public class Sin implements UnivariateDifferentiable, DifferentiableUnivariateFunction {
+BrentOptimizerTest.java:198 -> final UnivariateFunction f2 = new StepFunction(new double[] { minSin, minSin + offset, minSin + 5 * offset },
+StepFunction.java:64 -> DimensionMismatchException {
+StepFunction.java:78 -> abscissa = MathArrays.copyOf(x);
+MathArrays.java:532 -> return copyOf(source, source.length);
+MathArrays.java:560 -> final double[] output = new double[len];
+MathArrays.java:561 -> System.arraycopy(source, 0, output, 0, FastMath.min(len, source.length));
+FastMath.java:3396 -> return (a <= b) ? a : b;
+MathArrays.java:562 -> return output;
+StepFunction.java:79 -> ordinate = MathArrays.copyOf(y);
+BrentOptimizerTest.java:200 -> final UnivariateFunction f = FunctionUtils.add(f1, f2);
+FunctionUtils.java:141 -> return new UnivariateFunction() {
+FunctionUtils.java:141 -> return new UnivariateFunction() {
+BrentOptimizerTest.java:201 -> final UnivariateOptimizer optimizer = new BrentOptimizer(1e-8, 1e-100);
+BrentOptimizer.java:104 -> this(rel, abs, null);
+BrentOptimizer.java:75 -> super(checker);
+BaseAbstractUnivariateOptimizer.java:56 -> this.checker = checker;
+BrentOptimizer.java:84 -> relativeThreshold = rel;
+BrentOptimizer.java:85 -> absoluteThreshold = abs;
+BrentOptimizerTest.java:202 -> final UnivariatePointValuePair result
+BaseAbstractUnivariateOptimizer.java:142 -> return optimize(maxEval, f, goalType, min, max, min + 0.5 * (max - min));
+BaseAbstractUnivariateOptimizer.java:125 -> searchMin = min;
+BaseAbstractUnivariateOptimizer.java:126 -> searchMax = max;
+BaseAbstractUnivariateOptimizer.java:127 -> searchStart = startValue;
+BaseAbstractUnivariateOptimizer.java:134 -> return doOptimize();
+BrentOptimizer.java:111 -> final double lo = getMin();
+BaseAbstractUnivariateOptimizer.java:79 -> return searchMin;
+BrentOptimizer.java:112 -> final double mid = getStartValue();
+BaseAbstractUnivariateOptimizer.java:91 -> return searchStart;
+BrentOptimizer.java:113 -> final double hi = getMax();
+BaseAbstractUnivariateOptimizer.java:85 -> return searchMax;
+BrentOptimizer.java:116 -> final ConvergenceChecker<UnivariatePointValuePair> checker
+BaseAbstractUnivariateOptimizer.java:149 -> return checker;
+BrentOptimizer.java:121 -> if (lo < hi) {
+BrentOptimizer.java:122 -> a = lo;
+BrentOptimizer.java:123 -> b = hi;
+BrentOptimizer.java:129 -> double x = mid;
+BrentOptimizer.java:131 -> double w = x;
+BrentOptimizer.java:134 -> double fx = computeObjectiveValue(x);
+BaseAbstractUnivariateOptimizer.java:108 -> return function.value(point);
+FunctionUtils.java:144 -> double r = f[0].value(x);
+Sin.java:36 -> return FastMath.sin(x);
+FastMath.java:2207 -> xa = x;
+FastMath.java:2237 -> final CodyWaite cw = new CodyWaite(xa, xb);
+FastMath.java:3788 -> int k = (int)(xa * 0.6366197723675814);
+FastMath.java:3794 -> double a = -k * 1.570796251296997;
+FastMath.java:3795 -> remA = xa + a;
+FastMath.java:3796 -> remB = -(remA - xa - a);
+FastMath.java:3798 -> a = -k * 7.549789948768648E-8;
+FastMath.java:3800 -> remA = a + b;
+FastMath.java:3801 -> remB += -(remA - b - a);
+FastMath.java:3803 -> a = -k * 6.123233995736766E-17;
+FastMath.java:3805 -> remA = a + b;
+FastMath.java:3806 -> remB += -(remA - b - a);
+FastMath.java:3818 -> this.finalK = k;
+FastMath.java:3819 -> this.finalRemA = remA;
+FastMath.java:3820 -> this.finalRemB = remB;
+FastMath.java:2238 -> quadrant = cw.getK() & 3;
+FastMath.java:3827 -> return finalK;
+FastMath.java:2239 -> xa = cw.getRemA();
+FastMath.java:3833 -> return finalRemA;
+FastMath.java:2240 -> xb = cw.getRemB();
+FastMath.java:3839 -> return finalRemB;
+FastMath.java:2247 -> switch (quadrant) {
+FastMath.java:2255 -> return -cosQ(xa, xb);
+FastMath.java:1819 -> final double a = pi2a - xa;
+FastMath.java:1820 -> double b = -(a - pi2a + xa);
+FastMath.java:1821 -> b += pi2b - xb;
+FastMath.java:1823 -> return sinQ(a, b);
+FastMath.java:1692 -> int idx = (int) ((xa * 8.0) + 0.5);
+FastMath.java:1693 -> final double epsilon = xa - EIGHTHS[idx]; //idx*0.125;
+FastMath.java:1696 -> final double sintA = SINE_TABLE_A[idx];
+FastMath.java:1697 -> final double sintB = SINE_TABLE_B[idx];
+FastMath.java:1698 -> final double costA = COSINE_TABLE_A[idx];
+FastMath.java:1699 -> final double costB = COSINE_TABLE_B[idx];
+FastMath.java:1703 -> double sinEpsB = polySine(epsilon);
+FastMath.java:1653 -> double x2 = x*x;
+FastMath.java:1656 -> p = p * x2 + -1.9841269659586505E-4;
+FastMath.java:1657 -> p = p * x2 + 0.008333333333329196;
+FastMath.java:1658 -> p = p * x2 + -0.16666666666666666;
+FastMath.java:1661 -> p = p * x2 * x;
+FastMath.java:1663 -> return p;
+FastMath.java:1705 -> final double cosEpsB = polyCosine(epsilon);
+FastMath.java:1673 -> double x2 = x*x;
+FastMath.java:1676 -> p = p * x2 + -0.0013888888689039883;
+FastMath.java:1677 -> p = p * x2 + 0.041666666666621166;
+FastMath.java:1678 -> p = p * x2 + -0.49999999999999994;
+FastMath.java:1679 -> p *= x2;
+FastMath.java:1681 -> return p;
+FastMath.java:1708 -> final double temp = sinEpsA * HEX_40000000;
+FastMath.java:1709 -> double temp2 = (sinEpsA + temp) - temp;
+FastMath.java:1710 -> sinEpsB += sinEpsA - temp2;
+FastMath.java:1741 -> double c = a + t;
+FastMath.java:1742 -> double d = -(c - a - t);
+FastMath.java:1744 -> b = b + d;
+FastMath.java:1746 -> t = costA * sinEpsA;
+FastMath.java:1747 -> c = a + t;
+FastMath.java:1748 -> d = -(c - a - t);
+FastMath.java:1750 -> b = b + d;
+FastMath.java:1752 -> b = b + sintA * cosEpsB + costA * sinEpsB;
+FastMath.java:1767 -> b = b + sintB + costB * sinEpsA + sintB * cosEpsB + costB * sinEpsB;
+FastMath.java:1795 -> t = ((costA + costB) * (cosEpsA + cosEpsB) -
+FastMath.java:1797 -> c = a + t;
+FastMath.java:1798 -> d = -(c - a - t);
+FastMath.java:1799 -> a = c;
+FastMath.java:1800 -> b = b + d;
+FastMath.java:1803 -> result = a + b;
+FastMath.java:1805 -> return result;
+FunctionUtils.java:146 -> r += f[i].value(x);
+StepFunction.java:84 -> int index = Arrays.binarySearch(abscissa, x);
+StepFunction.java:87 -> if (index < -1) {
+StepFunction.java:89 -> fx = ordinate[-index-2];
+StepFunction.java:99 -> return fx;
+FunctionUtils.java:148 -> return r;
+BrentOptimizer.java:139 -> double fw = fx;
+BrentOptimizer.java:147 -> final double m = 0.5 * (a + b);
+BrentOptimizer.java:148 -> final double tol1 = relativeThreshold * FastMath.abs(x) + absoluteThreshold;
+FastMath.java:2992 -> return (x < 0.0) ? -x : (x == 0.0) ? 0.0 : x; // -0.0 => +0.0
+BrentOptimizer.java:149 -> final double tol2 = 2 * tol1;
+BrentOptimizer.java:152 -> final boolean stop = FastMath.abs(x - m) <= tol2 - 0.5 * (b - a);
+BrentOptimizer.java:153 -> if (!stop) {
+BrentOptimizer.java:159 -> if (FastMath.abs(e) > tol1) { // Fit parabola.
+BrentOptimizer.java:200 -> if (x < m) {
+BrentOptimizer.java:203 -> e = a - x;
+BrentOptimizer.java:205 -> d = GOLDEN_SECTION * e;
+BrentOptimizer.java:209 -> if (FastMath.abs(d) < tol1) {
+BrentOptimizer.java:216 -> u = x + d;
+BrentOptimizer.java:219 -> double fu = computeObjectiveValue(u);
+FastMath.java:2253 -> return -sinQ(xa, xb);
+StepFunction.java:90 -> } else if (index >= 0) {
+StepFunction.java:96 -> fx = ordinate[0];
+BrentOptimizer.java:228 -> if (checker != null) {
+BrentOptimizer.java:235 -> if (fu <= fx) {
+BrentOptimizer.java:248 -> if (u < x) {
+BrentOptimizer.java:249 -> a = u;
+BrentOptimizer.java:253 -> if (fu <= fw ||
+Precision.java:243 -> return equals(x, y, 1);
+Precision.java:307 -> long xInt = Double.doubleToLongBits(x);
+Precision.java:308 -> long yInt = Double.doubleToLongBits(y);
+Precision.java:318 -> final boolean isEqual = FastMath.abs(xInt - yInt) <= maxUlps;
+FastMath.java:2974 -> return (x < 0l) ? -x : x;
+Precision.java:320 -> return isEqual && !Double.isNaN(x) && !Double.isNaN(y);
+BrentOptimizer.java:255 -> v = w;
+BrentOptimizer.java:256 -> fv = fw;
+BrentOptimizer.java:257 -> w = u;
+BrentOptimizer.java:258 -> fw = fu;
+BrentOptimizer.java:160 -> r = (x - w) * (fx - fv);
+BrentOptimizer.java:161 -> q = (x - v) * (fx - fw);
+BrentOptimizer.java:162 -> p = (x - v) * q - (x - w) * r;
+BrentOptimizer.java:163 -> q = 2 * (q - r);
+BrentOptimizer.java:168 -> q = -q;
+BrentOptimizer.java:174 -> if (p > q * (a - x) &&
+BrentOptimizer.java:191 -> if (x < m) {
+BrentOptimizer.java:192 -> e = b - x;
+BrentOptimizer.java:196 -> d = GOLDEN_SECTION * e;
+BrentOptimizer.java:251 -> b = u;
+BrentOptimizer.java:259 -> } else if (fu <= fv ||
+BrentOptimizer.java:262 -> v = u;
+BrentOptimizer.java:263 -> fv = fu;
+BrentOptimizer.java:166 -> p = -p;
+BrentOptimizer.java:172 -> e = d;
+BrentOptimizer.java:178 -> d = p / q;
+BrentOptimizer.java:236 -> if (u < x) {
+BrentOptimizer.java:237 -> b = x;
+BrentOptimizer.java:241 -> v = w;
+BrentOptimizer.java:242 -> fv = fw;
+BrentOptimizer.java:243 -> w = x;
+BrentOptimizer.java:244 -> fw = fx;
+BrentOptimizer.java:245 -> x = u;
+BrentOptimizer.java:246 -> fx = fu;
+BrentOptimizer.java:179 -> u = x + d;
+BrentOptimizer.java:182 -> if (u - a < tol2 || b - u < tol2) {
+BrentOptimizer.java:210 -> if (d >= 0) {
+BrentOptimizer.java:211 -> u = x + tol1;
+BrentOptimizer.java:239 -> a = x;
+BrentOptimizer.java:183 -> if (x <= m) {
+BrentOptimizer.java:184 -> d = tol1;
+BrentOptimizer.java:226 -> current = new UnivariatePointValuePair(u, isMinim ? fu : -fu);
+UnivariatePointValuePair.java:46 -> this.point = point;
+BrentOptimizerTest.java:206 -> final double sol = result.getPoint();
+UnivariatePointValuePair.java:56 -> return point;
+BrentOptimizerTest.java:213 -> Assert.assertTrue(Best point not reported, f.value(sol) <= f.value(expected));
+======================================
+Evaluating: node_auto_Cli_39
+======================================
+PatternOptionBuilder.java:60 -> public static final Class<String> STRING_VALUE = String.class;
+PatternOptionBuilder.java:63 -> public static final Class<Object> OBJECT_VALUE = Object.class;
+PatternOptionBuilder.java:66 -> public static final Class<Number> NUMBER_VALUE = Number.class;
+PatternOptionBuilder.java:69 -> public static final Class<Date> DATE_VALUE = Date.class;
+PatternOptionBuilder.java:72 -> public static final Class<?> CLASS_VALUE = Class.class;
+PatternOptionBuilder.java:79 -> public static final Class<FileInputStream> EXISTING_FILE_VALUE = FileInputStream.class;
+PatternOptionBuilder.java:82 -> public static final Class<File> FILE_VALUE = File.class;
+PatternOptionBuilderTest.java:164 -> final Options options = PatternOptionBuilder.parsePattern(g<);
+PatternOptionBuilder.java:153 -> boolean required = false;
+PatternOptionBuilder.java:156 -> final Options options = new Options();
+Options.java:43 -> public class Options implements Serializable
+Options.java:49 -> private final Map<String, Option> shortOpts = new LinkedHashMap<String, Option>();
+Options.java:52 -> private final Map<String, Option> longOpts = new LinkedHashMap<String, Option>();
+Options.java:57 -> private final List<Object> requiredOpts = new ArrayList<Object>();
+Options.java:60 -> private final Map<String, OptionGroup> optionGroups = new LinkedHashMap<String, OptionGroup>();
+PatternOptionBuilder.java:158 -> for (int i = 0; i < pattern.length(); i++)
+PatternOptionBuilder.java:160 -> final char ch = pattern.charAt(i);
+PatternOptionBuilder.java:164 -> if (!isValueCode(ch))
+PatternOptionBuilder.java:132 -> return ch == @
+PatternOptionBuilder.java:181 -> opt = ch;
+PatternOptionBuilder.java:189 -> type = (Class<?>) getValueClass(ch);
+PatternOptionBuilder.java:98 -> switch (ch)
+PatternOptionBuilder.java:111 -> return PatternOptionBuilder.EXISTING_FILE_VALUE;
+PatternOptionBuilder.java:193 -> if (opt !=  )
+PatternOptionBuilder.java:195 -> final Option option = Option.builder(String.valueOf(opt))
+Option.java:774 -> return new Builder(opt);
+Option.java:791 -> public static final class Builder
+Option.java:828 -> {
+Option.java:812 -> private int numberOfArgs = UNINITIALIZED;
+Option.java:815 -> private Class<?> type = String.class;
+Option.java:829 -> OptionValidator.validateOption(opt);
+OptionValidator.java:48 -> if (opt == null)
+OptionValidator.java:54 -> if (opt.length() == 1)
+OptionValidator.java:56 -> final char ch = opt.charAt(0);
+Option.java:830 -> this.opt = opt;
+Option.java:984 -> numberOfArgs = hasArg ? 1 : Option.UNINITIALIZED;
+Option.java:985 -> return this;
+Option.java:912 -> this.required = required;
+Option.java:913 -> return this;
+Option.java:924 -> this.type = type;
+Option.java:925 -> return this;
+Option.java:1011 -> return new Option(this);
+Option.java:42 -> public class Option implements Cloneable, Serializable
+Option.java:89 -> {
+Option.java:72 -> private int numberOfArgs = UNINITIALIZED;
+Option.java:75 -> private Class<?> type = String.class;
+Option.java:78 -> private List<String> values = new ArrayList<String>();
+Option.java:90 -> this.argName = builder.argName;
+Option.java:91 -> this.description = builder.description;
+Option.java:92 -> this.longOpt = builder.longOpt;
+Option.java:93 -> this.numberOfArgs = builder.numberOfArgs;
+Option.java:94 -> this.opt = builder.opt;
+Option.java:95 -> this.optionalArg = builder.optionalArg;
+Option.java:96 -> this.required = builder.required;
+Option.java:97 -> this.type = builder.type;
+Option.java:98 -> this.valuesep = builder.valuesep;
+PatternOptionBuilder.java:202 -> options.addOption(option);
+Options.java:192 -> final String key = opt.getKey();
+Option.java:180 -> return (opt == null) ? longOpt : opt;
+Options.java:195 -> if (opt.hasLongOpt())
+Option.java:280 -> return longOpt != null;
+Options.java:210 -> shortOpts.put(key, opt);
+Options.java:212 -> return this;
+PatternOptionBuilder.java:205 -> return options;
+PatternOptionBuilderTest.java:165 -> final CommandLineParser parser = new PosixParser();
+PosixParser.java:33 -> public class PosixParser extends Parser
+Parser.java:34 -> public abstract class Parser implements CommandLineParser
+PosixParser.java:36 -> private final List<String> tokens = new ArrayList<String>();
+PatternOptionBuilderTest.java:166 -> final CommandLine line = parser.parse(options, new String[] { -g, src/test/resources/existing-readable.file });
+Parser.java:88 -> return parse(options, arguments, null, false);
+Parser.java:149 -> for (final Option opt : options.helpOptions())
+Options.java:232 -> return new ArrayList<Option>(shortOpts.values());
+Parser.java:151 -> opt.clearValues();
+Option.java:702 -> values.clear();
+Parser.java:155 -> for (final OptionGroup group : options.getOptionGroups())
+Options.java:96 -> return new HashSet<OptionGroup>(optionGroups.values());
+Parser.java:161 -> setOptions(options);
+Parser.java:47 -> this.options = options;
+Parser.java:48 -> this.requiredOptions = new ArrayList(options.getRequiredOptions());
+Options.java:242 -> return Collections.unmodifiableList(requiredOpts);
+Parser.java:163 -> cmd = new CommandLine();
+CommandLine.java:55 -> {
+CommandLine.java:46 -> private final List<String> args = new LinkedList<String>();
+CommandLine.java:49 -> private final List<Option> options = new ArrayList<Option>();
+Parser.java:172 -> final List<String> tokenList = Arrays.asList(flatten(getOptions(), arguments, stopAtNonOption));
+Parser.java:53 -> return options;
+PosixParser.java:98 -> init();
+PosixParser.java:54 -> eatTheRest = false;
+PosixParser.java:55 -> tokens.clear();
+PosixParser.java:99 -> this.options = options;
+PosixParser.java:102 -> final Iterator<String> iter = Arrays.asList(arguments).iterator();
+PosixParser.java:105 -> while (iter.hasNext())
+PosixParser.java:108 -> final String token = iter.next();
+PosixParser.java:111 -> if (-.equals(token) || --.equals(token))
+PosixParser.java:117 -> else if (token.startsWith(--))
+PosixParser.java:144 -> else if (token.startsWith(-))
+PosixParser.java:146 -> if (token.length() == 2 || options.hasOption(token))
+PosixParser.java:148 -> processOptionToken(token, stopAtNonOption);
+PosixParser.java:230 -> if (options.hasOption(token))
+Options.java:305 -> opt = Util.stripLeadingHyphens(opt);
+Util.java:37 -> if (str == null)
+Util.java:41 -> if (str.startsWith(--))
+Util.java:45 -> else if (str.startsWith(-))
+Util.java:47 -> return str.substring(1, str.length());
+Options.java:307 -> return shortOpts.containsKey(opt) || longOpts.containsKey(opt);
+PosixParser.java:232 -> currentOption = options.getOption(token);
+Options.java:257 -> opt = Util.stripLeadingHyphens(opt);
+Options.java:259 -> if (shortOpts.containsKey(opt))
+Options.java:261 -> return shortOpts.get(opt);
+PosixParser.java:235 -> tokens.add(token);
+PosixParser.java:171 -> gobble(iter);
+PosixParser.java:168 -> processNonOptionToken(token, stopAtNonOption);
+PosixParser.java:208 -> tokens.add(value);
+PosixParser.java:174 -> return tokens.toArray(new String[tokens.size()]);
+Parser.java:174 -> final ListIterator<String> iterator = tokenList.listIterator();
+Parser.java:177 -> while (iterator.hasNext())
+Parser.java:179 -> final String t = iterator.next();
+Parser.java:182 -> if (--.equals(t))
+Parser.java:188 -> else if (-.equals(t))
+Parser.java:201 -> else if (t.startsWith(-))
+Parser.java:203 -> if (stopAtNonOption && !getOptions().hasOption(t))
+Parser.java:210 -> processOption(t, iterator);
+Parser.java:378 -> final boolean hasOption = getOptions().hasOption(arg);
+Parser.java:387 -> final Option opt = (Option) getOptions().getOption(arg).clone();
+Option.java:684 -> final Option option = (Option) super.clone();
+Option.java:685 -> option.values = new ArrayList<String>(values);
+Option.java:686 -> return option;
+Parser.java:393 -> if (opt.hasArg())
+Option.java:290 -> return numberOfArgs > 0 || numberOfArgs == UNLIMITED_VALUES;
+Parser.java:395 -> processArgs(opt, iter);
+Parser.java:338 -> while (iter.hasNext())
+Parser.java:340 -> final String str = iter.next();
+Parser.java:343 -> if (getOptions().hasOption(str) && str.startsWith(-))
+Parser.java:352 -> opt.addValueForProcessing(Util.stripLeadingAndTrailingQuotes(str));
+Util.java:70 -> return str;
+Option.java:442 -> if (numberOfArgs == UNINITIALIZED)
+Option.java:446 -> processValue(value);
+Option.java:463 -> if (hasValueSeparator())
+Option.java:413 -> return valuesep > 0;
+Option.java:492 -> add(value);
+Option.java:506 -> if (!acceptsArg())
+Option.java:729 -> return (hasArg() || hasArgs() || hasOptionalArg()) && (numberOfArgs <= 0 || values.size() < numberOfArgs);
+Option.java:512 -> values.add(value);
+Parser.java:361 -> if (opt.getValues() == null && !opt.hasOptionalArg())
+Option.java:570 -> return hasNoValues() ? null : values.toArray(new String[values.size()]);
+Option.java:629 -> return values.isEmpty();
+Parser.java:399 -> cmd.addOption(opt);
+CommandLine.java:474 -> options.add(opt);
+Parser.java:244 -> return cmd;
+PatternOptionBuilderTest.java:168 -> final Object parsedReadableFileStream = line.getOptionObject(g);
+CommandLine.java:105 -> return getParsedOptionValue(opt);
+CommandLine.java:148 -> return getParsedOptionValue(resolveOption(opt));
+CommandLine.java:262 -> opt = Util.stripLeadingHyphens(opt);
+Util.java:50 -> return str;
+CommandLine.java:263 -> for (final Option option : options)
+CommandLine.java:265 -> if (opt.equals(option.getOpt()))
+Option.java:195 -> return opt;
+CommandLine.java:267 -> return option;
+CommandLine.java:125 -> if (option == null)
+CommandLine.java:129 -> final String res = getOptionValue(option);
+CommandLine.java:187 -> if (option == null)
+CommandLine.java:191 -> final String[] values = getOptionValues(option);
+CommandLine.java:229 -> final List<String> values = new ArrayList<String>();
+CommandLine.java:231 -> for (final Option processedOption : options)
+CommandLine.java:233 -> if (processedOption.equals(option))
+Option.java:635 -> if (this == o)
+Option.java:637 -> return true;
+CommandLine.java:235 -> values.addAll(processedOption.getValuesList());
+Option.java:579 -> return values;
+CommandLine.java:239 -> return values.isEmpty() ? null : values.toArray(new String[values.size()]);
+CommandLine.java:192 -> return (values == null) ? null : values[0];
+CommandLine.java:130 -> if (res == null)
+CommandLine.java:134 -> return TypeHandler.createValue(res, option.getType());
+Option.java:205 -> return type;
+TypeHandler.java:51 -> return createValue(str, (Class<?>) obj);
+TypeHandler.java:66 -> if (PatternOptionBuilder.STRING_VALUE == clazz)
+TypeHandler.java:70 -> else if (PatternOptionBuilder.OBJECT_VALUE == clazz)
+TypeHandler.java:74 -> else if (PatternOptionBuilder.NUMBER_VALUE == clazz)
+TypeHandler.java:78 -> else if (PatternOptionBuilder.DATE_VALUE == clazz)
+TypeHandler.java:82 -> else if (PatternOptionBuilder.CLASS_VALUE == clazz)
+TypeHandler.java:86 -> else if (PatternOptionBuilder.FILE_VALUE == clazz)
+TypeHandler.java:90 -> else if (PatternOptionBuilder.EXISTING_FILE_VALUE == clazz)
+TypeHandler.java:92 -> return createFile(str);
+TypeHandler.java:224 -> return new File(str);
+PatternOptionBuilderTest.java:170 -> assertNotNull(option g not parsed, parsedReadableFileStream);
+PatternOptionBuilderTest.java:171 -> assertTrue(option g not FileInputStream, parsedReadableFileStream instanceof FileInputStream);
+======================================
+Evaluating: node_auto_Math_23
+======================================
+BrentOptimizer.java:48 -> private static final double GOLDEN_SECTION = 0.5 * (3 - FastMath.sqrt(5));
+FastMath.java:139 -> private static final double SINE_TABLE_A[] =
+FastMath.java:158 -> private static final double SINE_TABLE_B[] =
+FastMath.java:177 -> private static final double COSINE_TABLE_A[] =
+FastMath.java:196 -> private static final double COSINE_TABLE_B[] =
+FastMath.java:283 -> private static final double EIGHTHS[] = {0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1.0, 1.125, 1.25, 1.375, 1.5, 1.625};
+FastMath.java:375 -> return Math.sqrt(a);
+BrentOptimizerTest.java:197 -> final UnivariateFunction f1 = new Sin();
+Sin.java:33 -> public class Sin implements UnivariateDifferentiable, DifferentiableUnivariateFunction {
+BrentOptimizerTest.java:198 -> final UnivariateFunction f2 = new StepFunction(new double[] { minSin, minSin + offset, minSin + 2 * offset},
+StepFunction.java:64 -> DimensionMismatchException {
+StepFunction.java:78 -> abscissa = MathArrays.copyOf(x);
+MathArrays.java:539 -> return copyOf(source, source.length);
+MathArrays.java:567 -> final double[] output = new double[len];
+MathArrays.java:568 -> System.arraycopy(source, 0, output, 0, FastMath.min(len, source.length));
+FastMath.java:3396 -> return (a <= b) ? a : b;
+MathArrays.java:569 -> return output;
+StepFunction.java:79 -> ordinate = MathArrays.copyOf(y);
+BrentOptimizerTest.java:200 -> final UnivariateFunction f = FunctionUtils.add(f1, f2);
+FunctionUtils.java:141 -> return new UnivariateFunction() {
+FunctionUtils.java:141 -> return new UnivariateFunction() {
+BrentOptimizerTest.java:204 -> final UnivariateOptimizer optimizer = new BrentOptimizer(relTol, 1e-100);
+BrentOptimizer.java:110 -> this(rel, abs, null);
+BrentOptimizer.java:81 -> super(checker);
+BaseAbstractUnivariateOptimizer.java:56 -> this.checker = checker;
+BrentOptimizer.java:90 -> relativeThreshold = rel;
+BrentOptimizer.java:91 -> absoluteThreshold = abs;
+BrentOptimizerTest.java:206 -> final UnivariatePointValuePair result
+BaseAbstractUnivariateOptimizer.java:125 -> searchMin = min;
+BaseAbstractUnivariateOptimizer.java:126 -> searchMax = max;
+BaseAbstractUnivariateOptimizer.java:127 -> searchStart = startValue;
+BaseAbstractUnivariateOptimizer.java:134 -> return doOptimize();
+BrentOptimizer.java:117 -> final double lo = getMin();
+BaseAbstractUnivariateOptimizer.java:79 -> return searchMin;
+BrentOptimizer.java:118 -> final double mid = getStartValue();
+BaseAbstractUnivariateOptimizer.java:91 -> return searchStart;
+BrentOptimizer.java:119 -> final double hi = getMax();
+BaseAbstractUnivariateOptimizer.java:85 -> return searchMax;
+BrentOptimizer.java:122 -> final ConvergenceChecker<UnivariatePointValuePair> checker
+BaseAbstractUnivariateOptimizer.java:149 -> return checker;
+BrentOptimizer.java:127 -> if (lo < hi) {
+BrentOptimizer.java:128 -> a = lo;
+BrentOptimizer.java:129 -> b = hi;
+BrentOptimizer.java:135 -> double x = mid;
+BrentOptimizer.java:137 -> double w = x;
+BrentOptimizer.java:140 -> double fx = computeObjectiveValue(x);
+BaseAbstractUnivariateOptimizer.java:108 -> return function.value(point);
+FunctionUtils.java:144 -> double r = f[0].value(x);
+Sin.java:36 -> return FastMath.sin(x);
+FastMath.java:2207 -> xa = x;
+FastMath.java:2237 -> final CodyWaite cw = new CodyWaite(xa, xb);
+FastMath.java:3788 -> int k = (int)(xa * 0.6366197723675814);
+FastMath.java:3794 -> double a = -k * 1.570796251296997;
+FastMath.java:3795 -> remA = xa + a;
+FastMath.java:3796 -> remB = -(remA - xa - a);
+FastMath.java:3798 -> a = -k * 7.549789948768648E-8;
+FastMath.java:3800 -> remA = a + b;
+FastMath.java:3801 -> remB += -(remA - b - a);
+FastMath.java:3803 -> a = -k * 6.123233995736766E-17;
+FastMath.java:3805 -> remA = a + b;
+FastMath.java:3806 -> remB += -(remA - b - a);
+FastMath.java:3818 -> this.finalK = k;
+FastMath.java:3819 -> this.finalRemA = remA;
+FastMath.java:3820 -> this.finalRemB = remB;
+FastMath.java:2238 -> quadrant = cw.getK() & 3;
+FastMath.java:3827 -> return finalK;
+FastMath.java:2239 -> xa = cw.getRemA();
+FastMath.java:3833 -> return finalRemA;
+FastMath.java:2240 -> xb = cw.getRemB();
+FastMath.java:3839 -> return finalRemB;
+FastMath.java:2247 -> switch (quadrant) {
+FastMath.java:2255 -> return -cosQ(xa, xb);
+FastMath.java:1819 -> final double a = pi2a - xa;
+FastMath.java:1820 -> double b = -(a - pi2a + xa);
+FastMath.java:1821 -> b += pi2b - xb;
+FastMath.java:1823 -> return sinQ(a, b);
+FastMath.java:1692 -> int idx = (int) ((xa * 8.0) + 0.5);
+FastMath.java:1693 -> final double epsilon = xa - EIGHTHS[idx]; //idx*0.125;
+FastMath.java:1696 -> final double sintA = SINE_TABLE_A[idx];
+FastMath.java:1697 -> final double sintB = SINE_TABLE_B[idx];
+FastMath.java:1698 -> final double costA = COSINE_TABLE_A[idx];
+FastMath.java:1699 -> final double costB = COSINE_TABLE_B[idx];
+FastMath.java:1703 -> double sinEpsB = polySine(epsilon);
+FastMath.java:1653 -> double x2 = x*x;
+FastMath.java:1656 -> p = p * x2 + -1.9841269659586505E-4;
+FastMath.java:1657 -> p = p * x2 + 0.008333333333329196;
+FastMath.java:1658 -> p = p * x2 + -0.16666666666666666;
+FastMath.java:1661 -> p = p * x2 * x;
+FastMath.java:1663 -> return p;
+FastMath.java:1705 -> final double cosEpsB = polyCosine(epsilon);
+FastMath.java:1673 -> double x2 = x*x;
+FastMath.java:1676 -> p = p * x2 + -0.0013888888689039883;
+FastMath.java:1677 -> p = p * x2 + 0.041666666666621166;
+FastMath.java:1678 -> p = p * x2 + -0.49999999999999994;
+FastMath.java:1679 -> p *= x2;
+FastMath.java:1681 -> return p;
+FastMath.java:1708 -> final double temp = sinEpsA * HEX_40000000;
+FastMath.java:1709 -> double temp2 = (sinEpsA + temp) - temp;
+FastMath.java:1710 -> sinEpsB += sinEpsA - temp2;
+FastMath.java:1741 -> double c = a + t;
+FastMath.java:1742 -> double d = -(c - a - t);
+FastMath.java:1744 -> b = b + d;
+FastMath.java:1746 -> t = costA * sinEpsA;
+FastMath.java:1747 -> c = a + t;
+FastMath.java:1748 -> d = -(c - a - t);
+FastMath.java:1750 -> b = b + d;
+FastMath.java:1752 -> b = b + sintA * cosEpsB + costA * sinEpsB;
+FastMath.java:1767 -> b = b + sintB + costB * sinEpsA + sintB * cosEpsB + costB * sinEpsB;
+FastMath.java:1795 -> t = ((costA + costB) * (cosEpsA + cosEpsB) -
+FastMath.java:1797 -> c = a + t;
+FastMath.java:1798 -> d = -(c - a - t);
+FastMath.java:1799 -> a = c;
+FastMath.java:1800 -> b = b + d;
+FastMath.java:1803 -> result = a + b;
+FastMath.java:1805 -> return result;
+FunctionUtils.java:146 -> r += f[i].value(x);
+StepFunction.java:84 -> int index = Arrays.binarySearch(abscissa, x);
+StepFunction.java:87 -> if (index < -1) {
+StepFunction.java:89 -> fx = ordinate[-index-2];
+StepFunction.java:99 -> return fx;
+FunctionUtils.java:148 -> return r;
+BrentOptimizer.java:145 -> double fw = fx;
+BrentOptimizer.java:154 -> final double m = 0.5 * (a + b);
+BrentOptimizer.java:155 -> final double tol1 = relativeThreshold * FastMath.abs(x) + absoluteThreshold;
+FastMath.java:2992 -> return (x < 0.0) ? -x : (x == 0.0) ? 0.0 : x; // -0.0 => +0.0
+BrentOptimizer.java:156 -> final double tol2 = 2 * tol1;
+BrentOptimizer.java:159 -> final boolean stop = FastMath.abs(x - m) <= tol2 - 0.5 * (b - a);
+BrentOptimizer.java:160 -> if (!stop) {
+BrentOptimizer.java:166 -> if (FastMath.abs(e) > tol1) { // Fit parabola.
+BrentOptimizer.java:207 -> if (x < m) {
+BrentOptimizer.java:208 -> e = b - x;
+BrentOptimizer.java:212 -> d = GOLDEN_SECTION * e;
+BrentOptimizer.java:216 -> if (FastMath.abs(d) < tol1) {
+BrentOptimizer.java:223 -> u = x + d;
+BrentOptimizer.java:226 -> double fu = computeObjectiveValue(u);
+BrentOptimizer.java:235 -> if (checker != null) {
+BrentOptimizer.java:242 -> if (fu <= fx) {
+BrentOptimizer.java:255 -> if (u < x) {
+BrentOptimizer.java:258 -> b = u;
+BrentOptimizer.java:260 -> if (fu <= fw ||
+Precision.java:244 -> return equals(x, y, 1);
+Precision.java:308 -> long xInt = Double.doubleToLongBits(x);
+Precision.java:309 -> long yInt = Double.doubleToLongBits(y);
+Precision.java:319 -> final boolean isEqual = FastMath.abs(xInt - yInt) <= maxUlps;
+FastMath.java:2974 -> return (x < 0l) ? -x : x;
+Precision.java:321 -> return isEqual && !Double.isNaN(x) && !Double.isNaN(y);
+BrentOptimizer.java:262 -> v = w;
+BrentOptimizer.java:263 -> fv = fw;
+BrentOptimizer.java:264 -> w = u;
+BrentOptimizer.java:265 -> fw = fu;
+BrentOptimizer.java:167 -> r = (x - w) * (fx - fv);
+BrentOptimizer.java:168 -> q = (x - v) * (fx - fw);
+BrentOptimizer.java:169 -> p = (x - v) * q - (x - w) * r;
+BrentOptimizer.java:170 -> q = 2 * (q - r);
+BrentOptimizer.java:175 -> q = -q;
+BrentOptimizer.java:181 -> if (p > q * (a - x) &&
+BrentOptimizer.java:198 -> if (x < m) {
+BrentOptimizer.java:201 -> e = a - x;
+BrentOptimizer.java:203 -> d = GOLDEN_SECTION * e;
+FastMath.java:2253 -> return -sinQ(xa, xb);
+StepFunction.java:90 -> } else if (index >= 0) {
+StepFunction.java:96 -> fx = ordinate[0];
+BrentOptimizer.java:256 -> a = u;
+BrentOptimizer.java:173 -> p = -p;
+BrentOptimizer.java:179 -> e = d;
+BrentOptimizer.java:185 -> d = p / q;
+BrentOptimizer.java:186 -> u = x + d;
+BrentOptimizer.java:189 -> if (u - a < tol2 || b - u < tol2) {
+BrentOptimizer.java:190 -> if (x <= m) {
+BrentOptimizer.java:193 -> d = -tol1;
+BrentOptimizer.java:233 -> current = new UnivariatePointValuePair(u, isMinim ? fu : -fu);
+UnivariatePointValuePair.java:46 -> this.point = point;
+BrentOptimizerTest.java:213 -> final double sol = result.getPoint();
+UnivariatePointValuePair.java:56 -> return point;
+BrentOptimizerTest.java:221 -> Assert.assertTrue(Best point not reported, f.value(sol) <= f.value(expected));
+======================================
+Evaluating: node_auto_Cli_3
+======================================
+PatternOptionBuilderTest.java:48 -> Options options = PatternOptionBuilder.parsePattern(a:b@cde>f+n%t/);
+PatternOptionBuilder.java:51 -> public static final Class STRING_VALUE = java.lang.String.class;
+PatternOptionBuilder.java:54 -> public static final Class OBJECT_VALUE = java.lang.Object.class;
+PatternOptionBuilder.java:57 -> public static final Class NUMBER_VALUE = java.lang.Number.class;
+PatternOptionBuilder.java:63 -> public static final Class CLASS_VALUE = java.lang.Class.class;
+PatternOptionBuilder.java:74 -> public static final Class FILE_VALUE = java.io.File.class;
+PatternOptionBuilder.java:80 -> public static final Class URL_VALUE = java.net.URL.class;
+PatternOptionBuilder.java:162 -> boolean required = false;
+PatternOptionBuilder.java:165 -> Options options = new Options();
+Options.java:59 -> {
+Options.java:45 -> private Map shortOpts = new HashMap();
+Options.java:48 -> private Map longOpts = new HashMap();
+Options.java:51 -> private List requiredOpts = new ArrayList();
+Options.java:54 -> private Map optionGroups = new HashMap();
+PatternOptionBuilder.java:167 -> for (int i = 0; i < sz; i++)
+PatternOptionBuilder.java:169 -> ch = pattern.charAt(i);
+PatternOptionBuilder.java:173 -> if (!isValueCode(ch))
+PatternOptionBuilder.java:143 -> return false;
+PatternOptionBuilder.java:188 -> opt = ch;
+PatternOptionBuilder.java:196 -> type = getValueClass(ch);
+PatternOptionBuilder.java:96 -> return PatternOptionBuilder.STRING_VALUE;
+PatternOptionBuilder.java:175 -> if (opt !=  )
+PatternOptionBuilder.java:177 -> OptionBuilder.hasArg(type != null);
+OptionBuilder.java:117 -> OptionBuilder.numberOfArgs = (hasArg == true) ? 1 : Option.UNINITIALIZED;
+PatternOptionBuilder.java:178 -> OptionBuilder.isRequired(required);
+OptionBuilder.java:205 -> OptionBuilder.required = newRequired;
+PatternOptionBuilder.java:179 -> OptionBuilder.withType(type);
+OptionBuilder.java:288 -> OptionBuilder.type = newType;
+PatternOptionBuilder.java:182 -> options.addOption(OptionBuilder.create(opt));
+OptionBuilder.java:318 -> return create(String.valueOf(opt));
+OptionBuilder.java:353 -> Option option = new Option(opt, description);
+Option.java:92 -> this(opt, null, false, description);
+Option.java:125 -> {
+Option.java:54 -> private String argName = arg;
+Option.java:69 -> private int numberOfArgs = UNINITIALIZED;
+Option.java:75 -> private ArrayList values = new ArrayList();
+Option.java:127 -> OptionValidator.validateOption(opt);
+OptionValidator.java:44 -> if (opt == null)
+OptionValidator.java:50 -> else if (opt.length() == 1)
+OptionValidator.java:52 -> char ch = opt.charAt(0);
+Option.java:129 -> this.opt = opt;
+Option.java:130 -> this.longOpt = longOpt;
+Option.java:138 -> this.hasArg = hasArg;
+Option.java:139 -> this.description = description;
+OptionBuilder.java:357 -> option.setLongOpt(longopt);
+Option.java:222 -> this.longOpt = longOpt;
+OptionBuilder.java:358 -> option.setRequired(required);
+Option.java:301 -> this.required = required;
+OptionBuilder.java:359 -> option.setOptionalArg(optionalArg);
+Option.java:233 -> this.optionalArg = optionalArg;
+OptionBuilder.java:360 -> option.setArgs(numberOfArgs);
+Option.java:354 -> this.numberOfArgs = num;
+OptionBuilder.java:361 -> option.setType(type);
+Option.java:202 -> this.type = type;
+OptionBuilder.java:362 -> option.setValueSeparator(valuesep);
+Option.java:365 -> this.valuesep = sep;
+OptionBuilder.java:363 -> option.setArgName(argName);
+Option.java:311 -> this.argName = argName;
+OptionBuilder.java:367 -> OptionBuilder.reset();
+OptionBuilder.java:70 -> description = null;
+OptionBuilder.java:71 -> argName = arg;
+OptionBuilder.java:72 -> longopt = null;
+OptionBuilder.java:79 -> optionalArg = false;
+OptionBuilder.java:80 -> valuesep = (char) 0;
+OptionBuilder.java:370 -> return option;
+Options.java:145 -> String key = opt.getKey();
+Option.java:162 -> if (opt == null)
+Option.java:167 -> return this.opt;
+Options.java:148 -> if (opt.hasLongOpt())
+Option.java:251 -> return (this.longOpt != null);
+Options.java:162 -> shortOpts.put(key, opt);
+Options.java:164 -> return this;
+PatternOptionBuilder.java:183 -> required = false;
+PatternOptionBuilder.java:90 -> if (ch == @)
+PatternOptionBuilder.java:92 -> return PatternOptionBuilder.OBJECT_VALUE;
+PatternOptionBuilder.java:184 -> type = null;
+PatternOptionBuilder.java:116 -> return PatternOptionBuilder.FILE_VALUE;
+PatternOptionBuilder.java:104 -> return PatternOptionBuilder.CLASS_VALUE;
+PatternOptionBuilder.java:100 -> return PatternOptionBuilder.NUMBER_VALUE;
+PatternOptionBuilder.java:124 -> return PatternOptionBuilder.URL_VALUE;
+PatternOptionBuilder.java:200 -> if (opt !=  )
+PatternOptionBuilder.java:202 -> OptionBuilder.hasArg(type != null);
+PatternOptionBuilder.java:203 -> OptionBuilder.isRequired(required);
+PatternOptionBuilder.java:204 -> OptionBuilder.withType(type);
+PatternOptionBuilder.java:207 -> options.addOption(OptionBuilder.create(opt));
+PatternOptionBuilder.java:210 -> return options;
+PatternOptionBuilderTest.java:49 -> String[] args = new String[] { -c, -a, foo, -b, java.util.Vector, -e, build.xml, -f, java.util.Calendar, -n, 4.5, -t, http://jakarta.apache.org/ };
+PatternOptionBuilderTest.java:51 -> CommandLineParser parser = new PosixParser();
+PosixParser.java:30 -> public class PosixParser extends Parser {
+Parser.java:32 -> public abstract class Parser implements CommandLineParser {
+PosixParser.java:33 -> private ArrayList tokens = new ArrayList();
+PatternOptionBuilderTest.java:52 -> CommandLine line = parser.parse(options,args);
+Parser.java:70 -> return parse(options, arguments, null, false);
+Parser.java:134 -> this.options = options;
+Parser.java:142 -> requiredOptions = options.getRequiredOptions();
+Options.java:211 -> return requiredOpts;
+Parser.java:143 -> cmd = new CommandLine();
+CommandLine.java:55 -> {
+CommandLine.java:43 -> private List args = new LinkedList();
+CommandLine.java:46 -> private Set options = new HashSet();
+Parser.java:152 -> List tokenList = Arrays.asList(flatten(this.options,
+PosixParser.java:97 -> init();
+PosixParser.java:51 -> eatTheRest = false;
+PosixParser.java:52 -> tokens.clear();
+PosixParser.java:53 -> currentOption = null;
+PosixParser.java:98 -> this.options = options;
+PosixParser.java:101 -> Iterator iter = Arrays.asList(arguments).iterator();
+PosixParser.java:105 -> while (iter.hasNext())
+PosixParser.java:108 -> token = (String) iter.next();
+PosixParser.java:126 -> else if (-.equals(token))
+PosixParser.java:136 -> processOptionToken(token, stopAtNonOption);
+PosixParser.java:241 -> if (this.options.hasOption(token))
+Options.java:242 -> opt = Util.stripLeadingHyphens(opt);
+Util.java:35 -> if (str.startsWith(--))
+Util.java:39 -> else if (str.startsWith(-))
+Util.java:41 -> return str.substring(1, str.length());
+Options.java:244 -> return shortOpts.containsKey(opt) || longOpts.containsKey(opt);
+PosixParser.java:243 -> currentOption = this.options.getOption(token);
+Options.java:222 -> opt = Util.stripLeadingHyphens(opt);
+Options.java:224 -> if (shortOpts.containsKey(opt))
+Options.java:226 -> return (Option) shortOpts.get(opt);
+PosixParser.java:159 -> gobble(iter);
+PosixParser.java:162 -> return (String[]) tokens.toArray(new String[] { });
+Parser.java:156 -> ListIterator iterator = tokenList.listIterator();
+Parser.java:159 -> while (iterator.hasNext())
+Parser.java:161 -> String t = (String) iterator.next();
+Parser.java:164 -> if (--.equals(t))
+Parser.java:170 -> else if (-.equals(t))
+Parser.java:183 -> else if (t.startsWith(-))
+Parser.java:185 -> if (stopAtNonOption && !options.hasOption(t))
+Parser.java:192 -> processOption(t, iterator);
+Parser.java:370 -> boolean hasOption = options.hasOption(arg);
+Parser.java:380 -> final Option opt = options.getOption(arg);
+Parser.java:391 -> if (options.getOptionGroup(opt) != null)
+Options.java:257 -> return (OptionGroup) optionGroups.get(opt.getKey());
+Parser.java:411 -> cmd.addOption(opt);
+CommandLine.java:288 -> options.add(opt);
+Parser.java:404 -> if (opt.hasArg())
+Option.java:261 -> return (this.numberOfArgs > 0) || (numberOfArgs == UNLIMITED_VALUES);
+Parser.java:406 -> processArgs(opt, iter);
+Parser.java:325 -> while (iter.hasNext())
+Parser.java:327 -> String str = (String) iter.next();
+Parser.java:339 -> opt.addValue( Util.stripLeadingAndTrailingQuotes(str) );
+Option.java:411 -> processValue(value);
+Option.java:429 -> if (hasValueSeparator())
+Option.java:385 -> return (this.valuesep > 0);
+Option.java:462 -> add(value);
+Parser.java:332 -> iter.previous();
+Parser.java:226 -> return cmd;
+PatternOptionBuilderTest.java:70 -> assertEquals(number flag n, new Double(4.5), line.getOptionObject(n));
+CommandLine.java:89 -> String res = getOptionValue(opt);
+CommandLine.java:122 -> String[] values = getOptionValues(opt);
+CommandLine.java:148 -> Option key = resolveOption( opt );
+CommandLine.java:165 -> opt = Util.stripLeadingHyphens(opt);
+Util.java:44 -> return str;
+CommandLine.java:166 -> for ( Iterator it = options.iterator(); it.hasNext(); )
+CommandLine.java:168 -> Option option = (Option) it.next();
+CommandLine.java:169 -> if (opt.equals(option.getOpt()))
+Option.java:182 -> return this.opt;
+CommandLine.java:171 -> return option;
+CommandLine.java:150 -> if (options.contains(key))
+CommandLine.java:152 -> return key.getValues();
+Option.java:542 -> return hasNoValues()
+Option.java:597 -> return this.values.size() == 0;
+CommandLine.java:124 -> return (values == null) ? null : values[0];
+CommandLine.java:91 -> Option option = resolveOption(opt);
+CommandLine.java:92 -> if (option == null)
+CommandLine.java:97 -> Object type = option.getType();
+Option.java:192 -> return this.type;
+CommandLine.java:99 -> return (res == null) ? null : TypeHandler.createValue(res, type);
+TypeHandler.java:48 -> return createValue(str, (Class) obj);
+TypeHandler.java:62 -> if (PatternOptionBuilder.STRING_VALUE == clazz)
+TypeHandler.java:66 -> else if (PatternOptionBuilder.OBJECT_VALUE == clazz)
+TypeHandler.java:70 -> else if (PatternOptionBuilder.NUMBER_VALUE == clazz)
+TypeHandler.java:72 -> return createNumber(str);
+TypeHandler.java:162 -> return NumberUtils.createNumber(str);
