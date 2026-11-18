@@ -57,8 +57,8 @@
 %% the commands and values with those provided to you when you
 %% complete the rights form.
 \setcopyright{acmlicensed}
-\copyrightyear{2018}
-\acmYear{2018}
+\copyrightyear{2026}
+\acmYear{2026}
 \acmDOI{XXXXXXX.XXXXXXX}
 %% These commands are for a PROCEEDINGS abstract or paper.
 \acmConference[Conference acronym 'XX]{Make sure to enter the correct
@@ -81,110 +81,40 @@
 %%\acmSubmissionID{123-A56-BU3}
 
 %%
-%% For managing citations, it is recommended to use bibliography
-%% files in BibTeX format.
-%%
-%% You can then either use BibTeX with the ACM-Reference-Format style,
-%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
-%% support for advanced citation of software artefact from the
-%% biblatex-software package, also separately available on CTAN.
-%%
-%% Look at the sample-*-biblatex.tex files for templates showcasing
-%% the biblatex styles.
-%%
-%%
-%% The majority of ACM publications use numbered citations and
-%% references.  The command \citestyle{authoryear} switches to the
-%% "author year" style.
-%%
-%% If you are preparing content for an event
-%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
-%% citations and references.
-%% Uncommenting
-%% the next command will enable that style.
-%%\citestyle{acmauthoryear}
-
-
-%%
 %% end of the preamble, start of the body of the document source.
 \begin{document}
 
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{The Name of the Title Is Hope}
+\title{Evaluation Strategies for Program Slicing in Automated Program Repair}
 
 %%
 %% The "author" command and its associated commands are used to define
 %% the authors and their affiliations.
-%% Of note is the shared affiliation of the first two authors, and the
-%% "authornote" and "authornotemark" commands
-%% used to denote shared contribution to the research.
-\author{Ben Trovato}
-\authornote{Both authors contributed equally to this research.}
-\email{trovato@corporation.com}
-\orcid{1234-5678-9012}
-\author{G.K.M. Tobin}
-\correspondingauthor
-\authornotemark[1]
-\email{webmaster@marysville-ohio.com}
+\author{Akash Silas}
+\email{akashsilas1@gmail.com}
 \affiliation{%
-  \institution{Institute for Clarity in Documentation}
-  \city{Dublin}
-  \state{Ohio}
-  \country{USA}
+  \institution{Clausthal University of Technology}
+  \city{Clausthal-Zellerfeld}
+  \country{Germany}
 }
 
-\author{Lars Th{\o}rv{\"a}ld}
+\author{Son Thien Nguyen}
+\email{sonthien225@gmail.com}
 \affiliation{%
-  \institution{The Th{\o}rv{\"a}ld Group}
-  \city{Hekla}
-  \country{Iceland}}
-\email{larst@affiliation.org}
-
-\author{Valerie B\'eranger}
-\affiliation{%
-  \institution{Inria Paris-Rocquencourt}
-  \city{Rocquencourt}
-  \country{France}
+  \institution{Clausthal University of Technology}
+  \city{Clausthal-Zellerfeld}
+  \country{Germany}
 }
 
-\author{Aparna Patel}
+\author{Avnish Raut}
+\email{avnishjraut@gmail.com}
 \affiliation{%
- \institution{Rajiv Gandhi University}
- \city{Doimukh}
- \state{Arunachal Pradesh}
- \country{India}}
-
-\author{Huifen Chan}
-\affiliation{%
-  \institution{Tsinghua University}
-  \city{Haidian Qu}
-  \state{Beijing Shi}
-  \country{China}}
-
-\author{Charles Palmer}
-\affiliation{%
-  \institution{Palmer Research Laboratories}
-  \city{San Antonio}
-  \state{Texas}
-  \country{USA}}
-\email{cpalmer@prl.com}
-
-\author{John Smith}
-\affiliation{%
-  \institution{The Th{\o}rv{\"a}ld Group}
-  \city{Hekla}
-  \country{Iceland}}
-\email{jsmith@affiliation.org}
-
-\author{Julius P. Kumquat}
-\correspondingauthor
-\affiliation{%
-  \institution{The Kumquat Consortium}
-  \city{New York}
-  \country{USA}}
-\email{jpkumquat@consortium.net}
+  \institution{Clausthal University of Technology}
+  \city{Clausthal-Zellerfeld}
+  \country{Germany}
+}
 
 %%
 %% By default, the full list of authors will be used in the page
@@ -192,26 +122,13 @@
 %% other information printed in the page headers. This command allows
 %% the author to define a more concise list
 %% of authors' names for this purpose.
-\renewcommand{\shortauthors}{Trovato et al.}
+\renewcommand{\shortauthors}{Silas, Nguyen, and Raut}
 
 %%
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Modern software debugging is frequently bottlenecked by the sheer
-scale of complex codebases, where developers must navigate thousands
-of lines of irrelevant code to isolate the root cause of a single 
-defect. Program slicing has emerged as a promising automated technique
-to extract code subsets relevant to specific program behaviors or 
-failing test cases. However, empirical evaluations of how effectively 
-slicing reduces code volume while preserving fault-relevant context in
-real-world benchmarks remain limited. In this paper, we present an 
-empirical evaluation of dynamic program slicing—using the Slicer4J 
-framework—across real-world Java bugs from the Defects4J benchmark. 
-We investigate the trade-offs between code reduction, fault coverage 
-retention, and performance overhead. Our findings provide insight into
-the viability of dynamic slices for downstream software engineering
-tasks such as automated program repair.
+APR algorithms should include the correct source code to find and fix software bugs, but sharing the entire source code file with the APR algorithm might have a heap of irrelevant code. However, program slicing may be useful since statements are selected that apply to a specific place in each program. In this paper, for the purpose of carrying out the backward dynamic slicing, the defects data set of Java projects collected from Defects4J 2.0.0 tool is used. There are three criteria for slicing discussed here: Location of failing test, Deepest application frame in the failure stack trace, Location of Developer's patch. We take into account code reduction, fault coverage and execution cost in our evaluation. The results indicate that dynamic slicing can provide the necessary code which is reduced significantly though a smaller slice is not necessarily the slice with the lines relevant to the defect.
 \end{abstract}
 
 %%
@@ -221,52 +138,26 @@ tasks such as automated program repair.
 \begin{CCSXML}
 <ccs2012>
  <concept>
-  <concept_id>00000000.0000000.0000000</concept_id>
-  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
+  <concept_id>10011007.10011074.10011099.10011102</concept_id>
+  <concept_desc>Software and its engineering~Software defect analysis</concept_desc>
   <concept_significance>500</concept_significance>
  </concept>
  <concept>
-  <concept_id>00000000.00000000.00000000</concept_id>
-  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
-  <concept_significance>300</concept_significance>
- </concept>
- <concept>
-  <concept_id>00000000.00000000.00000000</concept_id>
-  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
-  <concept_significance>100</concept_significance>
- </concept>
- <concept>
-  <concept_id>00000000.00000000.00000000</concept_id>
-  <concept_desc>Do Not Use This Code, Generate the Correct Terms for Your Paper</concept_desc>
-  <concept_significance>100</concept_significance>
+  <concept_id>10011007.10011074.10011099.10011102.10011103</concept_id>
+  <concept_desc>Software and its engineering~Software testing and debugging</concept_desc>
+  <concept_significance>500</concept_significance>
  </concept>
 </ccs2012>
 \end{CCSXML}
 
-\ccsdesc[500]{Do Not Use This Code~Generate the Correct Terms for Your Paper}
-\ccsdesc[300]{Do Not Use This Code~Generate the Correct Terms for Your Paper}
-\ccsdesc{Do Not Use This Code~Generate the Correct Terms for Your Paper}
-\ccsdesc[100]{Do Not Use This Code~Generate the Correct Terms for Your Paper}
+\ccsdesc[500]{Software and its engineering~Software defect analysis}
+\ccsdesc[500]{Software and its engineering~Software testing and debugging}
 
 %%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
 \keywords{Program Slicing, Dynamic Analysis, Automated Program Repair, 
 Defects4J, Slicer4J}
-%% A "teaser" image appears between the author and affiliation
-%% information and the body of the document, and typically spans the
-%% page.
-\begin{teaserfigure}
- \includegraphics[width=\textwidth]{sampleteaser}
-  \caption{Seattle Mariners at Spring Training, 2010.}
-  \Description{Enjoying the baseball game from the third-base
-  seats. Ichiro Suzuki preparing to bat.}
-  \label{fig:teaser}
-\end{teaserfigure}
-
-\received{20 February 2007}
-\received[revised]{12 March 2009}
-\received[accepted]{5 June 2009}
 
 %%
 %% This command processes the author and affiliation and title
@@ -276,647 +167,232 @@ Defects4J, Slicer4J}
 
 \section{Introduction}
 
-Modern software systems consist of thousands of lines of source 
-code distributed across numerous files, modules, and third-party 
-libraries. When developers or automated tools encounter software 
-defects, only a small fraction of the codebase is typically 
-relevant to the observed failure. However, identifying these 
-relevant portions manually is labor-intensive and time-consuming. 
-Developers often spend significant effort navigating through 
-execution paths, dependencies, and unrelated components before 
-locating the root cause of a bug. 
+It is very challenging when we have to debug and fix huge software systems, this is mainly due to them containing large volumes of code. A modern software program is likely to be made up of numerous classes and several approaches and a lot of dependencies that depend upon one another on various classes but much of the software is unlikely to pertain to a failure of a specific class. Finding that relevant section is important as it is the first step in bug fixing and automated program repair (APR). We require context of the program in the form of APR Systems, this is so we can identify and modify the affected code. Including the entire source files can massively add unrelated code to the snippets.On the other hand, manually cutting off the snippets can cause statements to be missing which can contribute to the failure. Program slicing is one such systematic method to solve the context-selection problem by obtaining statements relevant to a failure.
 
-To mitigate this challenge, program analysis techniques such as 
-program slicing have been proposed to automatically extract the 
-subset of code that influences a particular program behavior or 
-execution outcome. A slice contains only the statements directly 
-or indirectly related to a slicing criterion, such as a failing 
-test case or variable value. While program slicing has been studied 
-extensively for debugging, maintenance, and testing, a practical gap 
-remains: understanding how effectively different slicing approaches 
-reduce code size while preserving fault-relevant information in 
-real-world software benchmarks. Static slicing often produces overly 
-conservative slices that include redundant dependencies, whereas dynamic 
-slicing generates more focused slices by considering actual execution 
-traces.
+% > [Maybe explain APR here or in background]
 
-Evaluating the true utility of slicing requires benchmarking against 
-real-world faults rather than toy programs. To address this, our work 
-focuses on evaluating the effectiveness of program slicing using the 
-Defects4J benchmark, a widely used collection of real-world Java bugs. 
-Specifically, we examine the behavior of dynamic slicing via Slicer4J 
-across targeted project suites (such as Commons Math and Commons CLI) 
-to quantify how well dynamic slices isolate bugs while maintaining syntactic 
-and semantic utility.
+Weiser \cite{Weiser1981ProgramSlicing, Weiser1984ProgramSlicing} proposed program slicing to find statements which have an influence over the value(s) computed at a program point called the ``slicing criterion.A backwards slice will include statements that can have had an influence on the criterion. Traditional static slicing takes into account possible program executions, dynamic slicing takes the observed dependencies for a particular execution of the program. Dynamic slicing can produce a more focused representation of the program behaviour that was associated with this failure by concentrating on the execution that caused a failure in a specific test. Dynamic slicing is supported for Java programs in Slicer4J using bytecode-based instrumentation and building backward top-down dependency graphs \cite{Ahmed2021Slicer4J}. The results, however, will also depend on the criterion on slicing was used. The starting point may yield a different slice and it may influence whether or not the slice includes code that involves the defect.
 
-To guide our empirical investigation, this study addresses the following 
-core research questions:
+Only a few problems have been left open regarding program slicing and its application on Java programs as could be seen in the previous studies. In the original evaluation of Slicer4J \cite{Agrawal1990Dynamic} they ran seven small benchmarks and collected three defects from Defects4J \cite{Ahmed2021Slicer4J}. Shahandashti et al. \cite{Shahandashti2024LLM} investigated whether can large language model create program slices. These studies do not, however, report the performance of one such dynamic slicer when applied to a larger set of real world software defects, when presented to an APR system to shrink the code. Improper slicing criterion is also crucial.
+
+This paper reports a study on 282 defects picked from five Java projects from Defects4J 2.0.0 benchmarks to carry out a quantitative evaluation of the effectiveness of the backward dynamic slicing technique implemented in Slicer4J.This paper presents our study to quantitatively assess the effectiveness of the backward dynamic slicing technique implemented in Slicer4J using 282 defects extracted from five Java projects from the Defects4J 2.0.0 benchmark -- Chart, Cli, Compress, Lang, and Math \cite{Just2014Defects4J}. Three different slicing criteria are used. The position in the test code that reports the failure is called the ``first''.The ``first'' is the place in the test code where the failure is reported. The second app\_deepest is the deepest location found of any application code in the failure stack trace. The third (patched) is using code from the developer's patch. The patched criterion is included for comparison purposes as it requires other information of the fix which is not normally available to an APR system. Based on these criteria, we investigate three research questions:
 \begin{itemize}
-    \item \textbf{RQ1 (Code Reduction):} To what extent do dynamic slicing 
-    techniques minimize code size compared to original program scales across 
-    Defects4J benchmarks?
-    \item \textbf{RQ2 (Fault Coverage):} How effectively do generated slices 
-    retain fault-relevant code, as verified against developer-provided 
-    bug-fix patches?
-    \item \textbf{RQ3 (Performance Overhead):} What is the computational and 
-    execution overhead associated with instrumentation and dynamic trace generation?
+    \item \textbf{RQ1:}How efficiently does dynamic slicing minimize source files compared to the original program?
+    \item \textbf{RQ2:} To what extent do the generated slices preserve the fault-relevant root-cause lines?
+    \item \textbf{RQ3:} What is the computational cost and scalability limit of instrumentation and dynamic trace generation?
 \end{itemize}
 
-The remainder of this paper is organized as follows. Section 2 discusses background concepts and related work in static and dynamic slicing. Section 3 outlines our evaluation framework and metrics. Section 4 presents the experimental results and empirical findings. Finally, Section 5 discusses implications for downstream tasks such as Automated Program Repair (APR) and concludes the paper.
+The purpose of this study is to understand if Dynamic slicing can be advantageous in decreasing the amount of code fed into the APR systems. We are drawn to the size, number of slices, produced and the number of slices that contain faults, and to the time taken to produce slices. This is not an LLM but is not a gauge of the number of slices produced that lead to successful repair. Instead of the results we describe the limitations that should be pointed out before using a dynamic slice as input to an automated repair system.
+% > [ask adam should it be just slicing or dynamic slicing , first line]
 
-\section{Introduction}
-% Focus: Motivation, debugging bottlenecks, and the role of program slicing in Automated Program Repair (APR).
+\section{Background and Related Work}
 
-\section{Background and Program Slicing Tools}
-\subsection{Static vs. Dynamic Slicing} 
-% Defining the theoretical trade-offs.
+\subsection{Static and Dynamic Program Slicing}
 
-\subsection{Evaluated Slicing Frameworks} 
-% Detailing the tools explored, specifically contrasting Slicer4J (instrumentation-based dynamic slicing) with alternative baselines (e.g., JavaSlicer or static analysis alternatives).
+In program slicing, the statements are those that are related to a certain point in the program, which is referred to as the slicing criterion. This criterion is defined by a program location and a single or multiple variables. Backward slice: a slice including statements that could have affected the selected statement in the selected point; Forward slice: a slice that includes statements that could be affected by the selected statement in the selected point \cite{Weiser1981ProgramSlicing, Weiser1984ProgramSlicing}. Ferrante et al. \cite{Ferrante1987PDG} introduced the Program Dependence Graph (PDG) to represent relationships between statements. There are two types of relationships: these are data-dependencies, which relate statements based on using values; and control-dependencies, which describe how conditions influence the running of the program. Horwitz et al., in a later work \cite{Horwitz1990SDG} tried to extend this to programs with multiple methods in the system using the System Dependence Graph (SDG).
 
-\section{Methodology and Evaluation Framework}
-\subsection{Defects4J Benchmark Selection} 
-% Focusing on target projects like Math and Cli.
+There are two different ways of slicing, static and dynamic. Static slicing focuses on possible runs of the program and therefore, may return the statements executed by a program, which are not used during any one of the possible runs. Dynamic slicing is a slicing technique that relies on a real execution trace to find dependencies between the classes or methods defined in there. Dynamic slicing was defined by Korel and Laski \cite{Korel1988Dynamic} and Agrawal and Horgan \cite{Agrawal1990Dynamic}. This may result in a smaller ``slice'' but it will also restrict the analysis to that execution. It takes a lot of memory and processing time to note down and process traces.
 
-\subsection{Core Slicing Metrics} 
-% Code Reduction, Fault Coverage, Precision, and F1 Score.
+% > [maybe section can more about dynamic slicing]
 
-\subsection{Downstream APR Metrics} 
-% Token Reduction, Syntactic Parsability, and Patch Plausibility.
+\subsection{Slicer4J Architecture}
 
-\section{Empirical Results and Analysis}
-\subsection{Code Reduction and Token Efficiency}
+Slicer4J, the dynamic slicer for Java developed by Ahmed et al. \cite{Ahmed2021Slicer4J}, is a Soot \cite{ValleeRai1999Soot} based dynamic slicer for Java. The tool is executed on the compiled java byte code and performs 4 steps to create the backward slice: Soot takes the input byte code and transforms it to intermediate representation, called Jimple. Slicer4J then puts logging statements at the appropriate places so that during the running of the program, the execution of each statement can be logged.
 
-\subsection{Fault Coverage and Preservation}
+Slicer4J then runs the instrumented version of the program and captures its execution history.Therefore, the instrumented program is then run, capturing its execution history by Slicer4J. This trace is processed to create an Inter-procedural Dynamic Control-Flow-Graph (TDCG) that describes the statements executed and the varying dependencies and interactions of methods and threads. Then, the slicer begins at the selected criterion, and walks backwards, meeting the aforementioned dependencies, until an arbitrary index for the bytecode instructions is reached and the instructions in the bytecode are mapped to source-code lines. The earlier Java dynamic slicer, JavaSlicer \cite{Hammacher2008JavaSlicer}, suffered from some restrictions on newer Java bytecodes, multithreaded execution and some framework methods \cite{Arzt2014FlowDroid}. Several of these are solved by Slicer4J. This also enables the same execution trace to use several slicing criteria, as the instrumentation and the creation of the execution trace is independent on the specific criterion.
 
-\subsection{Syntactic Validity and LLM Constraints}
+\subsection{Program Slicing for Fault Localization and LLM Based APR}
 
-\section{Discussion and Threats to Validity}
-% Focus: Limitations like test-boundary trapping and statement-level fragmentation.
+Fault Location and Program Slice are two techniques that can assist in the investigation of software faults, but in different ways. The ability of SBFL to rank the statement according to passing/failing test results shows that the statement with higher rank is more likely to contain faults. Remember, suspicion among statements does not always imply dependency, nor does it show the importance of the different statement definitions in the failure. Other approach: Program Slicing begins from a specified point in the program and traverses along the data and/or control flow. If we receive a failure, a developer can see the statements and statement fault localisation details in the failure and inspect and analyse details of the statements that led to the failure \cite{Ahmed2021Slicer4J, Korel1988Dynamic}.
 
-\section{Conclusion and Future Work}
+Partitioning can be employed to write source code with characteristics of automating program repair by LLM. To fix a fault, repair models require code to understand the fault and suggest a solution to the fault, but if there is a lot of unrelated code, there may be more complexity. Unnecessary code must be removed from a program prior to the model receiving the message. They have also analysed whether the LLM can learn the relevant sentences without using a standard slicer. In \cite{Shahandashti2024LLM} Shahandashti et al. tested several LLMs on 100 Java programs from Leet code website on static and dynamic slicing. GPT-4o only achieved 59.69\% dependence accuracy and unfortunately could not get any of the exact matches for dynamic slices. In contrast to this, our study provides an empirical comparison of the code reduction, fault coverage, and speed of execution for Slicer4J on real-world Java defects and compares them with existing approaches for program slicing instead of asking an LLM to produce program slices.
 
-\section{Template Overview}
-As noted in the introduction, the ``\verb|acmart|'' document class can
-be used to prepare many different kinds of documentation --- a
-double-anonymous initial submission of a full-length technical paper, a
-two-page SIGGRAPH Emerging Technologies abstract, a ``camera-ready''
-journal article, a SIGCHI Extended Abstract, and more --- all by
-selecting the appropriate {\itshape template style} and {\itshape
-  template parameters}.
+\section{Methodology}
 
-This document will explain the major features of the document
-class. For further information, the {\itshape \LaTeX\ User's Guide} is
-available from
-\url{https://www.acm.org/publications/proceedings-template}.
+\subsection{Static Slicer Evaluation}
+We tested three static analysis tools on Defects4J: Java SDG Slicer, JOANA, and a prototype Soot SDG slice analysis tool. None of these tools could produce slices at the benchmark scale, so we report this as a negative feasibility result. Four main obstacles stopped us from computing slices. First, we hit call-graph blowups from JDK and reflection calls, as well as unmodeled exception control-flow. Second, we ran into parsing and building failures (generic local declarations in Java SDG Slicer and an offline dependency in JOANA) and heap exhaustion on recursive types.
 
-\subsection{Template Styles}
+\subsection{Benchmark and Single-Trace Pipeline}
+We evaluated 282 bugs across 5 Defects4J 2.0.0 projects \cite{Just2014Defects4J}: Chart (26), Cli (39), Compress (47), Lang (64), and Math (106). Running 3 criteria per bug gave us 846 bug--criterion runs in total. We used Slicer4J \cite{Ahmed2021Slicer4J} (commit 68f415a) for our process, which is a Soot-based backward dynamic bytecode slicer. The original Slicer4J study only tested micro-benchmarks and 3 Defects4J bugs from other projects.
 
-The primary parameter given to the ``\verb|acmart|'' document class is
-the {\itshape template style} which corresponds to the kind of publication
-or SIG publishing the work. This parameter is enclosed in square
-brackets and is a part of the {\verb|documentclass|} command:
-\begin{verbatim}
-  \documentclass[STYLE]{acmart}
-\end{verbatim}
+There are six stages in our pipeline. In stages (1) to (3), we check out the bug and reproduce it in an isolated workspace to verify the failing stack trace, package the application and test classes in the same JAR while keeping non-class resources on the classpath, and instrument the code to lift the bytecode to Jimple IR and inject logging probes (using taint summaries for uninstrumented JDK methods). In stages (4) to (6), we run the trigger test case and capture the trace to validate the presence of the trigger test method, compare the buggy and fixed implementation classes to derive executable statements (Section 3.4), and slice the dynamic dependence graph in reverse order based on each criterion. We post-process the slicing output into unique (class, line) pairs to eliminate redundancy. Because instrumentation and tracing do not depend on the criterion, we slice each trace three times (median time per criterion: 9 seconds).
 
-Journals use one of three template styles. All but three ACM journals
-use the {\verb|acmsmall|} template style:
+During 14 runs across 6 bugs (Compress 21; Math 7, 39, 43, 44, 74), stock Slicer4J threw a null-pointer exception in DynamicHeapAnalysis.getAp after constructing the graph. Adding a one-line null guard recovered all 14 runs (11 produced slices, 3 timed out). We saved the tool logs for the stock implementation separately (stock logs: 478 OK, 40 empty, 51 timeouts; patched logs: 492 OK, 26 empty, 54 timeouts). Out of the 11 recovered slices, 8 achieved fault contact.
+
+\subsection{Slicing Criteria}
+We evaluate three criteria per trace:
 \begin{itemize}
-\item {\texttt{acmsmall}}: The default journal template style.
-\item {\texttt{acmlarge}}: Used by JOCCH and TAP.
-\item {\texttt{acmtog}}: Used by TOG.
+    \item \textbf{test\_crash (273/282 bugs):} the shallowest frame in the test code, typically the failed assertion.
+    \item \textbf{app\_deepest (104/282 bugs):} the deepest application frame in the stack trace. In the other 178 bugs, the faulty method returned before the assertion failed, leaving no application frame on the stack.
+    \item \textbf{patched (282/282 bugs):} the first modified code line (or its omission anchor). Because slices always contain their own starting criterion, patched guarantees 100\% any-contact coverage. We only use it as an upper-bound oracle and grading check.
 \end{itemize}
 
-The majority of conference proceedings documentation will use the {\verb|acmconf|} template style.
+We separate test and application frames based on source-root location on disk, and not class-name (which fails when a test class inherits a helper method from an abstract test superclass).
+
+\subsection{Ground-Truth Omission Anchoring}
+
+We diff the buggy and fixed versions of the modified class and remove non-executable lines (imports, comments, annotations, declarations, lone braces). Following previous work \cite{Sobreira2018Dissection, Pearson2017Evaluating, Reis2019Demystifying}, we categorize the 226 feasible bugs (out of 271 classifiable bugs overall) into DELETED (3 bugs, 1.3\%), ADDITIVE (63 bugs, 27.9\%), and MIXED (160 bugs, 70.8\%).
+
+Our dataset consists of 1,555 insertion loci. Since missing lines do not exist in buggy programs \cite{Reis2019Demystifying}, we anchor each insertion locus to a nearby executable statement:
 \begin{itemize}
-\item {\texttt{sigconf}}: The default proceedings template style.
-\item{\texttt{sigchi}}: Used for SIGCHI conference articles.
-\item{\texttt{sigplan}}: Used for SIGPLAN conference articles.
+    \item \textbf{Rejected rules:} Rule A scans forward without bounds and crosses method/class boundaries to declaration statements that do not execute (CRITERION\_NOT\_EXECUTED). Rule B takes the insertion statement or the preceding statement, which failed on multi-line comment blocks (Lang 45).
+    \item \textbf{Rule C (primary):} We scan forward to the end of the current method (stopping at declarations), and fall back to the nearest preceding executable statement in the same method. Across 1,555 loci, 1,135 have valid in-scope statements in both directions, 131 forward-only, and 259 backward-only. Only 23 used an unbounded fallback and 7 could not be anchored. Rules A and C agree on 158/221 bugs and disagree on 63. Switching to Rule C shifted the first locus on 19 bugs, which we re-sliced for patched.
+    \item \textbf{Rule D (sensitivity bound):} Anchoring to the nearest executable statements before and after in the current method is allowed. Because Rule D is a superset of Rule C, pooled FULL coverage increases from 24.0\% to 38.0\% (1/12 hits for Rule C is counted as 12/12 for Rule D), and any-contact coverage stays nearly unchanged (72.8\% vs. 73.6\%).
 \end{itemize}
 
-\subsection{Template Parameters}
+\subsection{Pipeline Defects}
 
-In addition to specifying the {\itshape template style} to be used in
-formatting your work, there are a number of {\itshape template parameters}
-which modify some part of the applied template style. A complete list
-of these parameters can be found in the {\itshape \LaTeX\ User's Guide.}
+During setup we resolved seven pipeline defects (see Table 3.1). These defect resolutions pertain to packaging, verification, attribution and grading at different stages of the pipeline, and are different from the getAp crash in Slicer4J (described in section 3.2).
 
-Frequently-used parameters, or combinations of parameters, include:
-\begin{itemize}
-\item {\texttt{anonymous,review}}: Suitable for a ``double-anonymous''
-  conference submission. Anonymizes the work and includes line
-  numbers. Use with the \texttt{\string\acmSubmissionID} command to print the
-  submission's unique ID on each page of the work.
-\item{\texttt{authorversion}}: Produces a version of the work suitable
-  for posting by the author.
-\item{\texttt{screen}}: Produces colored hyperlinks.
-\end{itemize}
-
-This document uses the following string as the first command in the
-source file:
-\begin{verbatim}
-\documentclass[sigconf]{acmart}
-\end{verbatim}
-
-\section{Modifications}
-
-Modifying the template --- including but not limited to: adjusting
-margins, typeface sizes, line spacing, paragraph and list definitions,
-and the use of the \verb|\vspace| command to manually adjust the
-vertical spacing between elements of your work --- is not allowed.
-
-{\bfseries Your document will be returned to you for revision if
-  modifications are discovered.}
-
-\section{Typefaces}
-
-The ``\verb|acmart|'' document class requires the use of the
-``Libertine'' typeface family. Your \TeX\ installation should include
-this set of packages. Please do not substitute other typefaces. The
-``\verb|lmodern|'' and ``\verb|ltimes|'' packages should not be used,
-as they will override the built-in typeface families.
-
-\section{Title Information}
-
-The title of your work should use capital letters appropriately -
-\url{https://capitalizemytitle.com/} has useful rules for
-capitalization. Use the {\verb|title|} command to define the title of
-your work. If your work has a subtitle, define it with the
-{\verb|subtitle|} command.  Do not insert line breaks in your title.
-
-If your title is lengthy, you must define a short version to be used
-in the page headers, to prevent overlapping text. The \verb|title|
-command has a ``short title'' parameter:
-\begin{verbatim}
-  \title[short title]{full title}
-\end{verbatim}
-
-\section{Authors and Affiliations}
-
-Each author must be defined separately for accurate metadata
-identification.  As an exception, multiple authors may share one
-affiliation. Authors' names should not be abbreviated; use full first
-names wherever possible. Include authors' e-mail addresses whenever
-possible.
-
-Grouping authors' names or e-mail addresses, or providing an ``e-mail
-alias,'' as shown below, is not acceptable:
-\begin{verbatim}
-  \author{Brooke Aster, David Mehldau}
-  \email{dave,judy,steve@university.edu}
-  \email{firstname.lastname@phillips.org}
-\end{verbatim}
-
-The \verb|authornote| and \verb|authornotemark| commands allow a note
-to apply to multiple authors --- for example, if the first two authors
-of an article contributed equally to the work.
-
-If your author list is lengthy, you must define a shortened version of
-the list of authors to be used in the page headers, to prevent
-overlapping text. The following command should be placed just after
-the last \verb|\author{}| definition:
-\begin{verbatim}
-  \renewcommand{\shortauthors}{McCartney, et al.}
-\end{verbatim}
-Omitting this command will force the use of a concatenated list of all
-of the authors' names, which may result in overlapping text in the
-page headers.
-
-The article template's documentation, available at
-\url{https://www.acm.org/publications/proceedings-template}, has a
-complete explanation of these commands and tips for their effective
-use.
-
-Note that authors' addresses are mandatory for journal articles.
-
-\section{Rights Information}
-
-Authors of any work published by ACM will need to complete a rights
-form. Depending on the kind of work, and the rights management choice
-made by the author, this may be copyright transfer, permission,
-license, or an OA (open access) agreement.
-
-Regardless of the rights management choice, the author will receive a
-copy of the completed rights form once it has been submitted. This
-form contains \LaTeX\ commands that must be copied into the source
-document. When the document source is compiled, these commands and
-their parameters add formatted text to several areas of the final
-document:
-\begin{itemize}
-\item the ``ACM Reference Format'' text on the first page.
-\item the ``rights management'' text on the first page.
-\item the conference information in the page header(s).
-\end{itemize}
-
-Rights information is unique to the work; if you are preparing several
-works for an event, make sure to use the correct set of commands with
-each of the works.
-
-The ACM Reference Format text is required for all articles over one
-page in length, and is optional for one-page articles (abstracts).
-
-\section{CCS Concepts and User-Defined Keywords}
-
-Two elements of the ``acmart'' document class provide powerful
-taxonomic tools for you to help readers find your work in an online
-search.
-
-The ACM Computing Classification System ---
-\url{https://www.acm.org/publications/class-2012} --- is a set of
-classifiers and concepts that describe the computing
-discipline. Authors can select entries from this classification
-system, via \url{https://dl.acm.org/ccs/ccs.cfm}, and generate the
-commands to be included in the \LaTeX\ source.
-
-User-defined keywords are a comma-separated list of words and phrases
-of the authors' choosing, providing a more flexible way of describing
-the research being presented.
-
-CCS concepts and user-defined keywords are required for for all
-articles over two pages in length, and are optional for one- and
-two-page articles (or abstracts).
-
-\section{Sectioning Commands}
-
-Your work should use standard \LaTeX\ sectioning commands:
-\verb|\section|, \verb|\subsection|, \verb|\subsubsection|,
-\verb|\paragraph|, and \verb|\subparagraph|. The sectioning levels up to
-\verb|\subsubsection| should be numbered; do not remove the numbering
-from the commands.
-
-Simulating a sectioning command by setting the first word or words of
-a paragraph in boldface or italicized text is {\bfseries not allowed.}
-
-Below are examples of sectioning commands.
-
-\subsection{Subsection}
-\label{sec:subsection}
-
-This is a subsection.
-
-\subsubsection{Subsubsection}
-\label{sec:subsubsection}
-
-This is a subsubsection.
-
-\paragraph{Paragraph}
-
-This is a paragraph.
-
-\subparagraph{Subparagraph}
-
-This is a subparagraph.
-
-\section{Tables}
-
-The ``\verb|acmart|'' document class includes the ``\verb|booktabs|''
-package --- \url{https://ctan.org/pkg/booktabs} --- for preparing
-high-quality tables.
-
-Table captions are placed {\itshape above} the table.
-
-Because tables cannot be split across pages, the best placement for
-them is typically the top of the page nearest their initial cite.  To
-ensure this proper ``floating'' placement of tables, use the
-environment \textbf{table} to enclose the table's contents and the
-table caption.  The contents of the table itself must go in the
-\textbf{tabular} environment, to be aligned properly in rows and
-columns, with the desired horizontal and vertical rules.  Again,
-detailed instructions on \textbf{tabular} material are found in the
-\textit{\LaTeX\ User's Guide}.
-
-Immediately following this sentence is the point at which
-Table~\ref{tab:freq} is included in the input file; compare the
-placement of the table here with the table in the printed output of
-this document.
-
-\begin{table}
-  \caption{Frequency of Special Characters}
-  \label{tab:freq}
-  \begin{tabular}{ccl}
+\begin{table*}[htbp]
+  \caption{Table 3.1: Pipeline defects resolved during setup.}
+  \label{tab:pipeline_defects}
+  \begin{tabular}{llp{0.62\textwidth}}
     \toprule
-    Non-English or Math&Frequency&Comments\\
+    Stage & Defect & Resolution and measured effect \\
     \midrule
-    \O & 1 in 1,000& For Swedish names\\
-    $\pi$ & 1 in 5& Common in math\\
-    \$ & 4 in 5 & Used in business\\
-    $\Psi^2_1$ & 1 in 40,000& Unexplained usage\\
-  \bottomrule
-\end{tabular}
-\end{table}
-
-To set a wider table, which takes up the whole width of the page's
-live area, use the environment \textbf{table*} to enclose the table's
-contents and the table caption.  As with a single-column table, this
-wide table will ``float'' to a location deemed more
-desirable. Immediately following this sentence is the point at which
-Table~\ref{tab:commands} is included in the input file; again, it is
-instructive to compare the placement of the table here with the table
-in the printed output of this document.
-
-\begin{table*}
-  \caption{Some Typical Commands}
-  \label{tab:commands}
-  \begin{tabular}{ccl}
-    \toprule
-    Command &A Number & Comments\\
-    \midrule
-    \texttt{{\char'134}author} & 100& Author \\
-    \texttt{{\char'134}table}& 300 & For tables\\
-    \texttt{{\char'134}table*}& 400& For wider tables\\
+    JAR build & Fat-JAR resource coupling & Bundling non-.class resources into the application JAR made getResource().toURI() throw, breaking 13 Compress bugs; we keep resources on the test classpath. \\
+    Verification & Trigger-test identity & Exception string matching mislabels reproductions; our harness checks for the trigger test method name in the trace. \\
+    Frame split & Frame attribution & Name-based splitting misassigned inherited helper frames; we classify frames by source-root membership. \\
+    Ground truth & Non-executable lines & Non-executable lines inflate the locus set; filtering raised Cli patched OK from 26 to 30 and FULL from 14 to 18. \\
+    Trace dedup & Repeated trace statements & Raw traces repeat executed lines; we deduplicate slices into unique (class, line) pairs. \\
+    Degenerate & Degenerate slices & Slices missing the modified class score 100\% reduction by arithmetic; we compute reduction on non-degenerate runs only (test\_crash: 96.59\% $\rightarrow$ 94.74\%). \\
+    Criteria & First-locus seeding & Unbounded first loci land on declarations; we seed criteria from Rule C and re-seeded 19 bugs. \\
     \bottomrule
   \end{tabular}
 \end{table*}
 
-Always use midrule to separate table header rows from data rows, and
-use it only for this purpose. This enables assistive technologies to
-recognise table headers and support their users in navigating tables
-more easily.
+\subsection{Metrics and Statistical Protocol}
+Fault Coverage: For slice $S$ and ground truth set $G$, any-contact fault coverage is held if $S \cap G \neq \emptyset$, FULL fault coverage is held if $G \subseteq S$, and statement-level recall is $|S \cap G| / |G|$. We report any-contact fault coverage as our primary metric, and bounds [C, D] where C is the lower bound, and D is the upper bound.
 
-\section{Math Equations}
-You may want to display math equations in three distinct styles:
-inline, numbered or non-numbered display.  Each of the three are
-discussed in the next sections.
+Reduction: For executable statements $M$ of the modified class and $S_M = S \cap M$, class reduction is $1 - |S_M| / |M|$. Reduction is computed over non-degenerate slices ($|S_M| > 0$) so that localization misses ($|S_M| = 0$) do not score 100\% reduction. We report degenerate rates separately (the patched criterion has no degenerate slices).
 
-\subsection{Inline (In-text) Equations}
-A formula that appears in the running text is called an inline or
-in-text formula.  It is produced by the \textbf{math} environment,
-which can be invoked with the usual
-\texttt{{\char'134}begin\,\ldots{\char'134}end} construction or with
-the short form \texttt{\$\,\ldots\$}. You can use any of the symbols
-and structures, from $\alpha$ to $\omega$, available in
-\LaTeX~\cite{Lamport:LaTeX}; this section will simply show a few
-examples of in-text equations in context. Notice how this equation:
-\begin{math}
-  \lim_{n\rightarrow \infty}x=0
-\end{math},
-set here in in-line math style, looks slightly different when
-set in display style.  (See next section).
+We report medians, IQRs, and 95\% Wilson confidence intervals \cite{Wohlin2012Experimentation}. We compare criteria using paired two-sided Wilcoxon signed-rank tests with Holm correction ($m = 3$) and Cliff's $\delta$ \cite{Romano2006Appropriate}, and use Spearman's $\rho$ for correlations. We report setup, instrumentation, and slicing times, and omit trace time due to instrumentation timer skew \cite{Wohlin2012Experimentation}.
 
-\subsection{Display Equations}
-A numbered display equation---one set off by vertical space from the
-text and centered horizontally---is produced by the \textbf{equation}
-environment. An unnumbered display equation is produced by the
-\textbf{displaymath} environment.
 
-Again, in either environment, you can use any of the symbols and
-structures available in \LaTeX\@; this section will just give a couple
-of examples of display equations in context.  First, consider the
-equation, shown as an inline equation above:
-\begin{equation}
-  \lim_{n\rightarrow \infty}x=0
-\end{equation}
-Notice how it is formatted somewhat differently in
-the \textbf{displaymath}
-environment.  Now, we'll enter an unnumbered equation:
-\begin{displaymath}
-  \sum_{i=0}^{\infty} x + 1
-\end{displaymath}
-and follow it with another numbered equation:
-\begin{equation}
-  \sum_{i=0}^{\infty}x_i=\int_{0}^{\pi+2} f
-\end{equation}
-just to demonstrate \LaTeX's able handling of numbering.
+\section{Results and Analysis}
+We start the results by looking at table 4.1 to see the distribution of successul runs over total runs.Under the realistic test\_crash criterion,Slicer4j with backward slicing completes on 226 out of 282 bugs with 80.1\% feasibility. Four out of five projects from Defect4j have feasibility of above 85\% which is dragged down by Math with 63.2 \% feasibility. All 26 remaining empty slices are from Math as well as 34 of 54 slice timeouts from overall runs, as Math's numerical optimisation and root-finding loops execute tens of millions of bytecode instructions per test. And across all 846 runs, the pipeline produces 492 completed slices: 226 during test\_crash, 187 during patched, and 79 during app\_deepest.
 
-\section{Figures}
+\begin{table}[htbp]
+  \caption{Table 4.1 -- Run under test\_crash}
+  \label{tab:test_crash_runs}
+  \begin{tabular}{lcc}
+    \toprule
+    Project & Sliced & Percentage \\
+    \midrule
+    Chart & 23/26 & 88.5\% \\
+    Cli & 38/39 & 97.4\% \\
+    Compress & 43/47 & 91.5\% \\
+    Lang & 55/64 & 85.9\% \\
+    Math & 67/106 & 63.2\% \\
+    \midrule
+    \textbf{All} & \textbf{226/282} & \textbf{80.1\%} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-The ``\verb|figure|'' environment should be used for figures. One or
-more images can be placed within a figure. If your figure contains
-third-party material, you must clearly identify it as such, as shown
-in the example below.
-\begin{figure}[h]
+Table 4.2 shows the runs by status where all the non-ok runs are structurally explainable. Out of 354 non-ok runs, 348 are majorly divided into five mechanisms. 187 of runs had no criterion from which 178 failing stacktraces had no application frame because assertion failure happen inside JUnit framework rather than the code. 54 of the runs resolve a criterion line which is never executed by the failing test case. 54 of the runs exceeded the slicing budget of 1200 secs and 27 of the runs exceeded the tracing budget of 1800 secs leading to run failure.26 runs produced an empty slice. Lastly the remaining 6 are infrastructure rather than method as three defects did not reproduce and three failed every test in their suite. 
+
+\begin{table}[htbp]
+  \caption{Table 4.2 -- Runs by status}
+  \label{tab:runs_by_status}
+  \begin{tabular}{lcccc}
+    \toprule
+    Status & test\_crash & patched & app\_deepest & All \\
+    \midrule
+    OK & 226 & 187 & 79 & 492 \\
+    NO\_CRITERION & 9 & 0 & 178 & 187 \\
+    CRITERION\_NOT\_EXECUTED & 2 & 47 & 5 & 54 \\
+    SLICE\_TIMEOUT & 22 & 25 & 7 & 54 \\
+    TRACE\_TIMEOUT & 9 & 9 & 9 & 27 \\
+    SLICE\_EMPTY & 12 & 12 & 2 & 26 \\
+    NOT\_REPRODUCED & 1 & 1 & 1 & 3 \\
+    ALL\_TESTS\_FAILED & 1 & 1 & 1 & 3 \\
+    \midrule
+    \textbf{All} & \textbf{282} & \textbf{282} & \textbf{282} & \textbf{846} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+We would also like to discuss one defect one found and resolved to increase the feasibility of the runs which is mentioned in section 3.2. 14 of the 40 slice empty across 6 defects were because of NullPointerException in DynamicHeapAnalysis.getAp which deferences before testing for null. As we saw in Math 44, the patch run provided a slice but the other two criterion did not which cannot be taken as resource exhaustion.We noticed atleast one warning in which at the time 229 of 230 completed runs had none.The solution we used was to add one guard-line making the 14 of them resolve the slice empty issue increasing the test\_crash feasibilityfrom 78.4 \% to 80.1\% as 11 of them provided a slice and 3 of them had timeouts.The defect is structurally invisible at small scale as it requires a trace in which a heap access precedes any recorded definition of its base object, a configuration that a handful of hand picked defects is likely not to contain.
+
+Slice completion does not guarantee the slice contains line from fault class. In test\_crash 39 of 226 slices do not contain any lines from the developer modified class. The rate is low for app\_deepest where only 7 out of 79 have the same case.And in patched its 0 out of 187. But the gap between the projects themself is more than the criterion as its 39.5 \% in compress and 5.5 \% in lang which produce what we call degenerate slices. From the criterion results for degenerate slices we infer that the degeneracy depends on where the criterion lies relative to the fault rather than the limit of the slicer as we can see from patched.
+
+\subsection{Code reduction}
+
+In the first research question we look at the code reduction and change in results depending on criterion. \textbf{RQ1:How efficiently does dynamic slicing minimize source files compared to the original program?}
+
+Slices are very small when compared to the actual programs. We use median as a metric rather than average as slices are skewed right due to few of them been very large compared to others.mAs we see in table 4.3 Test\_crash has a median slice of 24 lines, app\_deepest has median slice of 53 lines and patched has median slice of 64 lines. So depending on the criterion we get a 2.7 factor. The reduction against the class was 94.7\% , 91.\% 5\% and 94.2\% for test\_crash,app\_deepest and patched respectively. We only consider the non degenerate slices during the calculations.
+
+\begin{table*}[htbp]
+  \caption{Table 4.3}
+  \label{tab:code_reduction}
+  \begin{tabular}{lccccccc}
+    \toprule
+    Criterion & Ok runs & Median lines & Q1--Q3 & Degenerate & Non Degenerate runs & Reduction vs class & vs executed \\
+    \midrule
+    test\_crash & 226 & 24 & 7--94 & 39 & 187 & 94.7\% & 99.91\% \\
+    app\_deepest & 79 & 64 & 26--128 & 7 & 72 & 91.5\% & 99.88\% \\
+    patched & 187 & 53 & 16--121 & 0 & 187 & 94.2\% & 99.81\% \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+Also we found that the slice size is not dependent on the size of host class. Across the completed runs for test\_crash we have a value of $\rho =-042$ for rank correlation between the number of lines of modified class and number of lines in the slice. Figure 4 shows no structure of some sort either. We infer that dynamic slicing removes the uninvoked code regardless of the number of lines in the files.
+
+\begin{figure}[htbp]
   \centering
- \includegraphics[width=\linewidth]{sample-franklin}
-  \caption{1907 Franklin Model D roadster. Photograph by Harris \&
-    Ewing, Inc. [Public domain], via Wikimedia
-    Commons. (\url{https://goo.gl/VLCRBB}).}
-  \Description{A woman and a girl in white dresses sit in an open car.}
+  \includegraphics[width=\linewidth]{fig3_slice_vs_class}
+  \caption{Figure 4}
+  \Description{Scatter plot showing lines in slice versus lines in modified class under the test_crash criterion.}
+  \label{fig:slice_vs_class}
 \end{figure}
 
-Your figures should contain a caption which describes the figure to
-the reader.
+When we compare 78 defects which are common in succesfull runs with slice on both test\_crash and app\_deepest, the slice from the deeper application frame are much larger than the one from shallow test frame which is median of 64 against 18 with values of Holm-corrected $p = 1.09 \times 10^{-6}$ and Cliff's $\delta = 0.388$,medium. When we do same selection with respect to patched and test\_crash we get 178 defects with median slice of 56 against 23 lines with values of Holm-corrected $p = 1.05 \times 10^{-3}$; $\delta = 0.223$, small. Interestingly both patched and app\_deepest who depend of application frame have values of $p = 0.667$ with $\delta = -0.001$ which is too small to detect and matter. So the criterion which uses the test frame has the smallest slices and the criterion which uses application frame have bigger slices.
 
-Figure captions are placed {\itshape below} the figure.
+% > [I checked online and had discussion with claude for what can be used for comparision and used this , I rejected wilson interval and rank for comparision]
 
-Every figure should also have a figure description unless it is purely
-decorative. These descriptions convey what’s in the image to someone
-who cannot see it. They are also used by search engine crawlers for
-indexing images, and when images cannot be loaded.
+\subsection{Fault coverage and ground-truth anchoring}
+In this section we look at the fault coverage and anchoring results.\textbf{RQ2 (Fault Coverage): To what extent do the generated slices preserve the fault-relevant root-cause lines?} From the 271 defects whose patch could be classfied only 5 of them just deleted or changed lines. Out of the rest 266 defects,We saw developers either add lines or do both(78 additive and 188 mixed). A slice cannot have a line which does not exist yet so we needed anchoring rules.The 3 of the 5 who produced slice, they are from compress and other 2 never produced a slice.  
 
-A figure description must be unformatted plain text less than 2000
-characters long (including spaces).  {\bfseries Figure descriptions
-  should not repeat the figure caption – their purpose is to capture
-  important information that is not already provided in the caption or
-  the main text of the paper.} For figures that convey important and
-complex new information, a short text description may not be
-adequate. More complex alternative descriptions can be placed in an
-appendix and referenced in a short figure description. For example,
-provide a data table capturing the information in a bar chart, or a
-structured list representing a graph.  For additional information
-regarding how best to write figure descriptions and why doing this is
-so important, please see
-\url{https://www.acm.org/publications/taps/describing-figures/}.
+The Fault coverage is divided into FUll,PARTIAL and None. For test\_crash fault coverage for FULL is 19.5\% and any contact is 48.7 \%. For app\_deepest fault coverage for FULL is 24.1\% and any contact is 77.2\%. For patched fault coverage for FULL is 29.4 \% and any contact is 100\% as we get the criterion line where the patch resides. Table 4.4 shows expanded results.Rule D increases the percentage of FULL coverage from 24.0\% to 38.0\% and any-contact only just from 72.8\% to 73.6\% for total runs. We saw no changes for app\_deepest and patched in any contact with Rule D from Rule C. Out of the 71 runs that change coverage,We saw 67 move from PARTIAL to FULL and 4 went from NONE to something. Also 1 defect went from 1 of 12 anchor lines to 12 of 12 anchor lines. Both Rule D and Rule C have the same effect and the miss rate drops from 51.3\% to 49.6\% for rule D so main result does not change with respect to the convention. As the result does not change alot for any contact we consider it as primary coverage and FULL as secondary state to measure.
 
-\subsection{The ``Teaser Figure''}
+\begin{table*}[htbp]
+  \caption{Table 4.4 -- Rule coverage}
+  \label{tab:rule_coverage}
+  \begin{tabular}{lcccccc}
+    \toprule
+    Criterion & Ok Runs & FULL [C] & FULL [D] & Any-contact [C] & Any-contact [D] & NONE [C] \\
+    \midrule
+    test\_crash & 226 & 19.5\% & 27.0\% & 48.7\% & 50.4\% & 51.3\% \\
+    app\_deepest & 79 & 24.1\% & 39.2\% & 77.2\% & 77.2\% & 22.8\% \\
+    patched & 187 & 29.4\% & 50.8\% & 100\% & 100\% & 0.0\% \\
+    \midrule
+    \textbf{Pooled} & \textbf{492} & \textbf{24.0\%} & \textbf{38.0\%} & \textbf{72.8\%} & \textbf{73.6\%} & \textbf{27.2\%} \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
 
-A ``teaser figure'' is an image, or set of images in one figure, that
-are placed after all author and affiliation information, and before
-the body of the article, spanning the page. If you wish to have such a
-figure in your article, place the command immediately before the
-\verb|\maketitle| command:
-\begin{verbatim}
-  \begin{teaserfigure}
- \includegraphics[width=\textwidth]{sampleteaser}
-    \caption{figure caption}
-    \Description{figure description}
-  \end{teaserfigure}
-\end{verbatim}
+\subsection{Overhead and constraints}
+In this section we look at the setup and constraints . \textbf{RQ3: What is the computational cost and scalability limit of instrumentation and dynamic trace generation?}
 
-\section{Citations and Bibliographies}
+We have the median values of setup and instrumentation to 23 seconds and 41 seconds respectively . We saw slicing is cheap compated to them as the median time was 9 seconds(maximum 1036 seconds).Also when a trace is generated , the criterion computation is cheap compared to it as anchoring rules can be generated with same trace results.Also no completed run exceeded 22.2 million trace entries or exhausted resources below 50.3 million trace entries.
+Repair context needs output that can be parsed but raw slices contain output without closing brackets or declarations which cannot be parsed.For example Math raw slices contain alot of static look up initialisations. The constraint is coverage and not the size.
 
-The use of \BibTeX\ for the preparation and formatting of one's
-references is strongly recommended. Authors' names should be complete
---- use full first names (``Donald E. Knuth'') not initials
-(``D. E. Knuth'') --- and the salient identifying features of a
-reference should be included: title, year, volume, number, pages,
-article DOI, etc.
+\section{Discussion and future work}
+The 51.3 \% of runs in test\_crash without any contact can be considered a property of dynamic slicer in general and not the tool issue of Slicer4J as in backward dynamic slicing the slicer checks the what might caused to get a wrong value in from the excuted statements and not where the fault is exactly. So if the fault does not lie in the path of execution , the slicer would never reach it. As we see for Rule C the any contact is 48.7\% and 50.4 \% for Rule D in test\_crash , so the construct is structural. We see the structural reason when checking how the defects were fixed. 98.2 \% of the defects have added atleast one line , so a dynamic dependence would not reach a statements which does not exist yet. This also explains a results for patched as even when you have a seeded criterion it only reaches FULL coverage to 29.4 \% with Rule C. For the remaining the patched line are outside the dependence of the slicer. Seeing the results we believe Slicing can be a smaller part of APR as a filter as if used for context if case of dynamic slicing it has 51.3\% chance of missing the context. But with help of localisation and stack traces it can be integrated as a context in a package.
 
-The bibliography is included in your source document with these two
-commands, placed just before the \verb|\end{document}| command:
-\begin{verbatim}
-  \bibliographystyle{ACM-Reference-Format}
-  \bibliography{bibfile}
-\end{verbatim}
-where ``\verb|bibfile|'' is the name, without the ``\verb|.bib|''
-suffix, of the \BibTeX\ file.
-
-Citations and references are numbered by default. A small number of
-ACM publications have citations and references formatted in the
-``author year'' style; for these exceptions, please include this
-command in the {\bfseries preamble} (before the command
-``\verb|\begin{document}|'') of your \LaTeX\ source:
-\begin{verbatim}
-  \citestyle{acmauthoryear}
-\end{verbatim}
+Remaining work for the project is to run the pipeline on remaining projects from Defects4J to get full analysis. Also observe the effect of slicing as context for APR and analyse the results. Lastly an open question to APR of how much token usage can be reduced if slicing is used in APR context.
 
 
-  Some examples.  A paginated journal article \cite{Abril07}, an
-  enumerated journal article \cite{Cohen07}, a reference to an entire
-  issue \cite{JCohen96}, a monograph (whole book) \cite{Kosiur01}, a
-  monograph/whole book in a series (see 2a in spec. document)
-  \cite{Harel79}, a divisible-book such as an anthology or compilation
-  \cite{Editor00} followed by the same example, however we only output
-  the series if the volume number is given \cite{Editor00a} (so
-  Editor00a's series should NOT be present since it has no vol. no.),
-  a chapter in a divisible book \cite{Spector90}, a chapter in a
-  divisible book in a series \cite{Douglass98}, a multi-volume work as
-  book \cite{Knuth97}, a couple of articles in a proceedings (of a
-  conference, symposium, workshop for example) (paginated proceedings
-  article) \cite{Andler79, Hagerup1993}, a proceedings article with
-  all possible elements \cite{Smith10}, an example of an enumerated
-  proceedings article \cite{VanGundy07}, an informally published work
-  \cite{Harel78}, a couple of preprints \cite{Bornmann2019,
-    AnzarootPBM14}, a doctoral dissertation \cite{Clarkson85}, a
-  master's thesis: \cite{anisi03}, an online document / world wide web
-  resource \cite{Thornburg01, Ablamowicz07, Poker06}, a video game
-  (Case 1) \cite{Obama08} and (Case 2) \cite{Novak03} and \cite{Lee05}
-  and (Case 3) a patent \cite{JoeScientist001}, work accepted for
-  publication \cite{rous08}, 'YYYYb'-test for prolific author
-  \cite{SaeediMEJ10} and \cite{SaeediJETC10}. Other cites might
-  contain 'duplicate' DOI and URLs (some SIAM articles)
-  \cite{Kirschmer:2010:AEI:1958016.1958018}. Boris / Barbara Beeton:
-  multi-volume works as books \cite{MR781536} and \cite{MR781537}. A
-  presentation~\cite{Reiser2014}. An article under
-  review~\cite{Baggett2025}. A
-  couple of citations with DOIs:
-  \cite{2004:ITE:1009386.1010128,Kirschmer:2010:AEI:1958016.1958018}. Online
-  citations: \cite{TUGInstmem, Thornburg01, CTANacmart}.
-  Artifacts: \cite{R} and \cite{UMassCitations}.
+\section{Conclusion}
 
-\section{Acknowledgments}
+We evaluated Slicer4J \cite{Ahmed2021Slicer4J} for 282 Defects4J \cite{Just2014Defects4J} bugs (3 slicing criteria; 846 runs) achieving 80.1\% feasibility, test\_crash. On non-degenerate slices, dynamic slicing reduced modified classes by a median of 91.45\% to 94.74\% . In terms of Rule C: any contact coverage is 48.7\% across all feasible bugs, test\_crash and 77.2\% for bugs with an active application stack frame, app\_deepest.
 
-Identification of funding sources and other support, and thanks to
-individuals and groups that assisted in the research and the
-preparation of the work should be included in an acknowledgment
-section, which is placed just before the reference section in your
-document.
+Methodologically, patched criteria are circular (100.0\% any-contact by construction) and serve only as an upper-bound oracle. For Rule C, and for Rule D, sensitivity bound, any-contact coverage was steady at 72.8\% and 73.6\% respectively; FULL coverage was 24.0\% and 38.0\% respectively, and we distinguished 14 of 14 Slicer4J crashes from algorithmic limitations. Future work will include using a hybrid criterion (app\_deepest, falling back to test\_crash) and measuring reduction in LLM tokens for repair prompts.
 
-This section has a special environment:
-\begin{verbatim}
-  \begin{acks}
-  ...
-  \end{acks}
-\end{verbatim}
-so that the information contained therein can be more easily collected
-during the article metadata extraction phase, and to ensure
-consistency in the spelling of the section heading.
-
-Authors should not prepare this section as a numbered or unnumbered {\verb|\section|}; please use the ``{\verb|acks|}'' environment.
-
-\section{Appendices}
-
-If your work needs an appendix, add it before the
-``\verb|\end{document}|'' command at the conclusion of your source
-document.
-
-Start the appendix with the ``\verb|appendix|'' command:
-\begin{verbatim}
-  \appendix
-\end{verbatim}
-and note that in the appendix, sections are lettered, not
-numbered. This document has two appendices, demonstrating the section
-and subsection identification method.
-
-\section{Multi-language papers}
-
-Papers may be written in languages other than English or include
-titles, subtitles, keywords and abstracts in different languages (as a
-rule, a paper in a language other than English should include an
-English title and an English abstract).  Use \verb|language=...| for
-every language used in the paper.  The last language indicated is the
-main language of the paper.  For example, a French paper with
-additional titles and abstracts in English and German may start with
-the following command
-\begin{verbatim}
-\documentclass[sigconf, language=english, language=german,
-               language=french]{acmart}
-\end{verbatim}
-
-The title, subtitle, keywords and abstract will be typeset in the main
-language of the paper.  The commands \verb|\translatedXXX|, \verb|XXX|
-begin title, subtitle and keywords, can be used to set these elements
-in the other languages.  The environment \verb|translatedabstract| is
-used to set the translation of the abstract.  These commands and
-environment have a mandatory first argument: the language of the
-second argument.  See \verb|sample-sigconf-i13n.tex| file for examples
-of their usage.
-
-%%
-%% The acknowledgments section is defined using the "acks" environment
-%% (and NOT an unnumbered section). This ensures the proper
-%% identification of the section in the article metadata, and the
-%% consistent spelling of the heading.
-\begin{acks}
-To Robert, for the bagels and explaining CMYK and color spaces.
-\end{acks}
-
-
-\section*{Ethics and Privacy Statement}
-
-This section of your ACM work should discuss the potential societal
-risks that might result from its publication; two to three sentences
-related to the findings of your study, or new advancements made
-possible by their developed methods. The privacy and ethics statement
-should clearly address the broader impacts of their work as it relates
-to the authors' interpretation of privacy, fairness, safety, human
-rights, data sovereignty, or future misuse and any benefit/risk
-trade-off resulting from this research. We acknowledge that some
-papers may have minimal societal risks beyond those considered by
-institutional review boards, and the dimensions considered by any
-review of the user study design or dataset licenses could be provided
-in this statement.
-
-%%
-%% The next two lines define the bibliography style to be used, and
-%% the bibliography file.
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{sample-base}
-
-
-%%
-%% If your work has an appendix, this is the place to put it.
-\appendix
-
-\section{Research Methods}
-
-\subsection{Part One}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-malesuada, quam in pulvinar varius, metus nunc fermentum urna, id
-sollicitudin purus odio sit amet enim. Aliquam ullamcorper eu ipsum
-vel mollis. Curabitur quis dictum nisl. Phasellus vel semper risus, et
-lacinia dolor. Integer ultricies commodo sem nec semper.
-
-\subsection{Part Two}
-
-Etiam commodo feugiat nisl pulvinar pellentesque. Etiam auctor sodales
-ligula, non varius nibh pulvinar semper. Suspendisse nec lectus non
-ipsum convallis congue hendrerit vitae sapien. Donec at laoreet
-eros. Vivamus non purus placerat, scelerisque diam eu, cursus
-ante. Etiam aliquam tortor auctor efficitur mattis.
-
-\section{Online Resources}
-
-Nam id fermentum dui. Suspendisse sagittis tortor a nulla mollis, in
-pulvinar ex pretium. Sed interdum orci quis metus euismod, et sagittis
-enim maximus. Vestibulum gravida massa ut felis suscipit
-congue. Quisque mattis elit a risus ultrices commodo venenatis eget
-dui. Etiam sagittis eleifend elementum.
-
-Nam interdum magna at lectus dignissim, ac dignissim lorem
-rhoncus. Maecenas eu arcu ac neque placerat aliquam. Nunc pulvinar
-massa et mattis lacinia.
 
 \end{document}
 \endinput
