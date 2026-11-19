@@ -295,7 +295,7 @@ We start the results by looking at table 4.1 to see the distribution of successu
 Table 4.2 shows the runs by status where all the non-ok runs are structurally explainable. Out of 354 non-ok runs, 348 are majorly divided into five mechanisms. 187 of runs had no criterion from which 178 failing stacktraces had no application frame because assertion failure happen inside JUnit framework rather than the code. 54 of the runs resolve a criterion line which is never executed by the failing test case. 54 of the runs exceeded the slicing budget of 1200 secs and 27 of the runs exceeded the tracing budget of 1800 secs leading to run failure.26 runs produced an empty slice. Lastly the remaining 6 are infrastructure rather than method as three defects did not reproduce and three failed every test in their suite. 
 
 \begin{table}[htbp]
-  \caption{Run status counts by slicing criterion}
+  \caption{Table 4.2 -- Run status counts by slicing criterion}
   \label{tab:runs_by_status}
   \small
   \setlength{\tabcolsep}{3pt}
