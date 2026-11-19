@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex sigconf"] 1795082507.43531 "sigconf.aux" "sigconf.bbl" "sigconf" 1795082631.41591 0
+["bibtex sigconf"] 1795082507.43531 "sigconf.aux" "sigconf.bbl" "sigconf" 1795083525.3655 0
   "./ACM-Reference-Format.bst" 1795078695.47592 93560 7091f2b0543d2c8bfe2e82ce5d54a029 ""
   "./sample-base.bib" 1795078695.47992 56124 d733654cf718603e56693a2910a00d8d ""
-  "sigconf.aux" 1795082631.21356 6533 e3e570763ea3c9c04ca98574d0d6ccd9 "pdflatex"
+  "sigconf.aux" 1795083525.19582 6533 e3e570763ea3c9c04ca98574d0d6ccd9 "pdflatex"
   (generated)
   "sigconf.bbl"
   "sigconf.blg"
   (rewritten before read)
-["pdflatex"] 1795082629.86075 "sigconf.tex" "sigconf.pdf" "sigconf" 1795082631.41637 2
+["pdflatex"] 1795083523.80893 "sigconf.tex" "sigconf.pdf" "sigconf" 1795083525.36571 2
   "/etc/texmf/web2c/texmf.cnf" 1789750248.98593 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/akash/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0700.600pk" 1795081428.18191 8244 094dcad34b3cae0cbe008da12b43a29f ""
   "/home/akash/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm0900.600pk" 1795081428.89491 10448 725be3ae8f804e2fb85d3cb86d5a5202 ""
@@ -45,6 +45,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm" 1136768653 1116 25a7bf822c58caf309a702ef79f4afbb ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti7.tfm" 1136768653 1492 86331993fe614793f5e7e755835c31c5 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmti8.tfm" 1136768653 1504 1747189e0441d1c18f3ea56fafc1c480 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt9.tfm" 1136768653 764 c98a2af25c99b73a368cf7336e255190 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1248133631 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb" 1248133631 32166 b0c356b15f19587482a9217ce1d8fa67 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb" 1248133631 32298 c6d25bb16d1eac01ebdc6d7084126a1e ""
@@ -62,6 +63,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb" 1248133631 32442 c975af247b6702f7ca0c299af3616b80 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb" 1248133631 36607 d654cb3f2bc54f57509240071db3bffa ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb" 1248133631 35660 fb24af7afbadb71801619f1415838111 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb" 1248133631 29078 718ea4567ceff944262b0f5b0800e1d9 ""
   "/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texlive/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
   "/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty" 1576625341 40635 c40361e206be584d448876bba8a64a3b ""
@@ -106,6 +108,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty" 1696191071 72619 ee90b6612147680fd73c3b1406a74245 ""
   "/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty" 1612650595 3574 ddc11a0ae1c579d351ed20d2319ad422 ""
   "/usr/share/texlive/texmf-dist/tex/latex/cmap/ot1.cmap" 1177721415 1207 4e0d96772f0d338847cbfb4eca683c81 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/cmap/ot1tt.cmap" 1177721415 1042 d29c31159efa3b313221f4f0459df060 ""
   "/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty" 1472166125 10197 204f75d5d8d88aa345a8c402e879e63b ""
   "/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty" 1399239813 4378 f429f0da968c278653359293040a8f52 ""
   "/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
@@ -164,10 +167,10 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1789750273 6800787 0ecb45bb419c0d79157e6101c874b338 ""
   "acmart.cls" 1795082625.55058 121743 b5792d70fdf15cca7d1a7fdff16de3ca ""
   "fig3_slice_vs_class.png" 1795078695.47892 124384 9ead896053f411b216739bbe885cdbb5 ""
-  "sigconf.aux" 1795082631.21356 6533 e3e570763ea3c9c04ca98574d0d6ccd9 "pdflatex"
+  "sigconf.aux" 1795083525.19582 6533 e3e570763ea3c9c04ca98574d0d6ccd9 "pdflatex"
   "sigconf.bbl" 1795082507.46393 11991 33f19782308d8e0dca51d6dc7a90f16f "bibtex sigconf"
-  "sigconf.out" 1795082631.21456 3856 02d2abf78a6138398971dafeec051f57 "pdflatex"
-  "sigconf.tex" 1795082498.37396 37706 463f3ff344bd956c3a111409889c285c ""
+  "sigconf.out" 1795083525.19682 3856 02d2abf78a6138398971dafeec051f57 "pdflatex"
+  "sigconf.tex" 1795083519.62584 37717 986177c4f0136512f2439b472b5684cb ""
   (generated)
   "sigconf.aux"
   "sigconf.log"
