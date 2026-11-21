@@ -46,6 +46,8 @@
 %%
 \documentclass[sigconf]{acmart}
 \microtypesetup{expansion=false}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
 %%
 %% \BibTeX command to typeset BibTeX logo in the docs
 \AtBeginDocument{%
@@ -192,66 +194,86 @@ Partitioning can be employed to write source code with characteristics of automa
 
 \section{Methodology}
 
+Our aim was to determine if slicing could provide sufficiently concise fault-related traces to support automatic repair. Our empirical study thus addressed: 1) the practicality of current slicing technology, 2) the slicing criteria to apply to each failure trace and 3) the basis for comparing slices to the `true' developer patches. As slicing from a static dependence structure would incur no tracing overhead, we first sought to identify any suitable off-the-shelf solutions operating at Defects4J scale (Section 3.1). Having found none, we implemented a 6-step dynamic slicing workflow centred on the Slicer4J tool \cite{Ahmed2021Slicer4J} (Section 3.2). The 3 slicing criteria applied to each failure are detailed in Section 3.3. In Section 3.4 we describe how we anchor the true faults in developer patches to enable omission-fault comparisons, and finally in Section 3.5 we summarise the key measures and associated statistics applied to address RQ1--RQ3.
+
 \subsection{Static Slicer Evaluation}
-We tested three static analysis tools on Defects4J: Java SDG Slicer, JOANA, and a prototype Soot SDG slice analysis tool. None of these tools could produce slices at the benchmark scale, so we report this as a negative feasibility result. Four main obstacles stopped us from computing slices. First, we hit call-graph blowups from JDK and reflection calls, as well as unmodeled exception control-flow. Second, we ran into parsing and building failures (generic local declarations in Java SDG Slicer and an offline dependency in JOANA) and heap exhaustion on recursive types.
+
+We trialled 3 tools: Java SDG Slicer, JOANA and a home-made Soot-based SDG slicer. None succeeded in generating slices for the Defects4J benchmark dataset and we conclude that these approaches are not currently viable. We encountered 4 broad categories of issues preventing slice generation. (i) Call graphs grew too large when resolving invocations through the standard JDK and reflective APIs. (ii) Failures thrown by library code and caught by application code meant we could not model the relevant cross-method dependencies due to lack of exception support. (iii) Tools failed to parse or compile one or more Defects4J projects (e.g.\ many generic local vars in Java SDG Slicer, one missing transitive dependency for JOANA). (iv) Modelling objects recursively led to the 24GB limit being reached during static analysis. All of these issues can be avoided by limiting slicing to the concrete execution history witnessed under a single failing test case.
 
 \subsection{Benchmark and Single-Trace Pipeline}
-We evaluated 282 bugs across 5 Defects4J 2.0.0 projects \cite{Just2014Defects4J}: Chart (26), Cli (39), Compress (47), Lang (64), and Math (106). Running 3 criteria per bug gave us 846 bug--criterion runs in total. We used Slicer4J \cite{Ahmed2021Slicer4J} (commit 68f415a) for our process, which is a Soot-based backward dynamic bytecode slicer. The original Slicer4J study only tested micro-benchmarks and 3 Defects4J bugs from other projects.
 
-There are six stages in our pipeline. In stages (1) to (3), we check out the bug and reproduce it in an isolated workspace to verify the failing stack trace, package the application and test classes in the same JAR while keeping non-class resources on the classpath, and instrument the code to lift the bytecode to Jimple IR and inject logging probes (using taint summaries for uninstrumented JDK methods). In stages (4) to (6), we run the trigger test case and capture the trace to validate the presence of the trigger test method, compare the buggy and fixed implementation classes to derive executable statements (Section 3.4), and slice the dynamic dependence graph in reverse order based on each criterion. We post-process the slicing output into unique (class, line) pairs to eliminate redundancy. Because instrumentation and tracing do not depend on the criterion, we slice each trace three times (median time per criterion: 9 seconds).
+The benchmark consisted of 282 Defects4J bugs distributed over 5 projects \cite{Just2014Defects4J}: Chart, Cli, Compress, Lang and Math, with 26, 39, 47, 64 and 106 bugs respectively. We chose these 5 as they cover a wide range of software tasks, and had been configured using plain Ant/Maven so that all bugs were readily instrumentable and runnable under Java 8. The combination yielded 282 `live' bugs. With 3 criteria applied to each, we conducted 846 individual slicing experiments. We employed Slicer4J (v68f415a), a dynamic backward-slicing tool that operates on instrumented Soot-generated Jimple. Slicer4J was previously benchmarked on a collection of small examples and 3 Defects4J bugs (not included here). We instead ran the tool on all 5 Defects4J projects, sharing a single VM (Intel Xeon Gold 6230 @ 2.10GHz, 31GB, Ubuntu 24.04.5, OpenJDK 1.8.0\_504) and dedicating 1 core per experiment with 24GB heap.
 
-During 14 runs across 6 bugs (Compress 21; Math 7, 39, 43, 44, 74), stock Slicer4J threw a null-pointer exception in DynamicHeapAnalysis.getAp after constructing the graph. Adding a one-line null guard recovered all 14 runs (11 produced slices, 3 timed out). We saved the tool logs for the stock implementation separately (stock logs: 478 OK, 40 empty, 51 timeouts; patched logs: 492 OK, 26 empty, 54 timeouts). Out of the 11 recovered slices, 8 achieved fault contact.
+\begin{figure*}[t]
+  \centering
+  \begin{tikzpicture}[
+    node distance=0.45cm,
+    stage/.style={
+      rectangle, rounded corners=2pt, draw=black!80, thick,
+      fill=black!3, text width=2.45cm, minimum height=1.55cm,
+      align=center, font=\footnotesize\sffamily, inner sep=3pt
+    },
+    arrow/.style={-{Stealth[length=2.2mm,width=1.6mm]}, thick, draw=black!80}
+  ]
+    \node[stage] (s1) {\textbf{(1) Checkout \&}\\\textbf{Reproduce}\\Clone buggy rev,\\verify trigger stack\\{\scriptsize (600s / 900s)}};
+    \node[stage, right=of s1] (s2) {\textbf{(2) Resource-Safe}\\\textbf{JAR Build}\\Pack \texttt{.class} files;\\keep resources ext.};
+    \node[stage, right=of s2] (s3) {\textbf{(3) Soot Jimple}\\\textbf{Instrumentation}\\Inject trace probes\\+ JDK summaries\\{\scriptsize (max 1200s)}};
+    \node[stage, right=of s3] (s4) {\textbf{(4) Single-Trace}\\\textbf{Capture}\\Run JUnitCore $\rightarrow$\\$N_{\text{exec}}$ trace events\\{\scriptsize (max 1800s)}};
+    \node[stage, right=of s4] (s5) {\textbf{(5) Ground-Truth}\\\textbf{Anchoring}\\Diff patch $\rightarrow M$;\\Rules C/D $\rightarrow G$};
+    \node[stage, right=of s5, fill=black!8] (s6) {\textbf{(6) Backward}\\\textbf{Slicing ($\times 3$)}\\Slice per criterion $c$\\$\rightarrow$ deduplicated $S$\\{\scriptsize (max 1200s / $c$)}};
+
+    \draw[arrow] (s1) -- (s2);
+    \draw[arrow] (s2) -- (s3);
+    \draw[arrow] (s3) -- (s4);
+    \draw[arrow] (s4) -- (s5);
+    \draw[arrow] (s5) -- (s6);
+
+    \draw[thick, dashed, draw=black!55, rounded corners=3pt]
+      ($(s1.north west)+(-0.15,0.42)$) rectangle ($(s5.south east)+(0.15,-0.15)$);
+    \node[font=\scriptsize\sffamily\itshape, text=black!75, anchor=south]
+      at ($(s3.north)+(0,0.08)$) {Criterion-independent setup \& single-trace capture (executed once per bug)};
+  \end{tikzpicture}
+  \caption{Six-step dynamic slicing and evaluation workflow per Defects4J bug. Steps (1)--(5) run once per bug to produce the execution trace ($N_{\text{exec}}$), executable modified-class statements ($M$) and anchored ground-truth fault loci ($G$); Step (6) re-slices the same trace for each criterion $c \in \{\texttt{test\_crash}, \texttt{app\_deepest}, \texttt{patched}\}$.}
+  \Description{Flowchart of the six-step dynamic slicing workflow: (1) Checkout and Reproduce, (2) Resource-Safe JAR Build, (3) Soot Jimple Instrumentation, (4) Single-Trace Capture, (5) Ground-Truth Anchoring, and (6) Backward Slicing across three criteria.}
+  \label{fig:pipeline}
+\end{figure*}
+
+As shown in Figure~\ref{fig:pipeline}, the workflow comprises 6 steps. Steps (1)--(3) involved cloning the defective commit to a private directory, executing the test suite to confirm the relevant test case failed and left a stack trace (max 600s to clone, 900s to build+run tests). The resulting artifact(s) were then assembled into one JAR file (leaving other resources on the user's classpath to avoid issues with resource URIs), and the Java code instrumented to promote each class to the Soot meta-model and insert logging hooks to construct a per-statement failure trace (max 1200s). Note that we approximated the behaviour of JDK libraries that were not instrumented using hand-written flow summaries. Steps (4)--(6) saw us invoke the triggering test using JUnitCore to produce the initial failure trace (max 1800s) containing $N_{\text{exec}}$ executed statements, and ensure that the triggering test was logged. Next we computed the diff between the original and developer-patched class to identify the buggy statements $M$, and their corresponding anchored true faults $G$ (see Section 3.4). Finally, for each slicing criterion $c$, we performed backward dynamic slicing (max 1200s) and converted the result to a canonical list of distinct \texttt{Class:line}s (i.e.\ removing duplicate entries arising from loop iterations etc.). As steps (1)--(5) are independent of $c$, we executed the trace once per bug and re-sliced it for each criterion.
+
+A further issue arose when using the original Slicer4J release, whereby it raised a \texttt{NullPointerException} in the \texttt{getAp()} call of \texttt{DynamicHeapAnalysis} if a heap read occurred in the trace prior to any writes to the associated variable. Rather than allow this bug in the slicing tool to bias our results, we inserted a simple null-check and preserved the unmodified Slicer4J output for reference in Sec.\ 4.
 
 \subsection{Slicing Criteria}
-We evaluate three criteria per trace:
+
+Once the dynamic dependence structure has been established, a slice will be determined by the slicing criterion $c=(\text{Class}, \text{line})$ used to initiate the process. We considered the following 3 criteria:
+
 \begin{itemize}
-    \item \textbf{test\_crash (273/282 bugs):} the shallowest frame in the test code, typically the failed assertion.
-    \item \textbf{app\_deepest (104/282 bugs):} the deepest application frame in the stack trace. In the other 178 bugs, the faulty method returned before the assertion failed, leaving no application frame on the stack.
-    \item \textbf{patched (282/282 bugs):} the first modified code line (or its omission anchor). Because slices always contain their own starting criterion, patched guarantees 100\% any-contact coverage. We only use it as an upper-bound oracle and grading check.
+    \item \textbf{test\_crash:} For 273 out of 282 bugs, we took the test-case entry-point (shallowest element of the failure trace) as the criterion. Almost universally this corresponded to the relevant JUnit check. On the remaining 9 cases, we were unable to locate a line belonging to a test class in the failure stack trace, or the error was triggered prior to running the test suite. This is the most natural criterion for a fully-automated repair system to adopt given the information available upon detecting a test failure.
+    \item \textbf{app\_deepest:} Where the failure stack trace included a (deeply-nested) frame belonging to the target application, i.e.\ in cases where an exception escaped the app and was picked up by the test harness, we used the deepest such frame (104 out of 282 bugs). For the rest, the buggy method simply returned an incorrect result which subsequently triggered the JUnit failure.
+    \item \textbf{patched:} As described in Section 3.4, we identified the set of true faults $G$ for each bug, and used the earliest (by line number) statement in $G$ as the criterion. The Slicer4J interface does not permit specifying multiple criteria, so we adopted this convention to ensure consistency. Importantly, since any slice must include its initiating criterion, using the \texttt{patched} criterion ensures that the resulting slice will always have non-empty intersection with $G$ (i.e.\ achieve 100\% any-contact coverage), provided the criterion is itself executed. Of course, a repair tool would not know the true faults in advance and hence cannot make use of this criterion, but we use it as an idealised ceiling and to validate the integrity of our workflow.
 \end{itemize}
 
-We separate test and application frames based on source-root location on disk, and not class-name (which fails when a test class inherits a helper method from an abstract test superclass).
+As a running example, consider Lang \#1 (\texttt{NumberUtilsTest::\-TestLang747}), in which \texttt{NumberUtils.\allowbreak createNumber("0x80000000")} raises a \texttt{Number\-Format\-Exception} during the \texttt{createInteger(...)} call. \texttt{test\_crash}, \texttt{app\_deepest} and \texttt{patched} would therefore yield slices initiated from lines 256 (\texttt{NumberUtilsTest}), 684 (\texttt{NumberUtils}) and 467 (\texttt{NumberUtils}), respectively. We distinguished test and app frames by inspecting the directory hierarchy of the source file corresponding to the top-level class of the frame, rather than relying on class names, to avoid incorrectly treating overridden methods defined in a common super-test class as part of the app.
 
 \subsection{Ground-Truth Omission Anchoring}
 
-We diff the buggy and fixed versions of the modified class and remove non-executable lines (imports, comments, annotations, declarations, lone braces). Following previous work \cite{Sobreira2018Dissection, Pearson2017Evaluating, Reis2019Demystifying}, we categorize the 226 feasible bugs (out of 271 classifiable bugs overall) into DELETED (3 bugs, 1.3\%), ADDITIVE (63 bugs, 27.9\%), and MIXED (160 bugs, 70.8\%).
+We derived the ground-truth set $G$ from the unified diff between the original and patched class. Specifically, we reduced the patch to the set $M$ of executable statements in the modified class. Any statements that did not emit any Jimple code (i.e.\ imports, class and method headers, comments, blank lines, annotations, empty \texttt{\}} blocks) would not be exercised during the execution trace and were discarded. This was important for the Cli dataset, where without filtering 4 of the \texttt{patched} criteria were applied to non-executable lines. The balance of changes fell into one of three categories: (i) a \texttt{DELETED} locus, corresponding to an original buggy statement in $M$ that was altered or dropped; or (ii) an \texttt{INSERT\_AT} locus, i.e.\ a new statement(s) appended at some line $l$ with no corresponding buggy line deleted; or (iii) a combination of the above. In line with existing work analysing the Defects4J patch corpus \cite{Pearson2017Evaluating, Reis2019Demystifying, Sobreira2018Dissection}, we found that 226 of the 271 `feasible' bugs could be classified as \texttt{DELETED} ($n=3$, 1.3\%), \texttt{ADDITIVE} ($n=63$, 27.9\%) or \texttt{MIXED} ($n=160$, 70.8\%).
 
-Our dataset consists of 1,555 insertion loci. Since missing lines do not exist in buggy programs \cite{Reis2019Demystifying}, we anchor each insertion locus to a nearby executable statement:
+Consequently, 98.7\% of feasible bugs comprised insertive-only or mixed changes, introducing 1,555 \texttt{INSERT\_AT} loci across the 271 bugs. As noted above, we need to relate omission-faults to the original defective program. Evidently no slice can contain the missing lines themselves. For each \texttt{INSERT\_AT} locus $l_i$, we therefore constructed a neighbourhood set $A(l_i)$ of one or more adjacent executable lines in the defective code (with $A(l_i)=\{l_i\}$ if $l_i$ was \texttt{DELETED}), and deemed the locus satisfied if the corresponding slice $S$ included at least one element of $A(l_i)$. Given that there is no obvious proxy for the `missing' lines to assess this property against, we considered 2 complementary rules:
+
 \begin{itemize}
-    \item \textbf{Rejected rules:} Rule A scans forward without bounds and crosses method/class boundaries to declaration statements that do not execute\\
-(\texttt{CRITERION\_NOT\_EXECUTED}). Rule B takes the insertion statement or the preceding statement, which failed on multi-line comment blocks (Lang 45).
-    \item \textbf{Rule C (primary):} We scan forward to the end of the current method (stopping at declarations), and fall back to the nearest preceding executable statement in the same method. Across 1,555 loci, 1,135 have valid in-scope statements in both directions, 131 forward-only, and 259 backward-only. Only 23 used an unbounded fallback and 7 could not be anchored. Rules A and C agree on 158/221 bugs and disagree on 63. Switching to Rule C shifted the first locus on 19 bugs, which we re-sliced for patched.
-    \item \textbf{Rule D (sensitivity bound):} Anchoring to the nearest executable statements before and after in the current method is allowed. Because Rule D is a superset of Rule C, pooled FULL coverage increases from 24.0\% to 38.0\% (1/12 hits for Rule C is counted as 12/12 for Rule D), and any-contact coverage stays nearly unchanged (72.8\% vs. 73.6\%).
+    \item \textbf{Rule C:} Scanning forward along the sequence of executable lines within the method containing $l_i$ (but not beyond the next class- or field-level declaration), we let $A_C(l_i)$ comprise the closest such line $f$ (or later) with $f \ge l_i$. Restricting the search to the immediate method was required, as extending it to subsequent methods resulted in 63 of the 221 feasible bugs being assigned a different (earlier) first \texttt{PATCHED} locus. Failing to find any eligible lines in the forward direction, we instead identified the latest line $b$ preceding $l_i$ within the same method and set $A_C(l_i)=\{b\}$. Under Rule C, we found that 1,135, 131, 259, 23 and 7 of the 1,555 \texttt{INSERT\_AT} loci had respectively: a forward and backward line; only a forward line; only a backward line; needed an external-method fallback; or could not be resolved.
+    \item \textbf{Rule D:} If both a preceding and following line existed within the relevant method, we took $A_D(l_i)=\{b,f\}$ and marked the locus as satisfied if either $b$ or $f$ appeared in $S$. Clearly $A_C(l_i) \subseteq A_D(l_i)$ for all $l_i$, implying that the maximum possible coverage achievable under Rule D is at least as high as under Rule C. Consider for example Cli \#3, in which the developer introduced 11 consecutive lines following the call to \texttt{NumberUtils.createNumber(str)} (line 162) and preceding the statement ``\texttt{return null;}'' (line 169). Upon the exception being handled, line 162 was executed but 169 was not, so all 11 \texttt{INSERT\_AT} loci were anchored to 169 under Rule C. However, under Rule D, all 11 loci were also satisfied by virtue of 162 being included in the slice. Accordingly, the aggregate proportion of \texttt{FULL} bugs increased from 24.0\% to 38.0\%, although the fraction achieving \texttt{ANY CONTACT} remained unchanged at 72.8\%/73.6\%.
 \end{itemize}
 
-\subsection{Pipeline Defects}
-
-During setup we resolved seven pipeline defects (see Table 3.1). These defect resolutions pertain to packaging, verification, attribution and grading at different stages of the pipeline, and are different from the getAp crash in Slicer4J (described in section 3.2).
-
-\begin{table*}[htbp]
-  \caption{Table 3.1: Pipeline defects resolved during setup.}
-  \label{tab:pipeline_defects}
-  \begin{tabular}{llp{0.62\textwidth}}
-    \toprule
-    Stage & Defect & Resolution and measured effect \\
-    \midrule
-    JAR build & Fat-JAR resource coupling & Bundling non-.class resources into the application JAR made getResource().toURI() throw, breaking 13 Compress bugs; we keep resources on the test classpath. \\
-    Verification & Trigger-test identity & Exception string matching mislabels reproductions; our harness checks for the trigger test method name in the trace. \\
-    Frame split & Frame attribution & Name-based splitting misassigned inherited helper frames; we classify frames by source-root membership. \\
-    Ground truth & Non-executable lines & Non-executable lines inflate the locus set; filtering raised Cli patched OK from 26 to 30 and FULL from 14 to 18. \\
-    Trace dedup & Repeated trace statements & Raw traces repeat executed lines; we deduplicate slices into unique (class, line) pairs. \\
-    Degenerate & Degenerate slices & Slices missing the modified class score 100\% reduction by arithmetic; we compute reduction on non-degenerate runs only (test\_crash: 96.59\% $\rightarrow$ 94.74\%). \\
-    Criteria & First-locus seeding & Unbounded first loci land on declarations; we seed criteria from Rule C and re-seeded 19 bugs. \\
-    \bottomrule
-  \end{tabular}
-\end{table*}
-
 \subsection{Metrics and Statistical Protocol}
-Fault Coverage: For slice $S$ and ground truth set $G$, any-contact fault coverage is held if $S \cap G \neq \emptyset$, FULL fault coverage is held if $G \subseteq S$, and statement-level recall is $|S \cap G| / |G|$. We report any-contact fault coverage as our primary metric, and bounds [C, D] where C is the lower bound, and D is the upper bound.
 
-Reduction: For executable statements $M$ of the modified class and $S_M = S \cap M$, class reduction is $1 - |S_M| / |M|$. Reduction is computed over non-degenerate slices ($|S_M| > 0$) so that localization misses ($|S_M| = 0$) do not score 100\% reduction. We report degenerate rates separately (the patched criterion has no degenerate slices).
+Let $S$ denote the set of unique $(\text{Class}, \text{line})$ source lines in a completed slice, $M$ denote the set of executable source lines in the developer-modified class and $G = \{A(l_1), \dots, A(l_k)\}$ denote the set of $k$ anchored ground-truth fault loci for a bug.
 
-We report medians, IQRs, and 95\% Wilson confidence intervals \cite{Wohlin2012Experimentation}. We compare criteria using paired two-sided Wilcoxon signed-rank tests with Holm correction ($m = 3$) and Cliff's $\delta$ \cite{Romano2006Appropriate}, and use Spearman's $\rho$ for correlations. We report setup, instrumentation, and slicing times, and omit trace time due to instrumentation timer skew \cite{Wohlin2012Experimentation}.
+\textbf{Fault coverage (RQ1).} Let $G_{\text{hit}}$ be the subset of ground-truth fault loci in $G$ touched by the slice $S$ (that is, loci where $S$ and $A(l_i)$ overlap). We define 2 bug-level coverage predicates and 1 statement-level ratio: any-contact coverage holds when $|G_{\text{hit}}| \ge 1$ (at least one fault locus is retained), full coverage (\texttt{FULL}) holds when $|G_{\text{hit}}| = |G|$ (every fault locus is retained) and partial coverage (\texttt{PARTIAL}) holds when $1 \le |G_{\text{hit}}| < |G|$ (with \texttt{NONE} when $|G_{\text{hit}}| = 0$). Statement-level recall is $|G_{\text{hit}}| / |G|$. We report any-contact coverage alongside \texttt{FULL} coverage for two reasons: first, in a two-stage repair pipeline, hitting at least one fault locus allows a syntax-guided window extractor (such as the enclosing method or AST block) to recover surrounding lines, whereas a slice with zero fault contact (\texttt{NONE}) causes a complete localisation miss; second, as shown in Section 3.4, any-contact coverage is invariant to whether omission faults are anchored via Rule C or Rule D. We report all coverage metrics under Rule C as primary values alongside the sensitivity range $[\text{Rule C}, \text{Rule D}]$ across the two anchoring rules.
+
+\textbf{Code reduction and degeneracy (RQ2).} Let $S_M = S \cap M$ denote the subset of sliced lines that belong to the developer-modified class. While the total slice size $|S|$ can exceed $|M|$ on interprocedural slices that pull in statements from helper classes across the project, $S_M$ is strictly bounded by $M$ ($0 \le |S_M| \le |M|$). We define modified-class code reduction as $R_{\text{class}} = 1 - |S_M| / |M|$ and trace-level reduction against the $N_{\text{exec}}$ distinct executed source lines as $R_{\text{exec}} = 1 - |S| / N_{\text{exec}}$. We distinguish two ways a slice can fail to isolate the defect in the modified class: a slice is degenerate when $|S_M| = 0$ (the backward traversal never enters the modified class at all), and a non-degenerate slice ($|S_M| > 0$) still suffers a fault-contact miss (\texttt{NONE}) if it visits only fault-irrelevant lines in $M$ ($|G_{\text{hit}}| = 0$). Because a degenerate slice with $|S_M| = 0$ yields $R_{\text{class}} = 100\%$ by arithmetic while providing zero lines from the faulty class, we compute $R_{\text{class}}$ strictly over non-degenerate runs ($|S_M| > 0$, changing median \texttt{test\_crash} reduction from 96.59\% to 94.74\%) and report the degenerate rate separately as a class-reachability failure metric.
+
+\textbf{Statistical protocol and execution cost (RQ3).} Because slice sizes and trace lengths span several orders of magnitude and are right-skewed, we report medians, interquartile ranges (Q1--Q3), minimum--maximum ranges and outlier counts \cite{Wohlin2012Experimentation}, accompanied by 95\% Wilson score confidence intervals for binomial proportions. To evaluate criterion sensitivity on slice size without confounding from differing bug populations, we run paired two-sided Wilcoxon signed-rank tests restricted to the common subsets of bugs where both compared criteria produced a slice, applying the Holm step-down Bonferroni correction across the $m = 3$ pairwise comparisons and quantifying effect size via Cliff's $\delta$ using standard magnitude thresholds ($|\delta| < 0.147$ negligible, $< 0.33$ small, $< 0.474$ medium, $\ge 0.474$ large) \cite{Romano2006Appropriate}. We measure monotonic associations between host class size $|M|$, trace length $N_{\text{exec}}$, slice size $|S|$ and slicing duration using Spearman's rank correlation $\rho$. For RQ3, we record wall-clock setup time, Soot bytecode instrumentation time and per-criterion backward slicing time, plus raw trace length $N_{\text{exec}}$ and on-disk dependence graph size; we omit instrumented test execution time ($t_{\text{trace}}$) because probe logging skewed the internal timer and recorded zero durations on runs that hit the 1800~s trace timeout \cite{Wohlin2012Experimentation}.
 
 
 \section{Results and Analysis}
