@@ -202,7 +202,7 @@ We trialled 3 tools: Java SDG Slicer, JOANA and a home-made Soot-based SDG slice
 
 \subsection{Benchmark and Single-Trace Pipeline}
 
-The benchmark consisted of 282 Defects4J bugs distributed over 5 projects \cite{Just2014Defects4J}: Chart, Cli, Compress, Lang and Math, with 26, 39, 47, 64 and 106 bugs respectively. We chose these 5 as they cover a wide range of software tasks, and had been configured using plain Ant/Maven so that all bugs were readily instrumentable and runnable under Java 8. The combination yielded 282 `live' bugs. With 3 criteria applied to each, we conducted 846 individual slicing experiments. We employed Slicer4J (v68f415a), a dynamic backward-slicing tool that operates on instrumented Soot-generated Jimple. Slicer4J was previously benchmarked on a collection of small examples and 3 Defects4J bugs (not included here). We instead ran the tool on all 5 Defects4J projects, sharing a single VM (Intel Xeon Gold 6230 @ 2.10GHz, 31GB, Ubuntu 24.04.5, OpenJDK 1.8.0\_504) and dedicating 1 core per experiment with 24GB heap.
+The benchmark consisted of 282 Defects4J bugs distributed over 5 projects \cite{Just2014Defects4J}: Chart, Cli, Compress, Lang and Math, with 26, 39, 47, 64 and 106 bugs respectively. We chose these 5 as they cover a wide range of software tasks, and had been configured using plain Ant/Maven so that all bugs were readily instrumentable and runnable under Java 8. The combination yielded 282 `live' bugs. With 3 criteria applied to each, we conducted 846 individual slicing experiments. We employed Slicer4J (v68f415a), a dynamic backward-slicing tool that operates on instrumented Soot-generated Jimple. Slicer4J was previously benchmarked on a collection of small examples and 3 Defects4J bugs (not included here). We instead ran the tool on all 5 Defects4J projects, sharing a single VM (Intel Xeon Gold 6230 @ 2.10GHz, 31GB, Ubuntu 24.04.5, OpenJDK 1.8.0\_512) and dedicating 1 core per experiment with 24GB heap.
 
 \begin{figure*}[t]
   \centering
@@ -215,12 +215,12 @@ The benchmark consisted of 282 Defects4J bugs distributed over 5 projects \cite{
     },
     arrow/.style={-{Stealth[length=2.2mm,width=1.6mm]}, thick, draw=black!80}
   ]
-    \node[stage] (s1) {\textbf{(1) Checkout \&}\\\textbf{Reproduce}\\Clone buggy rev,\\verify trigger stack\\{\scriptsize (600s / 900s)}};
+    \node[stage] (s1) {\textbf{(1) Checkout \&}\\\textbf{Reproduce}\\Clone buggy rev,\\verify trigger stack};
     \node[stage, right=of s1] (s2) {\textbf{(2) Resource-Safe}\\\textbf{JAR Build}\\Pack \texttt{.class} files;\\keep resources ext.};
-    \node[stage, right=of s2] (s3) {\textbf{(3) Soot Jimple}\\\textbf{Instrumentation}\\Inject trace probes\\+ JDK summaries\\{\scriptsize (max 1200s)}};
-    \node[stage, right=of s3] (s4) {\textbf{(4) Single-Trace}\\\textbf{Capture}\\Run JUnitCore $\rightarrow$\\$N_{\text{exec}}$ trace events\\{\scriptsize (max 1800s)}};
-    \node[stage, right=of s4] (s5) {\textbf{(5) Ground-Truth}\\\textbf{Anchoring}\\Diff patch $\rightarrow M$;\\Rules C/D $\rightarrow G$};
-    \node[stage, right=of s5, fill=black!8] (s6) {\textbf{(6) Backward}\\\textbf{Slicing ($\times 3$)}\\Slice per criterion $c$\\$\rightarrow$ deduplicated $S$\\{\scriptsize (max 1200s / $c$)}};
+    \node[stage, right=of s2] (s3) {\textbf{(3) Soot Jimple}\\\textbf{Instrumentation}\\Inject trace probes\\+ JDK summaries};
+    \node[stage, right=of s3] (s4) {\textbf{(4) Single-Trace}\\\textbf{Capture}\\Run JUnitCore $\rightarrow$\\$N_{\text{exec}}$ trace events};
+    \node[stage, right=of s4] (s5) {\textbf{(5) Ground-Truth}\\\textbf{Anchoring}\\Diff patch $\rightarrow M$;\\Rule C $\rightarrow G$};
+    \node[stage, right=of s5, fill=black!8] (s6) {\textbf{(6) Backward}\\\textbf{Slicing ($\times 3$)}\\Resolve $c \in \text{trace}$;\\slice $\rightarrow$ distinct $S$};
 
     \draw[arrow] (s1) -- (s2);
     \draw[arrow] (s2) -- (s3);
@@ -233,8 +233,8 @@ The benchmark consisted of 282 Defects4J bugs distributed over 5 projects \cite{
     \node[font=\scriptsize\sffamily\itshape, text=black!75, anchor=south]
       at ($(s3.north)+(0,0.08)$) {Criterion-independent setup \& single-trace capture (executed once per bug)};
   \end{tikzpicture}
-  \caption{Six-step dynamic slicing and evaluation workflow per Defects4J bug. Steps (1)--(5) run once per bug to produce the execution trace ($N_{\text{exec}}$), executable modified-class statements ($M$) and anchored ground-truth fault loci ($G$); Step (6) re-slices the same trace for each criterion $c \in \{\texttt{test\_crash}, \texttt{app\_deepest}, \texttt{patched}\}$.}
-  \Description{Flowchart of the six-step dynamic slicing workflow: (1) Checkout and Reproduce, (2) Resource-Safe JAR Build, (3) Soot Jimple Instrumentation, (4) Single-Trace Capture, (5) Ground-Truth Anchoring, and (6) Backward Slicing across three criteria.}
+  \caption{Six-step dynamic slicing workflow per Defects4J bug.}
+  \Description{Flowchart of the six-step dynamic slicing workflow.}
   \label{fig:pipeline}
 \end{figure*}
 
