@@ -308,7 +308,7 @@ Slice completion does not guarantee the slice contains line from fault class. In
 
 % > [I checked online and had discussion with claude for what can be used for comparision and used this , I rejected wilson interval and rank for comparision]
 
-\subsection{Fault coverage and ground-truth anchoring}(RQ1)
+\subsection{Fault coverage and ground-truth anchoring(RQ1)}
 In this section we look at the fault coverage and anchoring results.\textbf{RQ1 (Fault Coverage): To what extent do the generated slices preserve the fault-relevant root-cause lines?} From the 271 defects whose patch could be classfied only 5 of them just deleted or changed lines. Out of the rest 266 defects,We saw developers either add lines or do both(78 additive and 188 mixed). A slice cannot have a line which does not exist yet so we needed anchoring rules. The 3 of the 5 who produced slice from the defects with just deleted or changed lines, they are from compress and other 2 never produced a slice.  
 
 The Fault coverage is divided into FULL,PARTIAL and None. For test\_crash fault coverage for FULL is 19.5\% and any contact is 48.7\%. For app\_deepest fault coverage for FULL is 24.1\% and any contact is 77.2\%. For patched fault coverage for FULL is 29.4\% and any contact is 100\% as we get the criterion line where the patch resides. Table 4.4 shows expanded results.Rule D increases the percentage of FULL coverage from 24.0\% to 38.0\% and any-contact only just from 72.8\% to 73.6\% for total runs. We saw no changes for app\_deepest and patched in any contact with Rule D from Rule C. Out of the 71 runs that change coverage,We saw 67 move from PARTIAL to FULL and 4 went from NONE to something. Also 1 defect went from 1 of 12 anchor lines to 12 of 12 anchor lines. Both Rule D and Rule C have the same effect and the miss rate drops from 51.3\% to 49.6\% for rule D so main result does not change with respect to the convention. As the result does not change alot for any contact we consider it as primary coverage and FULL as secondary state to measure.
@@ -329,11 +329,11 @@ The Fault coverage is divided into FULL,PARTIAL and None. For test\_crash fault 
   \end{tabular}
 \end{table*}
 
-\subsection{Code reduction}(RQ2)
+\subsection{Code reduction(RQ2)}
 
 In the first research question we look at the code reduction and change in results depending on criterion. \textbf{RQ2:How much does dynamic slicing minimize source files compared to the original program?}
 
-Slices are very small when compared to the actual programs. We use median as a metric rather than average as slices are skewed right due to few of them been very large compared to others. As we see in Table 4.3 test\_crash has a median slice of 24 lines, app\_deepest has median slice of 53 lines and patched has median slice of 64 lines. So depending on the criterion we get a 2.7 factor. The reduction against the class was 94.7\% , 91.5\% and 94.2\% for test\_crash,app\_deepest and patched respectively. We only consider the non degenerate slices during the calculations.To explain why we use median as mean value for number of lines in slice is 65.8 lines under test_crash with 16 slices crossing 200 lines and maximum of 573 lines. As for app_deepest and patch the mean value for number of lines if 108.5 and 94.1 respectively with both having maximum of 847 lines for a slice.
+Slices are very small when compared to the actual programs. We use median as a metric rather than average as slices are skewed right due to few of them been very large compared to others. As we see in Table 4.3 test\_crash has a median slice of 24 lines, app\_deepest has median slice of 53 lines and patched has median slice of 64 lines. So depending on the criterion we get a 2.7 factor. The reduction against the class was 94.7\% , 91.5\% and 94.2\% for test\_crash,app\_deepest and patched respectively. We only consider the non degenerate slices during the calculations.To explain why we use median as mean value for number of lines in slice is 65.8 lines under test\_crash with 16 slices crossing 200 lines and maximum of 573 lines. As for app\_deepest and patch the mean value for number of lines if 108.5 and 94.1 respectively with both having maximum of 847 lines for a slice.
 
 \begin{table*}[htbp]
   \caption{Table 4.3}
@@ -353,16 +353,16 @@ Also we found that the slice size is not dependent on the size of host class. Ac
 
 \begin{figure}[htbp]
   \centering
-  \includegraphics[width=\linewidth]{fig3_slice_vs_class}
-  \caption{Figure 4}
-  \Description{Scatter plot showing lines in slice versus lines in modified class under the test_crash criterion.}
-  \label{fig:slice_vs_class}
+  \includegraphics[width=\linewidth]{fig_scale_independence}
+  \caption{Figure 2}
+  \Description{Scatter plot showing total lines in slice versus lines in modified class under the test_crash criterion.}
+  \label{fig:slice_scale_independence}
 \end{figure}
 
 When we compare 78 defects which are common in succesfull runs with slice on both test\_crash and app\_deepest, the slice from the deeper application frame are much larger than the one from shallow test frame which is median of 64 against 18 with values of Holm-corrected $p = 1.09 \times 10^{-6}$ and Cliff's $\delta = 0.388$,medium. When we do same selection with respect to patched and test\_crash we get 178 defects with median slice of 56 against 23 lines with values of Holm-corrected $p = 1.05 \times 10^{-3}$; $\delta = 0.223$, small. Interestingly both patched and app\_deepest who depend of application frame have values of $p = 0.667$ with $\delta = -0.001$ which is too small to detect and matter. So the criterion which uses the test frame has the smallest slices and the criterion which uses application frame have bigger slices.
 
 When looking at just the slices with FULL coverage with get a median reduction of 92.5\% (n=44) under test\_crash , 91.8\% (n=19) under app\_deepest and 92.5\% (n=55) under patched which is a flat distribution. So when a slice retains around 7.5\% to 8.2\% when it contains the whole ground truth which signifies it is irrespective of criterion. For test\_crash there is big difference between reduction for slices with FULL coverage and slices with NONE which is 92.5\% to 97.1\% with a median of 40 to 21 lines respectively. However for app\_deepest the reduction for slices with FULL coverage and NONE is not that different with 91.8\% to 91.3\% however the median for lines in slices is way bigger for NONE from FULL with 112 against 65 lines respectively. So both of them fail differently for NONE where under test\_crash slices produced misses the fault and under app\_deepest, slices produced are large but reach elsewhere. We exclude degenerate slices from these analysis which also score NONE.
-\subsection{Overhead and constraints}
+\subsection{Overhead and constraints(RQ3)}
 In this section we look at the setup and constraints . \textbf{RQ3: What is the computational cost and scalability limit of instrumentation and dynamic trace generation?}
 
 We have the median values of setup and instrumentation to 23 seconds and 41 seconds respectively . We saw slicing is cheap compated to them as the median time was 9 seconds(maximum 1036 seconds).Also when a trace is generated , the criterion computation is cheap compared to it as anchoring rules can be generated with same trace results.Also no completed run exceeded 22.2 million trace entries or exhausted resources below 50.3 million trace entries.

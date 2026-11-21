@@ -2,12 +2,12 @@
 ["bibtex sigconf"] 0 "sigconf.aux" "sigconf.bbl" "sigconf" 0 -1
   "./ACM-Reference-Format.bst" 1793287068 96784 7091f2b0543d2c8bfe2e82ce5d54a029 ""
   "./sample-base.bib" 1795279659 57781 d733654cf718603e56693a2910a00d8d ""
-  "sigconf.aux" 1795281242 7030 cede23f5f5d0757565b87befb279c33a "pdflatex"
+  "sigconf.aux" 1795281759 7055 b75bd90dfcc4ce394a766892aa976008 "pdflatex"
   (generated)
   "sigconf.bbl"
   "sigconf.blg"
   (rewritten before read)
-["pdflatex"] 1795281240.97496 "u:/sose2026/project/docs/Paper/sigconf.tex" "sigconf.pdf" "sigconf" 1795281243.13212 2
+["pdflatex"] 1795281758.22479 "u:/sose2026/project/docs/Paper/sigconf.tex" "sigconf.pdf" "sigconf" 1795281760.32161 2
   "C:/Users/Avnish Raut/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1789750353 187664 65fa417f6850b604c49bfafe76826e39 ""
   "C:/Users/Avnish Raut/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1778239934 13336426 2564b6bcfdafdab4c0b62afb607153f0 ""
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1-4.enc" 1557958141 7693 0f2dce6d313c82989ec3a67fc24df2a0 ""
@@ -202,12 +202,12 @@
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
   "acmart.cls" 1795279659 125357 b5792d70fdf15cca7d1a7fdff16de3ca ""
-  "fig3_slice_vs_class.png" 1795279659 124384 8d5b9a0d65f2418f08c08e0f1f060531 ""
-  "sigconf.aux" 1795281242 7030 cede23f5f5d0757565b87befb279c33a "pdflatex"
+  "fig_scale_independence.png" 1795203250 136510 d85266939fd6ae7c785168e6ea022574 ""
+  "sigconf.aux" 1795281759 7055 b75bd90dfcc4ce394a766892aa976008 "pdflatex"
   "sigconf.bbl" 1795279834 12255 33f19782308d8e0dca51d6dc7a90f16f "bibtex sigconf"
-  "sigconf.out" 1795281242 4566 0bbcc55aa576ee6548074ccb0e24f155 "pdflatex"
-  "sigconf.tex" 1795281237 41621 4dcf6a21ef91bb49a16755c6a1bc292b ""
-  "u:/sose2026/project/docs/Paper/sigconf.tex" 1795281237 41621 4dcf6a21ef91bb49a16755c6a1bc292b ""
+  "sigconf.out" 1795281759 4659 86f1cb7d61f66c23d16f9703b54ec189 "pdflatex"
+  "sigconf.tex" 1795281754 41647 53033f9e27ae627bf21dfe0892dda834 ""
+  "u:/sose2026/project/docs/Paper/sigconf.tex" 1795281754 41647 53033f9e27ae627bf21dfe0892dda834 ""
   (generated)
   "sigconf.aux"
   "sigconf.log"

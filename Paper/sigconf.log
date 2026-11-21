@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.8)  21 NOV 2026 18:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.5.8)  21 NOV 2026 18:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1182,23 +1182,6 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 [4.4]
-u:/sose2026/project/docs/Paper/sigconf.tex:336: Missing $ inserted.
-<inserted text> 
-                $
-l.336 ... lines in slice is 65.8 lines under test_
-                                                  crash with 16 slices cross...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-u:/sose2026/project/docs/Paper/sigconf.tex:337: Missing $ inserted.
-<inserted text> 
-                $
-l.337 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
 Overfull \hbox (3.74649pt too wide) in paragraph at lines 336--337
 \T1/LinuxLibertineT-TLF/m/n/9 see in Ta-ble 4.3 test_crash has a me-dian slice of 24 lines, app_deepest
  []
@@ -1208,16 +1191,11 @@ Overfull \hbox (15.5149pt too wide) in paragraph at lines 336--337
 \T1/LinuxLibertineT-TLF/m/n/9 against the class was 94.7% , 91.5% and 94.2% for test_crash,app_deepest
  []
 
-
-Overfull \hbox (685.58023pt too wide) in paragraph at lines 336--337
-\T1/LinuxLibertineT-TLF/m/n/9 mean value for num-ber of lines in slice is 65.8 lines un-der test$[]\OML/nxlmi/m/it/9 rashwith\OT1/LinuxLibertineT-TLF/m/n/9 16\OML/nxlmi/m/it/9 slicescrossing\OT1/LinuxLibertineT-TLF/m/n/9 200\OML/nxlmi/m/it/9 linesandmaximumof\OT1/LinuxLibertineT-TLF/m/n/9 573\OML/nxlmi/m/it/9 lines:Asforapp[]eepestandpatchthemeanvaluefornumberoflinesif\OT1/LinuxLibertineT-TLF/m/n/9 108\OML/nxlmi/m/it/9 :\OT1/LinuxLibertineT-TLF/m/n/9 5\OML/nxlmi/m/it/9 and\OT1/LinuxLibertineT-TLF/m/n/9 94\OML/nxlmi/m/it/9 :\OT1/LinuxLibertineT-TLF/m/n/9 1\OML/nxlmi/m/it/9 respectivelywithbothhavingmaximumof\OT1/LinuxLibertineT-TLF/m/n/9 847\OML/nxlmi/m/it/9 linesforaslice:$ 
- []
-
-<fig3_slice_vs_class.png, id=62, 433.62pt x 433.62pt>
-File: fig3_slice_vs_class.png Graphic file (type png)
-<use fig3_slice_vs_class.png>
-Package pdftex.def Info: fig3_slice_vs_class.png  used on input line 356.
-(pdftex.def)             Requested size: 241.14749pt x 241.15157pt.
+<fig_scale_independence.png, id=62, 228.1323pt x 168.63pt>
+File: fig_scale_independence.png Graphic file (type png)
+<use fig_scale_independence.png>
+Package pdftex.def Info: fig_scale_independence.png  used on input line 356.
+(pdftex.def)             Requested size: 241.14749pt x 178.25548pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -1255,42 +1233,42 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[5.5 <./fig3_slice_vs_class.png>]
+[5.5 <./fig_scale_independence.png>]
 Overfull \hbox (1.04214pt too wide) in paragraph at lines 375--379
 \T1/LinuxLibertineT-TLF/m/n/9 Any con-tact an-swers if the slice con-tains any-thing from the ground-
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2393) has occurred while \output is active []
 
 
-u:/sose2026/project/docs/Paper/sigconf.tex:391: Undefined control sequence.
+u:/sose2026/project/docs/Paper/sigconf.tex:392: Undefined control sequence.
 \f@nch@elh ...adfootfont \acmConference@shortname 
                                                   , \acmConference@date , \a...
-l.391 
-      
+l.392 \section
+              {Conclusion}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-u:/sose2026/project/docs/Paper/sigconf.tex:391: Undefined control sequence.
+u:/sose2026/project/docs/Paper/sigconf.tex:392: Undefined control sequence.
 \f@nch@elh ...nce@shortname , \acmConference@date 
                                                   , \acmConference@venue \st...
-l.391 
-      
+l.392 \section
+              {Conclusion}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-u:/sose2026/project/docs/Paper/sigconf.tex:391: Undefined control sequence.
+u:/sose2026/project/docs/Paper/sigconf.tex:392: Undefined control sequence.
 \f@nch@elh ...ference@date , \acmConference@venue 
                                                   \strut 
-l.391 
-      
+l.392 \section
+              {Conclusion}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1309,10 +1287,7 @@ Overfull \hbox (8.99263pt too wide) in paragraph at lines 396--397
 []\T1/LinuxLibertineT-TLF/m/n/9 Methodologically, patched cri-te-ria are cir-cu-lar (100.0% any-contact
  []
 
-(sigconf.bbl
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-)
+(sigconf.bbl)
 
 Package natbib Warning: There were undefined citations.
 
@@ -1382,19 +1357,19 @@ Package rerunfilecheck Warning: File `sigconf.out' has changed.
 
 Package rerunfilecheck Info: Checksums for `sigconf.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  0BBCC55AA576EE6548074CCB0E24F155;4566.
+(rerunfilecheck)             After:  86F1CB7D61F66C23D16F9703B54EC189;4659.
  )
 (\end occurred when \ifx on line 48 was incomplete) 
 Here is how much of TeX's memory you used:
  20950 strings out of 467871
- 341276 string characters out of 5415437
- 845110 words of memory out of 5000000
+ 341319 string characters out of 5415437
+ 845111 words of memory out of 5000000
  49214 multiletter control sequences out of 15000+600000
  742801 words of font info for 149 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  90i,12n,131p,1188b,693s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb><C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI.pfb><C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/LibertineMathMI7.pfb><C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinBiolinumT.pfb><C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinBiolinumTB.pfb><C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/libertine/LinLibertineTI.pfb><C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/NewTXMI.pfb><C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txmiaX.pfb><C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/type1/public/newtx/txsys.pfb>
-Output written on sigconf.pdf (7 pages, 558871 bytes).
+Output written on sigconf.pdf (7 pages, 559417 bytes).
 PDF statistics:
  193 PDF objects out of 1000 (max. 8388607)
  58 named destinations out of 1000 (max. 500000)
