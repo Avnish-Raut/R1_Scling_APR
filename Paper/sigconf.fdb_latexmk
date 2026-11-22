@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex sigconf"] 0 "sigconf.aux" "sigconf.bbl" "sigconf" 0 -1
+["bibtex sigconf"] 0 "sigconf.aux" "sigconf.bbl" "sigconf" 1795355391.61275 -1
   "./ACM-Reference-Format.bst" 1795340583 96784 7091f2b0543d2c8bfe2e82ce5d54a029 ""
   "./sample-base.bib" 1795340583 57781 d733654cf718603e56693a2910a00d8d ""
-  "sigconf.aux" 1795355223 6944 64b5a0948302af92c6f714fc7a46c4a4 "pdflatex"
+  "sigconf.aux" 1795355390 6944 64b5a0948302af92c6f714fc7a46c4a4 "pdflatex"
   (generated)
   "sigconf.bbl"
   "sigconf.blg"
   (rewritten before read)
-["pdflatex"] 1795355221.69328 "u:/sose2026/project/Repo/R1_Scling_APR/Paper/sigconf.tex" "sigconf.pdf" "sigconf" 1795355224.08893 2
+["pdflatex"] 1795355389.22184 "u:/sose2026/project/Repo/R1_Scling_APR/Paper/sigconf.tex" "sigconf.pdf" "sigconf" 1795355391.6134 2
   "C:/Users/Avnish Raut/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1789750353 187664 65fa417f6850b604c49bfafe76826e39 ""
   "C:/Users/Avnish Raut/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1778239934 13336426 2564b6bcfdafdab4c0b62afb607153f0 ""
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1-4.enc" 1557958141 7693 0f2dce6d313c82989ec3a67fc24df2a0 ""
@@ -273,11 +273,11 @@
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
   "acmart.cls" 1795340583 125357 b5792d70fdf15cca7d1a7fdff16de3ca ""
   "fig_scale_independence.png" 1795340583 136510 d85266939fd6ae7c785168e6ea022574 ""
-  "sigconf.aux" 1795355223 6944 64b5a0948302af92c6f714fc7a46c4a4 "pdflatex"
+  "sigconf.aux" 1795355390 6944 64b5a0948302af92c6f714fc7a46c4a4 "pdflatex"
   "sigconf.bbl" 1795340735 12255 33f19782308d8e0dca51d6dc7a90f16f "bibtex sigconf"
-  "sigconf.out" 1795355223 4495 233a2daf433a556e9f9d647037b4da1f "pdflatex"
-  "sigconf.tex" 1795355217 54339 328a622d98d305fb503a4b5179e298a2 ""
-  "u:/sose2026/project/Repo/R1_Scling_APR/Paper/sigconf.tex" 1795355217 54339 328a622d98d305fb503a4b5179e298a2 ""
+  "sigconf.out" 1795355390 4495 233a2daf433a556e9f9d647037b4da1f "pdflatex"
+  "sigconf.tex" 1795355388 54336 82afcb11bbc0e3f7cefaf40f12475a52 ""
+  "u:/sose2026/project/Repo/R1_Scling_APR/Paper/sigconf.tex" 1795355388 54336 82afcb11bbc0e3f7cefaf40f12475a52 ""
   (generated)
   "sigconf.aux"
   "sigconf.log"

@@ -258,7 +258,7 @@ Once the dynamic dependence structure has been established, a slice will be dete
 \end{itemize}
 
 As a running example, consider Lang \#1 (\texttt{NumberUtilsTest::\-TestLang747}), in which 
-\\ \texttt{NumberUtils.\allowbreak createNumber("0x80000000")} raises a \texttt{Number\-Format\-Exception} during the \texttt{createInteger(...)} call. \texttt{test\_crash}, \texttt{app\_deepest} and \texttt{patched} would therefore yield slices initiated from lines 256 (\texttt{NumberUtilsTest}), 684 (\texttt{NumberUtils}) and 467 (\texttt{NumberUtils}), respectively. We distinguished test and app frames by inspecting the directory hierarchy of the source file corresponding to the top-level class of the frame, rather than relying on class names, to avoid incorrectly treating overridden methods defined in a common super-test class as part of the app.
+\texttt{NumberUtils.\allowbreak createNumber("0x80000000")} raises a \texttt{Number\-Format\-Exception} during the \texttt{createInteger(...)} call. \texttt{test\_crash}, \texttt{app\_deepest} and \texttt{patched} would therefore yield slices initiated from lines 256 (\texttt{NumberUtilsTest}), 684 (\texttt{NumberUtils}) and 467 (\texttt{NumberUtils}), respectively. We distinguished test and app frames by inspecting the directory hierarchy of the source file corresponding to the top-level class of the frame, rather than relying on class names, to avoid incorrectly treating overridden methods defined in a common super-test class as part of the app.
 
 \subsection{Ground-Truth Omission Anchoring}
 
