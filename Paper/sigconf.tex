@@ -252,12 +252,15 @@ A further issue arose when using the original Slicer4J release, whereby it raise
 Once the dynamic dependence structure has been established, a slice will be determined by the slicing criterion $c=(\text{Class}, \text{line})$ used to initiate the process. We considered the following 3 criteria:
 
 \begin{itemize}
-    \item \textbf{test\_crash:} For 273 out of 282 bugs, we took the test-case entry-point (shallowest element of the failure trace) as the criterion. Almost universally this corresponded to the relevant JUnit check. On the remaining 9 cases, we were unable to locate a line belonging to a test class in the failure stack trace, or the error was triggered prior to running the test suite. This is the most natural criterion for a LLM-based fully-automated repair system to adopt given the information available upon detecting a test failure. Also as a slice contains its own criterion, the slice will have atleast one statement from the test class.
-    \item \textbf{app\_deepest:} Where the failure stack trace included a (deeply-nested) frame belonging to the target application, i.e.\ in cases where an exception escaped the app and was picked up by the test harness, we used the deepest such frame (104 out of 282 bugs). For the rest, the buggy method simply returned an incorrect result which subsequently triggered the JUnit failure.
+    \item \textbf{test\_crash:} For 273 out of 282 bugs, we took the test-case entry-point (shallowest element of the failure trace) as the criterion. Almost universally this corresponded to the relevant JUnit check. On the remaining 9 cases, we were unable to locate a line belonging to a test class in the failure stack trace, or the error was triggered prior to running the test suite. This is the most natural criterion for a LLM-based fully-automated repair system to adopt given the information available upon detecting a test failure. In this criterion the backward slice begins from test code and reaches application code only through method calls. Also since the slice contains its own criterion, the slice will have atleast one statement from the test class.
+    \item \textbf{app\_deepest:} Where the failure stack trace included a (deeply-nested) frame belonging to the target application rather than the test or library, i.e.\ in cases where an exception escaped the app and was picked up by the test harness, we used the deepest such frame (104 out of 282 bugs).Here the prupose is to begin in the logic so the dependence closure contains more of the application and less of test. For the rest, the buggy method simply returned an incorrect result which subsequently triggered the JUnit failure.
     \item \textbf{patched:} As described in Section 3.4, we identified the set of true faults $G$ for each bug, and used the earliest (by line number) statement in $G$ as the criterion. The Slicer4J interface does not permit specifying multiple criteria, so we adopted this convention to ensure consistency. Importantly, since any slice must include its initiating criterion, using the \texttt{patched} criterion ensures that the resulting slice will always have non-empty intersection with $G$ (i.e.\ achieve 100\% any-contact coverage), provided the criterion is itself executed. Of course, a repair tool would not know the true faults in advance and hence cannot make use of this criterion, but we use it as an idealised ceiling and to validate the integrity of our workflow.
 \end{itemize}
 
-As a running example, consider Lang \#1 (\texttt{NumberUtilsTest::\-TestLang747}), in which \newline
+As a running example, 
+\newline
+consider Lang \#1 (\texttt{NumberUtilsTest::\-TestLang747}), in which 
+\newline
 \texttt{NumberUtils.\allowbreak createNumber("0x80000000")} raises a \texttt{Number\-Format\-Exception} during the \newline
 \texttt{createInteger(...)} call. \texttt{test\_\allowbreak crash}, \texttt{app\_\allowbreak deepest} and \newline
 \texttt{patched} would therefore yield slices initiated from lines 256 (\texttt{Number\allowbreak Utils\allowbreak Test}), 684 (\texttt{Number\allowbreak Utils}) and 467 (\texttt{Number\allowbreak Utils}), respectively. We distinguished test and app frames by inspecting the directory hierarchy of the source file corresponding to the top-level class of the frame, rather than relying on class names, to avoid incorrectly treating overridden methods defined in a common super-test class as part of the app.
@@ -390,7 +393,7 @@ Also we found that the slice size is not dependent on the size of host class. Ac
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{fig_scale_independence}
-  \caption{Figure 2}
+  \caption{Total lines in slice versus lines in modified class under the test_crash criterion}
   \Description{Scatter plot showing total lines in slice versus lines in modified class under the test_crash criterion.}
   \label{fig:slice_scale_independence}
 \end{figure}
