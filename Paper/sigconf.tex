@@ -90,7 +90,7 @@
 %%
 %% The "title" command has an optional parameter,
 %% allowing the author to define a "short title" to be used in page headers.
-\title{Evaluation Strategies for Program Slicing in Automated Program Repair}
+\title{Evaluation Strategies for Dynamic Program Slicing in LLM-based Automated Program Repair}
 
 %%
 %% The "author" command and its associated commands are used to define
@@ -149,12 +149,12 @@ Defects4J, Slicer4J}
 %%
 %% This command processes the author and affiliation and title
 %% information and builds the first part of the formatted document.
-\maketitle
+%%\maketitle
 
 
 \section{Introduction}
 
-It is very challenging when we have to debug and fix huge software systems, this is mainly due to them containing large volumes of code. A modern software program is likely to be made up of numerous classes and several approaches and a lot of dependencies that depend upon one another on various classes, but much of the software is unlikely to pertain to a failure of a specific class. Finding that relevant section is important as it is the first step in bug fixing and automated program repair (APR). We require the relevant context of the fault for LLM-based APR Systems, this is so we can identify and modify the affected code. Including the entire source files can massively add unrelated code to the snippets. On the other hand, manually cutting off the snippets can cause statements to be missing which can contribute to the failure. Program slicing is one such systematic method that can potentially be used to solve the context-selection problem by obtaining statements relevant to a failure.
+It is very challenging when we have to debug and fix huge software systems, this is mainly due to them containing large volumes of code. A modern software program is likely to be made up of numerous classes and several approaches and a lot of dependencies that depend upon one another on various classes, but much of the software is unlikely to pertain to a failure of a specific class. Finding that relevant section is important as it is the first step in bug fixing and LLM-based automated program repair (APR). We require the relevant context of the fault for LLM-based APR Systems, this is so we can identify and modify the affected code. Including the entire source files can massively add unrelated code to the snippets. On the other hand, manually cutting off the snippets can cause statements to be missing which can contribute to the failure. Program slicing is one such systematic method that can potentially be used to solve the context-selection problem by obtaining statements relevant to a failure.
 
 % > [Maybe explain APR here or in background]
 
