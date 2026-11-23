@@ -2,12 +2,12 @@
 ["bibtex sigconf"] 0 "sigconf.aux" "sigconf.bbl" "sigconf" 0 -1
   "./ACM-Reference-Format.bst" 1795363637 96784 7091f2b0543d2c8bfe2e82ce5d54a029 ""
   "./sample-base.bib" 1795363637 57781 d733654cf718603e56693a2910a00d8d ""
-  "sigconf.aux" 1795421361 7092 6772e218ddff975132413846323303c0 "pdflatex"
+  "sigconf.aux" 1795421893 7092 6772e218ddff975132413846323303c0 "pdflatex"
   (generated)
   "sigconf.bbl"
   "sigconf.blg"
   (rewritten before read)
-["pdflatex"] 1795421360.24129 "u:/sose2026/project/Repo/R1_Scling_APR/Paper/sigconf.tex" "sigconf.pdf" "sigconf" 1795421362.65128 2
+["pdflatex"] 1795421892.26543 "u:/sose2026/project/Repo/R1_Scling_APR/Paper/sigconf.tex" "sigconf.pdf" "sigconf" 1795421894.67405 2
   "C:/Users/Avnish Raut/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1789750353 187664 65fa417f6850b604c49bfafe76826e39 ""
   "C:/Users/Avnish Raut/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1778239934 13336426 2564b6bcfdafdab4c0b62afb607153f0 ""
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1-4.enc" 1557958141 7693 0f2dce6d313c82989ec3a67fc24df2a0 ""
@@ -268,11 +268,11 @@
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
   "acmart.cls" 1795363637 125357 b5792d70fdf15cca7d1a7fdff16de3ca ""
   "fig_scale_independence.png" 1795363637 136510 d85266939fd6ae7c785168e6ea022574 ""
-  "sigconf.aux" 1795421361 7092 6772e218ddff975132413846323303c0 "pdflatex"
+  "sigconf.aux" 1795421893 7092 6772e218ddff975132413846323303c0 "pdflatex"
   "sigconf.bbl" 1795363800 12255 33f19782308d8e0dca51d6dc7a90f16f "bibtex sigconf"
-  "sigconf.out" 1795421361 4492 c9a24b9acaa1f89bff0ca055971361ab "pdflatex"
-  "sigconf.tex" 1795421356 55110 3e4c31ed64f820ad3a4e39c56c9db846 ""
-  "u:/sose2026/project/Repo/R1_Scling_APR/Paper/sigconf.tex" 1795421356 55110 3e4c31ed64f820ad3a4e39c56c9db846 ""
+  "sigconf.out" 1795421893 4492 c9a24b9acaa1f89bff0ca055971361ab "pdflatex"
+  "sigconf.tex" 1795421888 55110 ba9955312a2d8f4cdfa2276f08ee91d0 ""
+  "u:/sose2026/project/Repo/R1_Scling_APR/Paper/sigconf.tex" 1795421888 55110 ba9955312a2d8f4cdfa2276f08ee91d0 ""
   (generated)
   "sigconf.aux"
   "sigconf.log"
