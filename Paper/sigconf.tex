@@ -44,7 +44,7 @@
 %% for your publication.
 %%
 %%
-\documentclass[sigconf]{acmart}
+\documentclass[sigconf,nonacm]{acmart}
 \microtypesetup{expansion=false}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,fit,calc}
@@ -149,7 +149,7 @@ To evaluate this, we ran Slicer4J, a dynamic slicer for Java, across 282 real-wo
 %%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
-\keywords{Program Slicing, Dynamic Analysis, Automated Program Repair, 
+\keywords{Program Slicing, Dynamic Program Slicing, LLM-Based Automated Program Repair, 
 Defects4J, Slicer4J}
 
 %%
@@ -166,7 +166,7 @@ It is very challenging when we have to debug and fix huge software systems, this
 
 Weiser \cite{Weiser1981ProgramSlicing, Weiser1984ProgramSlicing} proposed program slicing to find statements which have an influence over the value(s) computed at a program point called the slicing criterion. A backwards slice will include statements that could have had an influence on the criterion. Traditional static slicing takes into account possible program executions, dynamic slicing takes the observed dependencies for a particular execution of the program. Dynamic slicing can produce a more focused representation of the program behaviour that was associated with this failure by concentrating on the execution that caused a failure in a specific test. Dynamic slicing is supported for Java programs in Slicer4J using bytecode-based instrumentation and building backward top-down dependency graphs \cite{Ahmed2021Slicer4J}. The results, however, will also depend on the criterion on slicing was used. The starting point may yield a different slice and it may influence whether or not the slice includes code that involves the defect.
 
-Only a few problems have been left open regarding program slicing and its application on Java programs as could be seen in the previous studies. In the original evaluation of Slicer4J \cite{Agrawal1990Dynamic} they ran seven benchmarks and collected three defects from Defects4J \cite{Ahmed2021Slicer4J}.
+Only a few problems have been left open regarding program slicing and its application on Java programs as could be seen in the previous studies. In the original evaluation of Slicer4J they ran seven benchmarks and collected three defects from Defects4J \cite{Ahmed2021Slicer4J}.
 
 This paper presents our study to quantitatively assess the effectiveness of the backward dynamic slicing technique implemented in Slicer4J using 282 defects extracted from five Java projects from the Defects4J 2.0.0 benchmark -- Chart, Cli, Compress, Lang, and Math \cite{Just2014Defects4J}. Three different slicing criteria are used. The first is the place in the test code where the failure is reported called test\_crash. The second app\_deepest is the deepest location found of any application code in the failure stack trace. The third (patched) is using code from the developer's patch. The patched criterion is included for comparison purposes as it requires other information of the fix which is not normally available to an APR system. Based on these criteria, we investigate three research questions:
 
@@ -249,7 +249,7 @@ The benchmark consisted of 282 Defects4J bugs distributed over 5 projects \cite{
   \label{fig:pipeline}
 \end{figure*}
 
-As shown in Figure~\ref{fig:pipeline}, the workflow comprises 6 steps. Steps (1)--(3) involved cloning the defective commit to a private directory, executing the test suite to confirm the relevant test case failed and left a stack trace (max 600s to clone, 900s to build+run tests). The resulting artifact(s) were then assembled into one JAR file (leaving other resources on the user's classpath to avoid issues with resource URIs), and the Java code instrumented to promote each class to the Soot meta-model and insert logging hooks to construct a per-statement failure trace (max 1200s). Note that we approximated the behaviour of JDK libraries that were not instrumented using hand-written flow summaries. Steps (4)--(6) saw us invoke the triggering test using JUnitCore to produce the initial failure trace (max 1800s) containing $N_{\text{exec}}$ executed statements, and ensure that the triggering test was logged. Next we computed the diff which identifies the grouth-truth loci and $M$ is the modified class's executable statements, and their corresponding anchored true faults $G$ (see Section 3.4). Finally, for each slicing criterion $c$, we performed backward dynamic slicing (max 1200s) and converted the result to a canonical list of distinct \texttt{Class:line}s (i.e.\ removing duplicate entries arising from loop iterations etc.). As steps (1)--(5) are independent of $c$, we executed the trace once per bug and re-sliced it for each criterion.
+As shown in Figure~\ref{fig:pipeline}, the workflow comprises 6 steps. Steps (1)--(3) involved cloning the defective commit to a private directory, executing the test suite to confirm the relevant test case failed and left a stack trace (max 600s to clone, 900s to build+run tests). The resulting artifact(s) were then assembled into one JAR file (leaving other resources on the user's classpath to avoid issues with resource URIs), and the Java code instrumented to promote each class to the Soot meta-model and insert logging hooks to construct a per-statement failure trace (max 1200s). Note that we approximated the behaviour of JDK libraries that were not instrumented using hand-written flow summaries. Steps (4)--(6) saw us invoke the triggering test using JUnitCore to produce the initial failure trace (max 1800s) containing $N_{\text{exec}}$ executed statements, and ensure that the triggering test was logged. Next we computed the diff which identifies the ground-truth loci and $M$ is the modified class's executable statements, and their corresponding anchored true faults $G$ (see Section 3.4). Finally, for each slicing criterion $c$, we performed backward dynamic slicing (max 1200s) and converted the result to a canonical list of distinct \texttt{Class:line}s (i.e.\ removing duplicate entries arising from loop iterations etc.). As steps (1)--(5) are independent of $c$, we executed the trace once per bug and re-sliced it for each criterion.
 
 A further issue arose when using the original Slicer4J release, whereby it raised a \texttt{NullPointerException} in the \texttt{getAp()} call of \texttt{DynamicHeapAnalysis} if a heap read occurred in the trace prior to any writes to the associated variable. Rather than allow this bug in the slicing tool to bias our results, we inserted a simple null-check and preserved the unmodified Slicer4J output for reference in Sec.\ 4.
 
