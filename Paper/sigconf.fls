@@ -1,6 +1,6 @@
-PWD U:\sose2026\project\Repo\R1_Scling_APR\Paper
+PWD u:\sose2026\project\Repo\R1_Scling_APR\Paper
 INPUT C:\Users\Avnish Raut\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT sigconf.tex
+INPUT u:\sose2026\project\Repo\R1_Scling_APR\Paper\sigconf.tex
 OUTPUT sigconf.log
 INPUT .\acmart.cls
 INPUT acmart.cls

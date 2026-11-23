@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex sigconf"] 1795456837.69492 "sigconf.aux" "sigconf.bbl" "sigconf" 1795456840.56681 0
-  "./ACM-Reference-Format.bst" 1795453222.25687 96784 f7067e14a71378d5dce7f72c10845e2f ""
-  "./sample-base.bib" 1795453222.262 57781 4f197a835df8660bbb54b066fa0c1c35 ""
-  "sigconf.aux" 1795456839.52109 7021 f3b0f9e2522bab71dc98ece294fc1b47 "pdflatex"
+["bibtex sigconf"] 1795460515.37905 "sigconf.aux" "sigconf.bbl" "sigconf" 1795460518.15994 0
+  "./ACM-Reference-Format.bst" 1795453222 96784 7091f2b0543d2c8bfe2e82ce5d54a029 ""
+  "./sample-base.bib" 1795453222 57781 d733654cf718603e56693a2910a00d8d ""
+  "sigconf.aux" 1795460517 7021 c33e60ad70d9176fe65549004d48e647 "pdflatex"
   (generated)
   "sigconf.bbl"
   "sigconf.blg"
   (rewritten before read)
-["pdflatex"] 1795456838.03008 "sigconf.tex" "sigconf.pdf" "sigconf" 1795456840.56753 0
-  "C:/Users/Avnish Raut/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1795453668.25507 187664 65fa417f6850b604c49bfafe76826e39 ""
-  "C:/Users/Avnish Raut/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1778239934.21561 13336426 26c0be0b230bb9a2bea8333f291d4ed6 ""
+["pdflatex"] 1795460515.68855 "u:/sose2026/project/Repo/R1_Scling_APR/Paper/sigconf.tex" "sigconf.pdf" "sigconf" 1795460518.16041 0
+  "C:/Users/Avnish Raut/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1795453668 187664 65fa417f6850b604c49bfafe76826e39 ""
+  "C:/Users/Avnish Raut/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1778239934 13336426 2564b6bcfdafdab4c0b62afb607153f0 ""
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/inconsolata/i4-t1-4.enc" 1557958141 7693 0f2dce6d313c82989ec3a67fc24df2a0 ""
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_25tcsq.enc" 1497089888 2921 8ca0eb0831f9bc5da080d3697cfe67bf ""
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/libertine/lbtn_76gpa5.enc" 1497089888 2933 9ad527ce78d7c5fa0a642dead095f172 ""
@@ -266,12 +266,13 @@
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/Avnish Raut/AppData/Local/Programs/MiKTeX/tex/latex/xstring/xstring.sty" 1693735632 123 a302f2c651a95033260db60e51527ae8 ""
-  "acmart.cls" 1795453222.25787 125357 45c6c5520a37a7a8c59231860426b026 ""
-  "fig_scale_independence.png" 1795453222.26099 136510 643db81d4aa5cf2bbad4121de8782e73 ""
-  "sigconf.aux" 1795456839.52109 7021 f3b0f9e2522bab71dc98ece294fc1b47 "pdflatex"
-  "sigconf.bbl" 1795456837.95666 12255 fe8ea10d285ec26b532e0e6a9f01b3eb "bibtex sigconf"
-  "sigconf.out" 1795456839.52109 4492 c9a24b9acaa1f89bff0ca055971361ab "pdflatex"
-  "sigconf.tex" 1795456806.23459 54691 02f0afd40d185a2e64d345b1515d3b95 ""
+  "acmart.cls" 1795453222 125357 b5792d70fdf15cca7d1a7fdff16de3ca ""
+  "fig_scale_independence.png" 1795453222 136510 d85266939fd6ae7c785168e6ea022574 ""
+  "sigconf.aux" 1795460517 7021 c33e60ad70d9176fe65549004d48e647 "pdflatex"
+  "sigconf.bbl" 1795460515 12255 33f19782308d8e0dca51d6dc7a90f16f "bibtex sigconf"
+  "sigconf.out" 1795460517 4492 1f969a5ea0e0f2aa052b23fcb6980c12 "pdflatex"
+  "sigconf.tex" 1795460514 54691 197e18344bdfc68dd0cea38c5c8e499c ""
+  "u:/sose2026/project/Repo/R1_Scling_APR/Paper/sigconf.tex" 1795460514 54691 197e18344bdfc68dd0cea38c5c8e499c ""
   (generated)
   "sigconf.aux"
   "sigconf.log"

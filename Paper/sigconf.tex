@@ -181,7 +181,7 @@ The purpose of this study is to understand if Dynamic slicing can be advantageou
 
 \section{Background and Related Work}
 
-This section introduces the concepts and existing research relevant to our study. It first explains the fundamentals of static and dynamic program slicing, followed by the architecture of Slicer4J, the dynamic Java slicer evaluated in this work. Finally, in this section we look at how program slicing ties into fault localization, and how trimming code down this way can help feed cleaner context to LLMs for automated bug fixing.
+This section introduces the concepts and existing research relevant to our study. It first explains the fundamentals of static and dynamic program slicing, followed by the architecture of Slicer4J, the dynamic Java slicer evaluated in this work. Finally, in this section we look at how program slicing ties into fault localisation, and how trimming code down this way can help feed cleaner context to LLMs for automated bug fixing.
 
 \subsection{Static and Dynamic Program Slicing}
 
@@ -197,7 +197,7 @@ Slicer4J, the dynamic slicer for Java developed by Ahmed et al. \cite{Ahmed2021S
 
 Slicer4J then runs the instrumented version of the program and captures its execution history. This trace is processed to create an Inter-procedural Dynamic Control-Flow-Graph (TDCG) that describes the statements executed and the varying dependencies and interactions of methods and threads. Then, the slicer begins at the selected criterion, and walks backwards, meeting the aforementioned dependencies, until an arbitrary index for the bytecode instructions is reached and the instructions in the bytecode are mapped to source-code lines. The earlier Java dynamic slicer, JavaSlicer \cite{Hammacher2008JavaSlicer}, suffered from some restrictions on newer Java bytecodes, multithreaded execution and some framework methods \cite{Arzt2014FlowDroid}. Several of these are solved by Slicer4J. This also enables the same execution trace to use several slicing criteria, as the instrumentation and the creation of the execution trace is independent on the specific criterion.
 
-\subsection{Program Slicing for Fault Localization and LLM-Based APR}
+\subsection{Program Slicing for Fault Localisation and LLM-Based APR}
 
 Fault Location and Program Slice are two techniques that can assist in the investigation of software faults, but in different ways. The ability of SBFL to rank the statement according to passing/failing test results shows that the statement with higher rank is more likely to contain faults. Remember, suspicion among statements does not always imply dependency, nor does it show the importance of the different statement definitions in the failure. Other approach: Program Slicing begins from a specified point in the program and traverses along the data and/or control flow. If we receive a failure, a developer can see the statements and statement fault localisation details in the failure and inspect and analyse details of the statements that led to the failure \cite{Ahmed2021Slicer4J, Korel1988Dynamic}.
 
@@ -375,7 +375,7 @@ The Fault coverage is divided into FULL, PARTIAL and NONE. For test\_crash fault
 
 \subsection{Code reduction(RQ2)}
 
-In the second research question we look at the code reduction and change in results depending on criterion. \textbf{RQ2:How much does dynamic slicing minimize source files compared to the original program?}
+In the second research question we look at the code reduction and change in results depending on criterion. \textbf{RQ2:How much does dynamic slicing minimise source files compared to the original program?}
 
 Slices are very small when compared to the actual programs. We use median as a metric rather than average as slices are skewed right due to few of them been very large compared to others. As we see in Table 4 test\_crash has a median slice of 24 lines, app\_deepest has median slice of 64 lines and patched has median slice of 53 lines. So depending on the criterion we get a 2.7 factor. The reduction against the class was 94.7\% , 91.5\% and 94.2\% for test\_crash, app\_deepest and patched respectively. We only consider the non degenerate slices during the calculations. To explain why we use median as mean value for number of lines in slice is 65.8 lines under test\_crash with 16 slices crossing 200 lines and maximum of 573 lines. As for app\_deepest and patched the mean value for number of lines if 108.5 and 94.1 respectively with both having maximum of 847 lines for a slice.
 
